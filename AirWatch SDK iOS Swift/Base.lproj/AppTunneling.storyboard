@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1421" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="KTl-Hb-cY4">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Application Tunneling-->
+        <scene sceneID="X6P-MZ-x5d">
+            <objects>
+                <viewController title="Application Tunneling" id="KTl-Hb-cY4" customClass="TunnelingViewController" customModule="iOS_Swift_Sample_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GvZ-xR-ZVg"/>
+                        <viewControllerLayoutGuide type="bottom" id="SKC-SF-Nm0"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="RMz-Gv-fSB">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select Networking Connection Type" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="34R-eM-GDY">
+                                <rect key="frame" x="16" y="72" width="288" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="t4M-KX-mxO">
+                                <rect key="frame" x="16" y="101" width="288" height="29"/>
+                                <segments>
+                                    <segment title="WebView"/>
+                                    <segment title="NSURLSession"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentedControlChanged:" destination="KTl-Hb-cY4" eventType="valueChanged" id="Erf-gF-Aj0"/>
+                                </connections>
+                            </segmentedControl>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter the Endpoint URL that does NOT need authentication" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="dkl-UC-Zku">
+                                <rect key="frame" x="16" y="137" width="288" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="URL"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="HTTP Response" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ce-Mx-eKD">
+                                <rect key="frame" x="16" y="175" width="288" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PqW-OR-3RM">
+                                <rect key="frame" x="16" y="229" width="288" height="319"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="KTi-Zq-qoa">
+                                <rect key="frame" x="150" y="378" width="20" height="20"/>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="t4M-KX-mxO" firstAttribute="top" secondItem="34R-eM-GDY" secondAttribute="bottom" constant="8" symbolic="YES" id="ASb-9b-IEL"/>
+                            <constraint firstItem="dkl-UC-Zku" firstAttribute="trailing" secondItem="3ce-Mx-eKD" secondAttribute="trailing" id="Bf2-ta-2wy"/>
+                            <constraint firstItem="PqW-OR-3RM" firstAttribute="leading" secondItem="3ce-Mx-eKD" secondAttribute="leading" id="Bvo-sD-81O"/>
+                            <constraint firstItem="34R-eM-GDY" firstAttribute="trailing" secondItem="t4M-KX-mxO" secondAttribute="trailing" id="CJ4-ie-dAe"/>
+                            <constraint firstItem="3ce-Mx-eKD" firstAttribute="top" secondItem="dkl-UC-Zku" secondAttribute="bottom" constant="8" symbolic="YES" id="GuI-be-tDD"/>
+                            <constraint firstItem="t4M-KX-mxO" firstAttribute="leading" secondItem="dkl-UC-Zku" secondAttribute="leading" id="HP4-5A-YiQ"/>
+                            <constraint firstItem="t4M-KX-mxO" firstAttribute="trailing" secondItem="dkl-UC-Zku" secondAttribute="trailing" id="SWU-Sp-N0g"/>
+                            <constraint firstAttribute="bottom" secondItem="PqW-OR-3RM" secondAttribute="bottom" constant="20" symbolic="YES" id="fpD-Wh-wFH"/>
+                            <constraint firstItem="dkl-UC-Zku" firstAttribute="top" secondItem="t4M-KX-mxO" secondAttribute="bottom" constant="8" symbolic="YES" id="gbM-os-2Pc"/>
+                            <constraint firstItem="34R-eM-GDY" firstAttribute="top" secondItem="GvZ-xR-ZVg" secondAttribute="bottom" constant="8" symbolic="YES" id="hgX-r5-CSJ"/>
+                            <constraint firstItem="KTi-Zq-qoa" firstAttribute="centerY" secondItem="PqW-OR-3RM" secondAttribute="centerY" id="hv3-L5-1pN"/>
+                            <constraint firstItem="34R-eM-GDY" firstAttribute="leading" secondItem="RMz-Gv-fSB" secondAttribute="leadingMargin" id="lNn-oQ-CY2"/>
+                            <constraint firstItem="KTi-Zq-qoa" firstAttribute="centerX" secondItem="3ce-Mx-eKD" secondAttribute="centerX" id="mQV-ek-9bH"/>
+                            <constraint firstItem="PqW-OR-3RM" firstAttribute="top" secondItem="3ce-Mx-eKD" secondAttribute="bottom" constant="33" id="nqE-rz-twA"/>
+                            <constraint firstItem="dkl-UC-Zku" firstAttribute="leading" secondItem="3ce-Mx-eKD" secondAttribute="leading" id="p8Y-e3-Gkf"/>
+                            <constraint firstItem="34R-eM-GDY" firstAttribute="trailing" secondItem="RMz-Gv-fSB" secondAttribute="trailingMargin" id="pCK-Vo-O0z"/>
+                            <constraint firstItem="PqW-OR-3RM" firstAttribute="trailing" secondItem="3ce-Mx-eKD" secondAttribute="trailing" id="wPH-Q0-oRz"/>
+                            <constraint firstItem="34R-eM-GDY" firstAttribute="leading" secondItem="t4M-KX-mxO" secondAttribute="leading" id="wdO-M4-0sd"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Application Tunneling" id="v2a-Bh-12c">
+                        <barButtonItem key="rightBarButtonItem" title="GO" id="Ldm-06-HzL">
+                            <connections>
+                                <action selector="handleRequest:" destination="KTl-Hb-cY4" id="e15-t0-nfS"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4_0.fullscreen"/>
+                    <connections>
+                        <outlet property="loadingIndicator" destination="KTi-Zq-qoa" id="cBw-X4-kih"/>
+                        <outlet property="responseLabel" destination="3ce-Mx-eKD" id="qjs-4b-ul3"/>
+                        <outlet property="segmentedControl" destination="t4M-KX-mxO" id="feU-nK-Af8"/>
+                        <outlet property="urlTextField" destination="dkl-UC-Zku" id="xXI-zC-s62"/>
+                        <outlet property="webView" destination="PqW-OR-3RM" id="hRL-r2-PQH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VNE-la-QM3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="9.9609375" y="-1684.375"/>
+        </scene>
+    </scenes>
+</document>

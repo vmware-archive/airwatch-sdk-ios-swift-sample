@@ -1,32 +1,26 @@
+### Overview
+This sample app provides an overview of the common use-cases of the AirWatch SDK. Where appropriate, comments are added to the code.
+
+#### Set Up the Sample App
+The AirWatch SDK frameworks are excluded from this sample, so add them to the project prior to building the source code.
+
+* AWKit.bundle
+* SDKLocalization.bundle
+* AWSDK.framework
+
+### Run the Sample App
+The AirWatch SDK is implemented in this project. After the AirWatch SDK libraries are added, build the an IPA file and upload the build to the AirWatch Console.
+
+#### Create an SDK Profile
+Configure the default SDK settings or create an SDK profile in the AirWatch Console to set the correct payloads for the app.
+
+#### Upload the App to AirWatch
+* Add the app to the AirWatch Console.
+* Add the SDK settings to the app.
+* Set the App Assignment to the correct Smart Groups.
+* Save and Publish the changes.
+
+### Install the App on the Device and Run It.
+When running the app from Xcode, make sure the app is also whitelisted on the AirWatch console. Additionally, the device needs to be enrolled into an instance of AirWatch and the app is assigned to the device.
 
 
-# airwatch-sdk-ios-swift
-
-## Overview
-
-## Try it out
-
-### Prerequisites
-
-* Prereq 1
-* Prereq 2
-* Prereq 3
-
-### Build & Run
-
-1. Step 1
-2. Step 2
-3. Step 3
-
-## Documentation
-
-## Releases & Major Branches
-
-## Contributing
-
-The airwatch-sdk-ios-swift project team welcomes contributions from the community. If you wish to contribute code and you have not
-signed our contributor license agreement (CLA), our bot will update the issue when you open a Pull Request. For any
-questions about the CLA process, please refer to our [FAQ](https://cla.vmware.com/faq). For more detailed information,
-refer to [CONTRIBUTING.md](CONTRIBUTING.md).
-
-## License

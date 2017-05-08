@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1421" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="EoM-0Z-9Ab">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Local Authentication-->
+        <scene sceneID="2k7-0F-7j7">
+            <objects>
+                <viewController id="EoM-0Z-9Ab" customClass="LocalAuthViewController" customModule="iOS_Swift_Sample_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="piG-St-WQq"/>
+                        <viewControllerLayoutGuide type="bottom" id="06x-zK-5Nf"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="eOI-SV-XQ4">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="11" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L0T-u1-d5n">
+                                <rect key="frame" x="16" y="72" width="343" height="122"/>
+                                <string key="text">The SDK automatically handles the presentation / dismissal of the passcode view controllers as long as you call start on the AWController clientInstance and have configured a passcode policy mentioned in the earlier steps."</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PIt-kN-KSb">
+                                <rect key="frame" x="148.5" y="580" width="78" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="29" id="2Fs-U6-kv0"/>
+                                </constraints>
+                                <state key="normal" title="Learn More"/>
+                                <connections>
+                                    <action selector="loadWalkThrough:" destination="EoM-0Z-9Ab" eventType="touchUpInside" id="860-op-Xfi"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="L0T-u1-d5n" firstAttribute="trailing" secondItem="eOI-SV-XQ4" secondAttribute="trailingMargin" id="FCY-vA-nYX"/>
+                            <constraint firstItem="L0T-u1-d5n" firstAttribute="top" secondItem="piG-St-WQq" secondAttribute="bottom" constant="8" id="JAe-p5-dyS"/>
+                            <constraint firstItem="L0T-u1-d5n" firstAttribute="leading" secondItem="eOI-SV-XQ4" secondAttribute="leadingMargin" id="eU1-sT-Pwl"/>
+                            <constraint firstItem="L0T-u1-d5n" firstAttribute="centerX" secondItem="eOI-SV-XQ4" secondAttribute="centerX" id="frW-df-q11"/>
+                            <constraint firstItem="06x-zK-5Nf" firstAttribute="top" secondItem="PIt-kN-KSb" secondAttribute="bottom" constant="58" id="g9T-70-l7y"/>
+                            <constraint firstItem="PIt-kN-KSb" firstAttribute="centerX" secondItem="L0T-u1-d5n" secondAttribute="centerX" id="wrW-cS-O6D"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Local Authentication" id="LOt-Gd-2VN">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="19J-PD-YEY"/>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <segue destination="f4m-ew-n0D" kind="show" identifier="authToWT" id="e7w-RG-F04"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Duy-mD-rw5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1391" y="78"/>
+        </scene>
+        <!--customSWT-->
+        <scene sceneID="GkK-mA-9aI">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="customSWT" storyboardName="Walkthrough" referencedIdentifier="customSWT" id="f4m-ew-n0D" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Qsu-cn-VwB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2054" y="77"/>
+        </scene>
+    </scenes>
+</document>

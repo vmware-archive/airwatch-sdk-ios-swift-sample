@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1421" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="EvS-R4-nqw">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Logging-->
+        <scene sceneID="9YN-Do-veM">
+            <objects>
+                <viewController title="Logging" id="EvS-R4-nqw" customClass="LoggingViewController" customModule="iOS_Swift_Sample_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Akv-zQ-Vmf"/>
+                        <viewControllerLayoutGuide type="bottom" id="tKs-xO-RLi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uhg-kW-lIf">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="jrJ-7z-Dkl">
+                                <rect key="frame" x="16" y="93" width="288" height="29"/>
+                                <segments>
+                                    <segment title="Application Log"/>
+                                    <segment title="Crash Log"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentedControlChagned:" destination="EvS-R4-nqw" eventType="valueChanged" id="2fX-jW-SJO"/>
+                                </connections>
+                            </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wck-Jr-XPT">
+                                <rect key="frame" x="60" y="270" width="200" height="30"/>
+                                <state key="normal" title="Append to Log"/>
+                                <connections>
+                                    <action selector="appendToLog:" destination="EvS-R4-nqw" eventType="touchUpInside" id="Z4j-nS-hFO"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Start typing to Log" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zZQ-fH-1xe">
+                                <rect key="frame" x="97" y="232" width="129" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fLx-Za-bdC">
+                                <rect key="frame" x="161.5" y="129" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3eJ-C1-tcv">
+                                <rect key="frame" x="111.5" y="137" width="97" height="30"/>
+                                <state key="normal" title="Send App Log"/>
+                                <connections>
+                                    <action selector="sendAppLog:" destination="EvS-R4-nqw" eventType="touchUpInside" id="1di-ou-c28"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="keq-Ts-sJe">
+                                <rect key="frame" x="111.5" y="194" width="99" height="30"/>
+                                <state key="normal" title="Crash the App"/>
+                                <connections>
+                                    <action selector="crashTheApp:" destination="EvS-R4-nqw" eventType="touchUpInside" id="zka-Jz-e0y"/>
+                                </connections>
+                            </button>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3mA-8K-FbC">
+                                <rect key="frame" x="0.0" y="335" width="320" height="216"/>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3mA-8K-FbC" firstAttribute="top" secondItem="Wck-Jr-XPT" secondAttribute="bottom" constant="35" id="2OL-rm-6gT"/>
+                            <constraint firstItem="3eJ-C1-tcv" firstAttribute="top" secondItem="fLx-Za-bdC" secondAttribute="bottom" constant="8" symbolic="YES" id="Dei-2q-Bsb"/>
+                            <constraint firstItem="3eJ-C1-tcv" firstAttribute="centerX" secondItem="Wck-Jr-XPT" secondAttribute="centerX" id="FoR-CK-Af0"/>
+                            <constraint firstItem="fLx-Za-bdC" firstAttribute="top" secondItem="jrJ-7z-Dkl" secondAttribute="bottom" constant="8" symbolic="YES" id="O55-ir-p93"/>
+                            <constraint firstItem="Wck-Jr-XPT" firstAttribute="centerX" secondItem="3mA-8K-FbC" secondAttribute="centerX" id="QvV-da-CCj"/>
+                            <constraint firstItem="zZQ-fH-1xe" firstAttribute="leading" secondItem="uhg-kW-lIf" secondAttribute="leadingMargin" constant="81" id="TKL-J4-CL7"/>
+                            <constraint firstItem="jrJ-7z-Dkl" firstAttribute="top" secondItem="Akv-zQ-Vmf" secondAttribute="bottom" constant="29" id="TUT-F5-RbZ"/>
+                            <constraint firstItem="3eJ-C1-tcv" firstAttribute="leading" secondItem="keq-Ts-sJe" secondAttribute="leading" id="UGo-mZ-i9a"/>
+                            <constraint firstItem="Wck-Jr-XPT" firstAttribute="leading" secondItem="uhg-kW-lIf" secondAttribute="leadingMargin" constant="44" id="WHq-jH-0Bh"/>
+                            <constraint firstItem="jrJ-7z-Dkl" firstAttribute="centerX" secondItem="3eJ-C1-tcv" secondAttribute="centerX" id="bH5-Cz-3JB"/>
+                            <constraint firstItem="keq-Ts-sJe" firstAttribute="centerX" secondItem="zZQ-fH-1xe" secondAttribute="centerX" id="eJA-yF-Zpd"/>
+                            <constraint firstItem="jrJ-7z-Dkl" firstAttribute="trailing" secondItem="uhg-kW-lIf" secondAttribute="trailingMargin" id="fVa-9T-HlQ"/>
+                            <constraint firstItem="zZQ-fH-1xe" firstAttribute="top" secondItem="keq-Ts-sJe" secondAttribute="bottom" constant="8" symbolic="YES" id="fxX-Y6-jRT"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="zZQ-fH-1xe" secondAttribute="trailing" constant="78" id="i7D-JL-Tvk"/>
+                            <constraint firstItem="keq-Ts-sJe" firstAttribute="top" secondItem="3eJ-C1-tcv" secondAttribute="bottom" constant="27" id="oYs-2u-6XJ"/>
+                            <constraint firstItem="fLx-Za-bdC" firstAttribute="centerX" secondItem="keq-Ts-sJe" secondAttribute="centerX" id="tQD-kp-upv"/>
+                            <constraint firstItem="Wck-Jr-XPT" firstAttribute="top" secondItem="zZQ-fH-1xe" secondAttribute="bottom" constant="8" symbolic="YES" id="up1-JJ-p8t"/>
+                        </constraints>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4_0.fullscreen"/>
+                    <connections>
+                        <outlet property="AppendToLog" destination="Wck-Jr-XPT" id="raA-y9-iDa"/>
+                        <outlet property="crashApp" destination="keq-Ts-sJe" id="dSV-JO-YwO"/>
+                        <outlet property="hasPreviousCrashText" destination="fLx-Za-bdC" id="EFv-Ls-ZO8"/>
+                        <outlet property="logInputField" destination="zZQ-fH-1xe" id="FWd-Dr-JBm"/>
+                        <outlet property="logLevelPicker" destination="3mA-8K-FbC" id="xty-w2-Ygl"/>
+                        <outlet property="segmentedControl" destination="jrJ-7z-Dkl" id="EIQ-vY-pnF"/>
+                        <outlet property="sendAppLog" destination="3eJ-C1-tcv" id="j4L-Vj-m4b"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QFk-1z-ieF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-673" y="695"/>
+        </scene>
+    </scenes>
+</document>
