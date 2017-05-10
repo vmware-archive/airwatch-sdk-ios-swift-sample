@@ -9,7 +9,7 @@ The AirWatch SDK frameworks are excluded from this sample, so add them to the pr
 * AWSDK.framework
 
 ### Run the Sample App
-The AirWatch SDK is implemented in this project. After the AirWatch SDK libraries are added, build the an IPA file and upload the build to the AirWatch Console.
+The AirWatch SDK is implemented in this project. After the AirWatch SDK libraries are added, build an IPA file and upload the build to the AirWatch Console.
 
 #### Create an SDK Profile
 Configure the default SDK settings or create an SDK profile in the AirWatch Console to set the correct payloads for the app.
