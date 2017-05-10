@@ -2,17 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "Corp-Resources.png",
+      "filename" : "Security_Lock_2-2.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Corp-Resources-1.png",
+      "filename" : "Security_Lock_2.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "Corp-Resources-2.png",
+      "filename" : "Security_Lock_2-1.png",
       "scale" : "3x"
     }
   ],

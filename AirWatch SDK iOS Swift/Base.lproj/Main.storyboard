@@ -1,5 +1,5 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1421" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="8e5-Dw-beA">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="8e5-Dw-beA">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -29,6 +29,7 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GeneralInfo" translatesAutoresizingMaskIntoConstraints="NO" id="tZQ-gC-CyI">
                                                     <rect key="frame" x="8" y="4" width="76" height="76"/>
+                                                    <color key="tintColor" red="0.21034500002861023" green="0.62511086463928223" blue="0.95512598752975464" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="76" id="ATa-H0-ad2"/>
                                                         <constraint firstAttribute="width" constant="76" id="bSQ-Ky-4Ao"/>
@@ -40,8 +41,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Contains the information related to the user enrollment like credentials, server details, organisation group etc.." textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tVB-gR-4Oo">
-                                                    <rect key="frame" x="92" y="28" width="195" height="52"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Contains the information related to the user enrollment like credentials, server details, organisation group etc.." textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tVB-gR-4Oo">
+                                                    <rect key="frame" x="92" y="28" width="281" height="43"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -82,8 +83,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Access your intenral corporate apis/websites by routing the app traffic through AirWatch Tunnel" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HVW-Js-sGm">
-                                                    <rect key="frame" x="92" y="29" width="195" height="48"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Access your intenral corporate apis/websites by routing the app traffic through AirWatch Tunnel" lineBreakMode="tailTruncation" numberOfLines="6" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HVW-Js-sGm">
+                                                    <rect key="frame" x="92" y="34" width="281" height="27"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -125,7 +126,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Authenticates users on websites / apis without user interaction." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VVB-E8-viN">
-                                                    <rect key="frame" x="92" y="33" width="289" height="14.666666666666664"/>
+                                                    <rect key="frame" x="92" y="33" width="289" height="29"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -166,8 +167,8 @@
                                                         <constraint firstAttribute="width" constant="76" id="Med-dT-y0G"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Remotely configure the application via custom settings and App Config." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TOm-Zf-LHj">
-                                                    <rect key="frame" x="92" y="29" width="187" height="48"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remotely configure the application via custom settings and App Config." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TOm-Zf-LHj">
+                                                    <rect key="frame" x="92" y="29" width="281" height="29"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -239,7 +240,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Authentication" translatesAutoresizingMaskIntoConstraints="NO" id="Uhy-dQ-8SG">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Lock" translatesAutoresizingMaskIntoConstraints="NO" id="Uhy-dQ-8SG">
                                                     <rect key="frame" x="8" y="0.0" width="76" height="76"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="76" id="NaF-sE-PBf"/>
@@ -272,7 +273,7 @@
                                         <rect key="frame" x="0.0" y="480" width="414" height="80"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lcj-g3-8At" id="wT7-0e-Rc8">
-                                            <rect key="frame" x="0.0" y="0.0" width="381" height="79.666666666666671"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="381" height="80"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DLP" translatesAutoresizingMaskIntoConstraints="NO" id="3EU-Q8-kVK">
@@ -396,11 +397,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Authentication" width="48" height="48"/>
-        <image name="DLP" width="48" height="48"/>
-        <image name="GeneralInfo" width="48" height="48"/>
+        <image name="Authentication" width="250" height="250"/>
+        <image name="DLP" width="250" height="250"/>
+        <image name="GeneralInfo" width="250" height="250"/>
         <image name="Instrumentation" width="48" height="48"/>
-        <image name="Remote Configuration" width="48" height="48"/>
-        <image name="Tunneling" width="32" height="32"/>
+        <image name="Lock" width="250" height="250"/>
+        <image name="Remote Configuration" width="250" height="250"/>
+        <image name="Tunneling" width="250" height="250"/>
     </resources>
 </document>

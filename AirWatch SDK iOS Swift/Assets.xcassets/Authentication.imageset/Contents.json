@@ -2,16 +2,17 @@
   "images" : [
     {
       "idiom" : "universal",
+      "filename" : "Identity_1.png",
       "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "filename" : "auth-1.png",
+      "filename" : "Identity_1-1.png",
       "scale" : "2x"
     },
     {
       "idiom" : "universal",
-      "filename" : "auth.png",
+      "filename" : "Identity_1-2.png",
       "scale" : "3x"
     }
   ],
