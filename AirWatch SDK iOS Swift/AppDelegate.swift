@@ -34,14 +34,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate,AWSDKDelegate {
     var sdkUseCase = SDKUseCasesTableViewController()
     var awSDKInit: Bool? = false
 
-
-    // MARK: - Native iOS Callbacks
-    
+    // MARK:- UI Lifecycle
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         //Configure the controller.
-        
         let controller = AWController.clientInstance()
         
         //Define the callback. This should match with the entry in the info.plist
@@ -50,37 +47,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate,AWSDKDelegate {
         //Set the delegate.
         controller?.delegate = self
     
-        
-        
         return true
     }
     
-   
-    func applicationWillResignActive(_ _application: UIApplication) {
-        
-    }
-    
-    func applicationDidEnterBackground(_ _application: UIApplication) {
-        
-    }
-    
-    func applicationWillEnterForeground(_ _application: UIApplication) {
-    }
-    
-    //Calling the SDK's start function when application becomes active
     func applicationDidBecomeActive(_ application: UIApplication) {
-        AWController.clientInstance().start()        
+        // Calling the SDK's start function when application becomes active
+        AWController.clientInstance().start()
     }
-    
     
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
+        // Defaulting to use SDK for openURL
         return AWController.clientInstance().handleOpen(url, fromApplication: sourceApplication)
     }
-    
-    func applicationWillTerminate(_ _application: UIApplication) {
-    }
-    
-    
     
     // MARK: - AWSDKDelegate
     
@@ -96,13 +74,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate,AWSDKDelegate {
                 "An error occured while initializing AW SDK", preferredStyle: UIAlertControllerStyle.alert)
             alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
 
-        }
-        else {
+        } else {
             sdkUseCase.hideBlocker()
             NSLog("initialCheckDone NO Error")
             awSDKInit=true
-                        
-            
         }
     }
        
@@ -110,7 +85,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,AWSDKDelegate {
         
         NSLog("received profiles called")
         
-        //    profiles
+        // Profiles
         if profiles != nil {
             
             if let awProfiles = profiles as? [AWProfile] {
@@ -121,15 +96,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate,AWSDKDelegate {
                     print("full profile \(profile.toDictionary())")
                     }
             }
+            
             if let awPayload = profiles as? [AWProfilePayload] {
                 NSLog("Now printing the payloads")
                 for payload in awPayload {
                     print(payload)
                 }
-                
             }
-        }
-        else {
+        } else {
             NSLog("receivedProfiles is nil")
         }
         
@@ -153,11 +127,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,AWSDKDelegate {
     
     func stopNetworkActivity(_ networkActivityStatus: AWNetworkActivityStatus) {
     }
-    func stopNetworkActivity() {
-        
-    }
-    
-    
     
 }
 
