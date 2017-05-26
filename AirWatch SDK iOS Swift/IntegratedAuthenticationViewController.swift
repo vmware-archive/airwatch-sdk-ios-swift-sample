@@ -24,7 +24,8 @@
 
 import UIKit
 import AWSDK
-class IntegratedAuthenticationViewController: UIViewController, URLSessionDelegate, URLSessionTaskDelegate,NSURLConnectionDelegate {
+
+class IntegratedAuthenticationViewController: UIViewController, URLSessionDelegate, URLSessionTaskDelegate, NSURLConnectionDelegate {
     
     @IBOutlet weak var urlTextField: UITextField!
     @IBOutlet weak var httpStatusLabel: UILabel!
@@ -85,7 +86,7 @@ class IntegratedAuthenticationViewController: UIViewController, URLSessionDelega
             switch segmentedControl.selectedSegmentIndex {
             case 0:
                 print("NSRURLConnection")
-                connectGetRequest(url)
+//                connectGetRequest(url)
                 
                 break
             case 1:
@@ -112,162 +113,6 @@ class IntegratedAuthenticationViewController: UIViewController, URLSessionDelega
     func setHTTPStatusLabel(_ status: String) {
         httpStatusLabel.text = status
     }
-    
-    //MARK : NSURLConnection
-    
-    func connectGetRequest(_ url : URL){
-        let request = NSMutableURLRequest(url: url)
-        let connection  =  NSURLConnection.init(request: request as URLRequest, delegate: self)
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        connection?.start()
-    }
-    
-    
-    func connection(_ connection: NSURLConnection, willSendRequestFor challenge: URLAuthenticationChallenge) {
-        print("challenge type: \(challenge.protectionSpace.authenticationMethod)")
-        
-        if challenge.previousFailureCount == 2 {
-            /* Handling the case where password might have changed in the AD.
-             Updating the credentials in the SDK keychain an promting user to try again.
-             */
-            self.updateUserCreds()
-        }
-        else if challenge.previousFailureCount > 2 {
-            // Display an alert to the user indicating the failure
-            displayLoginError()
-            
-        }
-            
-        else
-        {
-            switch challenge.protectionSpace.authenticationMethod {
-                /*
-                 * Integrated Authentication does not handle Server Trust, if an endpoint is presenting this
-                 * as the authentication method, then the developer needs to handle that prior to Integrated
-                 * Authentication handling authentication. Below we're checking to see if the method is explicitly
-                 * server trust. We're using an if/else statement to handle server trust if need and perform integrated
-                 * authentication otherwise.
-                 */
-            case NSURLAuthenticationMethodServerTrust:
-                /*
-                 * The completion handler is handling server trust below. We're telling it to handle it and not
-                 * passing it any credentials
-                 */
-                let creds = URLCredential.init(trust: challenge.protectionSpace.serverTrust!)
-                challenge.sender?.use(creds, for: challenge)
-                break
-                /*
-                 Below are the three types of authentication type that is supporedted by SDK.
-                 Checking if one of the suppored authentication is received and
-                 calling SDK's handle challenge method to handle the corresponding challenge
-                 */
-            case NSURLAuthenticationMethodHTTPBasic:
-                handleAirWatchIntegratedAuthenticationforConnection(challenge)
-                break
-            case NSURLAuthenticationMethodNTLM:
-                handleAirWatchIntegratedAuthenticationforConnection(challenge)
-                break
-            case NSURLAuthenticationMethodClientCertificate:
-                handleAirWatchIntegratedAuthenticationforConnection(challenge)
-                break
-                /*
-                 If the auth challenge type is any other then basic, NTLM or cert auth
-                 then it's not supported by SDK and developer has to handle it manually
-                 */
-            default:
-                print("Authentication challenge is not one supported by the SDK...cancelling challenge")
-                displayNotSupportedAlert()
-            }
-            
-        }
-        
-        
-        
-    }
-    
-    func handleAirWatchIntegratedAuthenticationforConnection(_ challenge: URLAuthenticationChallenge){
-        
-        
-        do {
-            
-            try AWController.clientInstance().canHandle(challenge.protectionSpace)
-            print("SDK can handle challenge")
-            AWController.clientInstance().handle(challenge)
-        } catch {
-            print(error)
-        }
-        
-        
-    }
-    
-    
-    
-    
-    func connection(_ connection: NSURLConnection!, didReceiveResponse response: URLResponse!){
-        
-        connectionResponse = response
-        if(connectionData != nil){
-            connectionData?.length = 0
-        }
-        
-        self.loadingIndicator.isHidden = false
-        self.loadingIndicator.startAnimating()
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        
-        self.segmentedControl.isHidden=true
-        
-        
-        
-    }
-    
-    func connection(_ connection: NSURLConnection!, didReceiveData data: Data!){
-        if(connectionData == nil){
-            connectionData = NSMutableData()
-            connectionData?.append(data)
-        }
-        else{
-            connectionData?.append(data)
-            
-        }
-        
-        
-    }
-    
-    
-    func connectionDidFinishLoading(_ connection: NSURLConnection!) {
-        
-        if(connectionResponse != nil && connectionData != nil){
-            if(connectionResponse!.mimeType != nil && connectionResponse!.textEncodingName != nil && connectionResponse!.url != nil){
-                
-                // Updating the UI on the Main thread.
-                OperationQueue.main.addOperation({
-                    
-                    self.webView.load(self.connectionData! as Data, mimeType: self.connectionResponse!.mimeType!, textEncodingName: self.connectionResponse!.textEncodingName!, baseURL: self.connectionResponse!.url!)
-                    
-                })
-            }
-                
-            else{
-                
-                let dataString = String(data: connectionData! as Data, encoding:String.Encoding(rawValue: self.getCorrectEncoding(connectionResponse!)) )
-                // Updating the UI on the Main thread.
-                OperationQueue.main.addOperation({
-                    self.webView.loadHTMLString(dataString!, baseURL:self.connectionResponse!.url!)
-                })
-            }
-        }
-        
-        loadingIndicator.isHidden = true
-        loadingIndicator.stopAnimating()
-        UIApplication.shared.isNetworkActivityIndicatorVisible = false
-        segmentedControl.isHidden=false
-        
-    }
-    
-    
-    
-    
-    
     
     //MARK: NSURLSession
     
@@ -408,8 +253,8 @@ class IntegratedAuthenticationViewController: UIViewController, URLSessionDelega
      */
     func handleAirWatchIntegratedAuthenticationforSession(_ challenge: URLAuthenticationChallenge,completionHandler: @escaping (Foundation.URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
         do {
-            try AWController.clientInstance().canHandle(challenge.protectionSpace)
-            AWController.clientInstance().handleChallenge(forURLSessionChallenge: challenge, completionHandler: { (disposition, credential) in
+            try AWController.clientInstance().canHandle(protectionSpace: challenge.protectionSpace)
+            _ = AWController.clientInstance().handleChallengeForURLSession(challenge: challenge, completionHandler: { (disposition, credential) in
                 completionHandler(disposition, credential)
             })
         } catch {
@@ -558,79 +403,78 @@ class IntegratedAuthenticationViewController: UIViewController, URLSessionDelega
          If the account object is nil we are calling updateUserCredentialsWithCompletion block
          that shoudl repopulate the credentils in the instance
          */
-        if(AWController.clientInstance().account() == nil){
+        if(AWController.clientInstance().account == nil) {
             print("account obj nil")
             
-            AWController.clientInstance().updateUserCredentials(completion: { (success, error) in
+            AWController.clientInstance().updateUserCredentials(with: { (success, error) in
                 if(success)
                 {
                     print("successfully populated account object")
                 }
                 else
                 {
-                    print("Error has occured :\(error)")
+                    print("Error has occured :\(String(describing: error))")
                 }
             })
-        }
-        else{
-            /*
+        } else {
+             /*
              Sometimes when a device is device is re-enrolled with a different user or is checked out in the staging
              user flow, Account object might fail to update it's data accordingly. We use AWMDMInformationController to
              get the username and compare it with the username retured by Account object
              */
-            AWMDMInformationController.init().fetchUserInfo(completionBlock: { (success, userinfo, error) in
-                
-                if(error == nil && success){
-                    let mdmInfo = userinfo! as NSDictionary
-                    let mdmUserName = mdmInfo.value(forKey: "UserName")! as! String
-                    let accountUserName = AWController.clientInstance().account().username
-                    if(mdmUserName.lowercased() == accountUserName?.lowercased()){
-                        print("mdmusername and account username matches, returning")
-                        return
-                    }
-                    let parts = mdmUserName.components(separatedBy: "\\")
-                    let mdmUser : String
-                    //Handling the case where mdmuesrname is of format adname\username
-                    let lastElement  = parts[parts.count-1]
-                    
-                    if(!(lastElement.isEmpty)){
-                        mdmUser = lastElement
-                        
-                    }
-                    else{
-                        mdmUser = mdmUserName
-                    }
-                    print("mdm username is \(mdmUser)")
-                    print("account username is \(accountUserName)")
-                    
-                    
-                    /*
-                     In the event if the account object is not nil but fails to update the username correctly we call
-                     updateUserCredentialsWithCompletion that should correctly populate the data inside account object
-                     which is used by SDK challenge handler classes
-                     */
-                    if(mdmUser.lowercased() != accountUserName?.lowercased()){
-                        print("account object incorrect")
-                        
-                        AWController.clientInstance().updateUserCredentials(completion: { (success, error) in
-                            if(success){
-                                print("successfully populated account object")
-                                let user = AWController.clientInstance().account().username
-                                print("current username is \(user)" )
-                            }
-                            else{
-                                print("error occured \(error)")
-                            }
-                        })
-                    }
-                }
-                else{
-                    OperationQueue.main.addOperation {
-                        self.displayFetchUserInfoError()
-                        
-                    }
-                }
-            })
+//            AWMDMInformationController.init().fetchUserInfo(completionBlock: { (success, userinfo, error) in
+//                
+//                if(error == nil && success){
+//                    let mdmInfo = userinfo! as NSDictionary
+//                    let mdmUserName = mdmInfo.value(forKey: "UserName")! as! String
+//                    let accountUserName = AWController.clientInstance().account().username
+//                    if(mdmUserName.lowercased() == accountUserName?.lowercased()){
+//                        print("mdmusername and account username matches, returning")
+//                        return
+//                    }
+//                    let parts = mdmUserName.components(separatedBy: "\\")
+//                    let mdmUser : String
+//                    //Handling the case where mdmuesrname is of format adname\username
+//                    let lastElement  = parts[parts.count-1]
+//                    
+//                    if(!(lastElement.isEmpty)){
+//                        mdmUser = lastElement
+//                        
+//                    }
+//                    else{
+//                        mdmUser = mdmUserName
+//                    }
+//                    print("mdm username is \(mdmUser)")
+//                    print("account username is \(accountUserName)")
+//                    
+//                    
+//                    /*
+//                     In the event if the account object is not nil but fails to update the username correctly we call
+//                     updateUserCredentialsWithCompletion that should correctly populate the data inside account object
+//                     which is used by SDK challenge handler classes
+//                     */
+//                    if(mdmUser.lowercased() != accountUserName?.lowercased()){
+//                        print("account object incorrect")
+//                        
+//                        AWController.clientInstance().updateUserCredentials(completion: { (success, error) in
+//                            if(success){
+//                                print("successfully populated account object")
+//                                let user = AWController.clientInstance().account().username
+//                                print("current username is \(user)" )
+//                            }
+//                            else{
+//                                print("error occured \(error)")
+//                            }
+//                        })
+//                    }
+//                }
+//                else{
+//                    OperationQueue.main.addOperation {
+//                        self.displayFetchUserInfoError()
+//                        
+//                    }
+//                }
+//            })
         }
     }
     
@@ -678,17 +522,16 @@ class IntegratedAuthenticationViewController: UIViewController, URLSessionDelega
     
     
     func updateUserCreds() -> Void {
-        AWController.clientInstance().updateUserCredentials(completion: { (success, error) in
+        AWController.clientInstance().updateUserCredentials(with: { (success, error) in
             if(success){
                 print("updated credentials and trying to log in with updated credentials")
-                //self.handleAuthentication(self.sessionChallenge!, completionHandler: self.sessionCompletionHandler!)
                 OperationQueue.main.addOperation({
                     self.tryAgain()
                 })
                 
             }
             else{
-                print("error occured \(error)")
+                print("error occured \(error ?? "error" as! Error)")
             }
         })
     }

@@ -72,7 +72,7 @@ class LoggingViewController: UIViewController,UIPickerViewDelegate,UIPickerViewD
     
     
     @IBAction func segmentedControlChagned(_ sender: AnyObject) {
-        AWLog.sharedInstance().log(withLogLevel: AWLogLevelVerbose, file: "LoggingViewController", methodName: "sendAppLog", line: 1234, message: "AirWatch Sample App Logging Test...")
+//        AWLog.sharedInstance().log(withLogLevel: AWLogLevelVerbose, file: "LoggingViewController", methodName: "sendAppLog", line: 1234, message: "AirWatch Sample App Logging Test...")
         switch segmentedControl.selectedSegmentIndex {
         case 0:
             
@@ -99,26 +99,6 @@ class LoggingViewController: UIViewController,UIPickerViewDelegate,UIPickerViewD
 
 
             
-            let crashLogReporter = AWCrashLogReporter()
-            
-            if crashLogReporter.hasPendingCrashReport() {
-                print("Application crashed previously!!");
-                hasPreviousCrashText.text = "Application crashed previously! Sending Crash Log..."
-                crashLogReporter.reportCrashLogToConsole();//send crash log that's in the memory
-                print("Reporting crash to console started...");
-            }else {
-                //No previouse crash
-                hasPreviousCrashText.text = "Application did NOT crash previously!"
-                print("Application did NOT crash previously!!")
-            }
-            //start up a new crash log recording session
-            do {
-                try crashLogReporter.startUp()
-                print("Crashtracking instantiation success!!");
-            } catch let error as Error?{
-                print("Crashtracking instantiation failed!!");
-                print("Error starting up crash log reporter: ", error ?? "Default");
-            }
             break
         default:
             break
@@ -168,34 +148,33 @@ class LoggingViewController: UIViewController,UIPickerViewDelegate,UIPickerViewD
     
     
     @IBAction func appendToLog(_ sender: AnyObject) {
-        let text = logInputField.text
+        guard let text = logInputField.text else {
+            return
+        }
         //var logLevel = pickerData[logLevelChoice]
-        var awLogLevel = AWLogLevelVerbose
+        //var awLogLevel = AWLogLevelVerbose
         
         switch logLevelChoice {
         case 0:
-            awLogLevel = AWLogLevelVerbose
+            AWLogVerbose(text)
             print("capturing verbose logs")
             break;
         case 1:
-            awLogLevel = AWLogLevelInfo
+            AWLogInfo(text)
             print("capturing infomation logs")
             break;
         case 2:
-            awLogLevel = AWLogLevelWarning
+            AWLogWarning(text)
             print("capturing warning logs")
             break;
         case 3:
-            awLogLevel = AWLogLevelError
+            AWLogError(text)
             print("capturing error logs")
 
             break;
         default:
             break;
         }
-        
-        
-        AWLog.sharedInstance().log(withLogLevel: awLogLevel, file: "LoggingViewController", methodName: "appendToLog", line: 1235, message: text)
     }
     
     
@@ -204,13 +183,15 @@ class LoggingViewController: UIViewController,UIPickerViewDelegate,UIPickerViewD
     // MARK: Send application log up till this point to AW console
     
     @IBAction func sendAppLog(_ sender: AnyObject) {
-        AWLog.sharedInstance().sendApplicationLogs { (success, errorName) in
+        AWController().sendLogDataWithCompletion({
+            (success, errorName) in
+            
             if(false == success){
                 NSLog("Error is : \(errorName?.localizedDescription ?? "No error")");
             } else {
                 NSLog("Sucess");
             }
-        }
+        })
         
         let alertController = UIAlertController(title: "AW Log Reporter", message:
             "Sent Log to AirWatch Console..", preferredStyle: UIAlertControllerStyle.alert)
@@ -224,7 +205,7 @@ class LoggingViewController: UIViewController,UIPickerViewDelegate,UIPickerViewD
     func dismissKeyboard() {
         view.endEditing(true)
     }
-    }
+}
 
 
 

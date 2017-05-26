@@ -24,7 +24,7 @@
 import UIKit
 import AWSDK
 
-class DataLossPreventionViewController: UIViewController,UITabBarDelegate {
+class DataLossPreventionViewController: UIViewController, UITabBarDelegate {
 
     @IBOutlet weak var tabBar: UITabBar!
     @IBOutlet weak var headingTextView: UITextView!
@@ -71,12 +71,12 @@ class DataLossPreventionViewController: UIViewController,UITabBarDelegate {
     
     //Starting the restriction service so it can fetch all the DLP flags from AW backend.
     func startRestrictionService()  {
-        do{
-         try   AWRestrictions.startService()
-        }
-        catch{
-            print("Error occured while starting restriction service \(error.localizedDescription)")
-        }
+//        do{
+//         try   AWRestrictions.startService()
+//        }
+//        catch{
+//            print("Error occured while starting restriction service \(error.localizedDescription)")
+//        }
     }
     
     
@@ -90,7 +90,7 @@ class DataLossPreventionViewController: UIViewController,UITabBarDelegate {
 
     @IBAction func didTapButton1(_ sender: AnyObject) {
         
-        if let restrictionPayload = AWCommandManager().sdkProfile().restrictionsPayload{
+        if let restrictionPayload = AWController().sdkProfile()?.restrictionsPayload {
         
             let dlpSettings = restrictionPayload.enableDataLossPrevention
             if(dlpSettings == false){
@@ -111,7 +111,7 @@ class DataLossPreventionViewController: UIViewController,UITabBarDelegate {
     @IBAction func didTapButton2(_ sender: AnyObject) {
         
         
-        if let restrictionPayload = AWCommandManager().sdkProfile().restrictionsPayload{
+        if let restrictionPayload = AWController().sdkProfile()?.restrictionsPayload {
             
             let dlpSettings = restrictionPayload.enableDataLossPrevention
             if(dlpSettings == false){

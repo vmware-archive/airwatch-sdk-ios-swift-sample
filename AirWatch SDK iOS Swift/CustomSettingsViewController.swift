@@ -51,7 +51,7 @@ class CustomSettingsViewController: UIViewController {
 
     @IBAction func printSettings(_ sender: AnyObject) {
 
-        let customPayload  = AWCommandManager().sdkProfile().customPayload
+        let customPayload  = AWController.clientInstance().sdkProfile()?.customPayload
         
         //Checking if the Custom Settings Payload is nil or not set
         if customPayload != nil{

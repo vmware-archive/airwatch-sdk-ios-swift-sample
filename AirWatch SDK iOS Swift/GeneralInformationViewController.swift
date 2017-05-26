@@ -38,63 +38,63 @@ class GeneralInformationViewController: UITableViewController {
          fetchUserInfoWithCompletionBlock is an asyncronous call that returns the below mentioned 
          NSDIctionary which we later parsed to get the user and device related information
         */
-        AWMDMInformationController.init().fetchUserInfo(completionBlock: { (success, userinfo, error) in
-            
-            //This API will throw an error if the device is not enrolled.
-            if(error == nil && success)
-            {
-                let mdmInfo = userinfo as AnyObject
-                
-                let awUserName = SDKData.EnrollmentInformation(key: "Username:",value: (mdmInfo.value(forKey: "UserName")!) as! String)
-                let awlocationGroup = SDKData.EnrollmentInformation(key: "Location Group:",value: (mdmInfo.value(forKey: "LocationGroup")!) as! String)
-                let awAccountType = SDKData.EnrollmentInformation(key: "Account Type:",value: (mdmInfo.value(forKey: "AccountType")!) as! String)
-                let awIsActive = SDKData.EnrollmentInformation(key: "Is Active:",value: (mdmInfo.value(forKey: "IsActive")!) as! String)
-                let awUserCategory = SDKData.EnrollmentInformation(key: "User Category:",value: (mdmInfo.value(forKey: "UserCategory")!) as! String)
-                let awUserID = SDKData.EnrollmentInformation(key: "User ID:",value: (mdmInfo.value(forKey: "UserId")!) as! String)
-                
-                
-                self.data.mdmInformationArray[0] = awUserName
-                self.data.mdmInformationArray[1] = awlocationGroup
-                self.data.mdmInformationArray[2] = awAccountType
-                self.data.mdmInformationArray[3] = awIsActive
-                self.data.mdmInformationArray[4] = awUserCategory
-                self.data.mdmInformationArray[5] = awUserID
-                
-                
-                self.tableView.reloadData()
-            }
-            else
-            {
-                print("Error occured while contacing AW Rest API to get the user info : \(error?.localizedDescription ?? "No error")")
-                
-                    OperationQueue.main.addOperation {
-                        self.displayFetchUserInfoError()
-                        
-                    }
-                
-            }
-         
-
-        })
+//        AWMDMInformationController.init().fetchUserInfo(completionBlock: { (success, userinfo, error) in
+//            
+//            //This API will throw an error if the device is not enrolled.
+//            if(error == nil && success)
+//            {
+//                let mdmInfo = userinfo as AnyObject
+//                
+//                let awUserName = SDKData.EnrollmentInformation(key: "Username:",value: (mdmInfo.value(forKey: "UserName")!) as! String)
+//                let awlocationGroup = SDKData.EnrollmentInformation(key: "Location Group:",value: (mdmInfo.value(forKey: "LocationGroup")!) as! String)
+//                let awAccountType = SDKData.EnrollmentInformation(key: "Account Type:",value: (mdmInfo.value(forKey: "AccountType")!) as! String)
+//                let awIsActive = SDKData.EnrollmentInformation(key: "Is Active:",value: (mdmInfo.value(forKey: "IsActive")!) as! String)
+//                let awUserCategory = SDKData.EnrollmentInformation(key: "User Category:",value: (mdmInfo.value(forKey: "UserCategory")!) as! String)
+//                let awUserID = SDKData.EnrollmentInformation(key: "User ID:",value: (mdmInfo.value(forKey: "UserId")!) as! String)
+//                
+//                
+//                self.data.mdmInformationArray[0] = awUserName
+//                self.data.mdmInformationArray[1] = awlocationGroup
+//                self.data.mdmInformationArray[2] = awAccountType
+//                self.data.mdmInformationArray[3] = awIsActive
+//                self.data.mdmInformationArray[4] = awUserCategory
+//                self.data.mdmInformationArray[5] = awUserID
+//                
+//                
+//                self.tableView.reloadData()
+//            }
+//            else
+//            {
+//                print("Error occured while contacing AW Rest API to get the user info : \(error?.localizedDescription ?? "No error")")
+//                
+//                    OperationQueue.main.addOperation {
+//                        self.displayFetchUserInfoError()
+//                        
+//                    }
+//                
+//            }
+//         
+//
+//        })
         // Do any additional setup after loading the view.
     }
     
     func displayFetchUserInfoError() -> Void {
-        print("Log In error")
-        
-        let alert = UIAlertController(title: "SDKError", message: "An Error Occured while SDK was trying to fetch user infor from AW backed. Please make sure your device is enrolled", preferredStyle: .alert)
-        
-        let okAction = UIAlertAction(title: "Dismiss", style: .default, handler: {
-            action in
-            print("Dismiss")
-        })
-        alert.addAction(okAction)
-        OperationQueue.main.addOperation({
-            // Set the labels based on the data/response values
-            self.present(alert, animated: true, completion: nil)
-            
-            
-        })
+//        print("Log In error")
+//        
+//        let alert = UIAlertController(title: "SDKError", message: "An Error Occured while SDK was trying to fetch user infor from AW backed. Please make sure your device is enrolled", preferredStyle: .alert)
+//        
+//        let okAction = UIAlertAction(title: "Dismiss", style: .default, handler: {
+//            action in
+//            print("Dismiss")
+//        })
+//        alert.addAction(okAction)
+//        OperationQueue.main.addOperation({
+//            // Set the labels based on the data/response values
+//            self.present(alert, animated: true, completion: nil)
+//            
+//            
+//        })
         
     }
     
@@ -130,8 +130,7 @@ class SDKData {
         EnrollmentInformation(key: "Is Active: ",value: "Loading..."),
         EnrollmentInformation(key: "User Category: ",value: "Loading..."),
         EnrollmentInformation(key: "User ID: ",value: "Loading..."),
-        EnrollmentInformation(key: "Server Name:",value: (AWServer.sharedInstance().deviceServicesURL.deletingLastPathComponent().absoluteString)),
-
+//        EnrollmentInformation(key: "Server Name:",value: (AWServer.sharedInstance().deviceServicesURL.deletingLastPathComponent().absoluteString)),
     ]
     
     

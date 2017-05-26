@@ -7,38 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9F5B483F1E58AAF7000C95D5 /* AWKit.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9F5B483D1E58AAF7000C95D5 /* AWKit.bundle */; };
-		9F5B48401E58AAF7000C95D5 /* SDKLocalization.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9F5B483E1E58AAF7000C95D5 /* SDKLocalization.bundle */; };
-		9F5B48421E58AB14000C95D5 /* AWSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F5B48411E58AB14000C95D5 /* AWSDK.framework */; };
-		9F9F84241D9AC7FF00C8EE7E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F9F84231D9AC7FF00C8EE7E /* UIKit.framework */; };
-		9F9F84261D9AC80400C8EE7E /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F9F84251D9AC80400C8EE7E /* SystemConfiguration.framework */; };
-		9F9F84281D9AC80A00C8EE7E /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F9F84271D9AC80A00C8EE7E /* Security.framework */; };
-		9F9F842A1D9AC81000C8EE7E /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F9F84291D9AC81000C8EE7E /* SafariServices.framework */; };
-		9F9F842C1D9AC81400C8EE7E /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F9F842B1D9AC81400C8EE7E /* QuartzCore.framework */; };
-		9F9F842E1D9AC81900C8EE7E /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F9F842D1D9AC81900C8EE7E /* MobileCoreServices.framework */; };
-		9F9F84301D9AC87B00C8EE7E /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F9F842F1D9AC87B00C8EE7E /* MessageUI.framework */; };
-		9F9F84321D9AC88000C8EE7E /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F9F84311D9AC88000C8EE7E /* MediaPlayer.framework */; };
-		9F9F84341D9AC88500C8EE7E /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F9F84331D9AC88500C8EE7E /* LocalAuthentication.framework */; };
-		9F9F84361D9AC88A00C8EE7E /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F9F84351D9AC88A00C8EE7E /* libz.tbd */; };
-		9F9F84381D9AC89200C8EE7E /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F9F84371D9AC89200C8EE7E /* libstdc++.6.0.9.tbd */; };
-		9F9F843A1D9AC89800C8EE7E /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F9F84391D9AC89800C8EE7E /* libsqlite3.tbd */; };
-		9F9F843C1D9AC8A200C8EE7E /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F9F843B1D9AC8A200C8EE7E /* libc++.tbd */; };
-		9F9F843E1D9AC8B000C8EE7E /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F9F843D1D9AC8B000C8EE7E /* ImageIO.framework */; };
-		9F9F84401D9AC8B600C8EE7E /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F9F843F1D9AC8B600C8EE7E /* Foundation.framework */; };
-		9F9F84421D9AC8BB00C8EE7E /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F9F84411D9AC8BB00C8EE7E /* CoreVideo.framework */; };
-		9F9F84441D9AC8C000C8EE7E /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F9F84431D9AC8C000C8EE7E /* CoreText.framework */; };
-		9F9F84461D9AC8C500C8EE7E /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F9F84451D9AC8C500C8EE7E /* CoreTelephony.framework */; };
-		9F9F84481D9AC8CD00C8EE7E /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F9F84471D9AC8CD00C8EE7E /* CoreMotion.framework */; };
-		9F9F844A1D9AC8D100C8EE7E /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F9F84491D9AC8D100C8EE7E /* CoreLocation.framework */; };
-		9F9F844C1D9AC8D900C8EE7E /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F9F844B1D9AC8D900C8EE7E /* CoreGraphics.framework */; };
-		9F9F844E1D9AC8E000C8EE7E /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F9F844D1D9AC8E000C8EE7E /* CoreFoundation.framework */; };
-		9F9F84501D9AC8E300C8EE7E /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F9F844F1D9AC8E300C8EE7E /* CoreData.framework */; };
-		9F9F84521D9AC8E800C8EE7E /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F9F84511D9AC8E800C8EE7E /* CFNetwork.framework */; };
-		9F9F84541D9AC8ED00C8EE7E /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F9F84531D9AC8ED00C8EE7E /* AVFoundation.framework */; };
-		9F9F84561D9AC8F400C8EE7E /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F9F84551D9AC8F400C8EE7E /* AudioToolbox.framework */; };
-		9F9F84581D9AC8FA00C8EE7E /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F9F84571D9AC8FA00C8EE7E /* AssetsLibrary.framework */; };
-		9F9F845A1D9AC8FE00C8EE7E /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F9F84591D9AC8FE00C8EE7E /* Accelerate.framework */; };
-		9F9F845C1D9AC92D00C8EE7E /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9F9F845B1D9AC92D00C8EE7E /* CoreMedia.framework */; };
+		F73777871ED8AB4A00135466 /* AWOpenSSL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F73777851ED8AB4A00135466 /* AWOpenSSL.framework */; };
+		F73777881ED8AB4A00135466 /* AWSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F73777861ED8AB4A00135466 /* AWSDK.framework */; };
 		F76371871EC0F2B100C379B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F763716A1EC0F2B100C379B0 /* AppDelegate.swift */; };
 		F76371881EC0F2B100C379B0 /* AppTunneling.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F763716B1EC0F2B100C379B0 /* AppTunneling.storyboard */; };
 		F76371891EC0F2B100C379B0 /* Authentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F763716D1EC0F2B100C379B0 /* Authentication.storyboard */; };
@@ -79,38 +49,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		9F5B483D1E58AAF7000C95D5 /* AWKit.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AWKit.bundle; sourceTree = "<group>"; };
-		9F5B483E1E58AAF7000C95D5 /* SDKLocalization.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SDKLocalization.bundle; sourceTree = "<group>"; };
-		9F5B48411E58AB14000C95D5 /* AWSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSDK.framework; sourceTree = "<group>"; };
-		9F9F84231D9AC7FF00C8EE7E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		9F9F84251D9AC80400C8EE7E /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		9F9F84271D9AC80A00C8EE7E /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
-		9F9F84291D9AC81000C8EE7E /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
-		9F9F842B1D9AC81400C8EE7E /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
-		9F9F842D1D9AC81900C8EE7E /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		9F9F842F1D9AC87B00C8EE7E /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
-		9F9F84311D9AC88000C8EE7E /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		9F9F84331D9AC88500C8EE7E /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
-		9F9F84351D9AC88A00C8EE7E /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
-		9F9F84371D9AC89200C8EE7E /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
-		9F9F84391D9AC89800C8EE7E /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
-		9F9F843B1D9AC8A200C8EE7E /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
-		9F9F843D1D9AC8B000C8EE7E /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
-		9F9F843F1D9AC8B600C8EE7E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		9F9F84411D9AC8BB00C8EE7E /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
-		9F9F84431D9AC8C000C8EE7E /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
-		9F9F84451D9AC8C500C8EE7E /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
-		9F9F84471D9AC8CD00C8EE7E /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
-		9F9F84491D9AC8D100C8EE7E /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		9F9F844B1D9AC8D900C8EE7E /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		9F9F844D1D9AC8E000C8EE7E /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
-		9F9F844F1D9AC8E300C8EE7E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
-		9F9F84511D9AC8E800C8EE7E /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
-		9F9F84531D9AC8ED00C8EE7E /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		9F9F84551D9AC8F400C8EE7E /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
-		9F9F84571D9AC8FA00C8EE7E /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
-		9F9F84591D9AC8FE00C8EE7E /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
-		9F9F845B1D9AC92D00C8EE7E /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		F73777851ED8AB4A00135466 /* AWOpenSSL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWOpenSSL.framework; sourceTree = "<group>"; };
+		F73777861ED8AB4A00135466 /* AWSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSDK.framework; sourceTree = "<group>"; };
 		F763716A1EC0F2B100C379B0 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "AirWatch SDK iOS Swift/AppDelegate.swift"; sourceTree = SOURCE_ROOT; };
 		F763716C1EC0F2B100C379B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "AirWatch SDK iOS Swift/Base.lproj/AppTunneling.storyboard"; sourceTree = SOURCE_ROOT; };
 		F763716E1EC0F2B100C379B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "AirWatch SDK iOS Swift/Base.lproj/Authentication.storyboard"; sourceTree = SOURCE_ROOT; };
@@ -143,36 +83,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9F9F845C1D9AC92D00C8EE7E /* CoreMedia.framework in Frameworks */,
-				9F9F845A1D9AC8FE00C8EE7E /* Accelerate.framework in Frameworks */,
-				9F9F84581D9AC8FA00C8EE7E /* AssetsLibrary.framework in Frameworks */,
-				9F9F84561D9AC8F400C8EE7E /* AudioToolbox.framework in Frameworks */,
-				9F9F84541D9AC8ED00C8EE7E /* AVFoundation.framework in Frameworks */,
-				9F9F84521D9AC8E800C8EE7E /* CFNetwork.framework in Frameworks */,
-				9F9F84501D9AC8E300C8EE7E /* CoreData.framework in Frameworks */,
-				9F9F844E1D9AC8E000C8EE7E /* CoreFoundation.framework in Frameworks */,
-				9F9F844C1D9AC8D900C8EE7E /* CoreGraphics.framework in Frameworks */,
-				9F9F844A1D9AC8D100C8EE7E /* CoreLocation.framework in Frameworks */,
-				9F9F84481D9AC8CD00C8EE7E /* CoreMotion.framework in Frameworks */,
-				9F9F84461D9AC8C500C8EE7E /* CoreTelephony.framework in Frameworks */,
-				9F9F84441D9AC8C000C8EE7E /* CoreText.framework in Frameworks */,
-				9F9F84421D9AC8BB00C8EE7E /* CoreVideo.framework in Frameworks */,
-				9F9F84401D9AC8B600C8EE7E /* Foundation.framework in Frameworks */,
-				9F9F843E1D9AC8B000C8EE7E /* ImageIO.framework in Frameworks */,
-				9F9F843C1D9AC8A200C8EE7E /* libc++.tbd in Frameworks */,
-				9F9F843A1D9AC89800C8EE7E /* libsqlite3.tbd in Frameworks */,
-				9F9F84381D9AC89200C8EE7E /* libstdc++.6.0.9.tbd in Frameworks */,
-				9F9F84361D9AC88A00C8EE7E /* libz.tbd in Frameworks */,
-				9F9F84341D9AC88500C8EE7E /* LocalAuthentication.framework in Frameworks */,
-				9F9F84321D9AC88000C8EE7E /* MediaPlayer.framework in Frameworks */,
-				9F9F84301D9AC87B00C8EE7E /* MessageUI.framework in Frameworks */,
-				9F9F842E1D9AC81900C8EE7E /* MobileCoreServices.framework in Frameworks */,
-				9F9F842C1D9AC81400C8EE7E /* QuartzCore.framework in Frameworks */,
-				9F9F842A1D9AC81000C8EE7E /* SafariServices.framework in Frameworks */,
-				9F9F84281D9AC80A00C8EE7E /* Security.framework in Frameworks */,
-				9F5B48421E58AB14000C95D5 /* AWSDK.framework in Frameworks */,
-				9F9F84261D9AC80400C8EE7E /* SystemConfiguration.framework in Frameworks */,
-				9F9F84241D9AC7FF00C8EE7E /* UIKit.framework in Frameworks */,
+				F73777871ED8AB4A00135466 /* AWOpenSSL.framework in Frameworks */,
+				F73777881ED8AB4A00135466 /* AWSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,38 +118,8 @@
 		9F9F84221D9AC7FF00C8EE7E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				9F5B483D1E58AAF7000C95D5 /* AWKit.bundle */,
-				9F5B483E1E58AAF7000C95D5 /* SDKLocalization.bundle */,
-				9F5B48411E58AB14000C95D5 /* AWSDK.framework */,
-				9F9F845B1D9AC92D00C8EE7E /* CoreMedia.framework */,
-				9F9F84591D9AC8FE00C8EE7E /* Accelerate.framework */,
-				9F9F84571D9AC8FA00C8EE7E /* AssetsLibrary.framework */,
-				9F9F84551D9AC8F400C8EE7E /* AudioToolbox.framework */,
-				9F9F84531D9AC8ED00C8EE7E /* AVFoundation.framework */,
-				9F9F84511D9AC8E800C8EE7E /* CFNetwork.framework */,
-				9F9F844F1D9AC8E300C8EE7E /* CoreData.framework */,
-				9F9F844D1D9AC8E000C8EE7E /* CoreFoundation.framework */,
-				9F9F844B1D9AC8D900C8EE7E /* CoreGraphics.framework */,
-				9F9F84491D9AC8D100C8EE7E /* CoreLocation.framework */,
-				9F9F84471D9AC8CD00C8EE7E /* CoreMotion.framework */,
-				9F9F84451D9AC8C500C8EE7E /* CoreTelephony.framework */,
-				9F9F84431D9AC8C000C8EE7E /* CoreText.framework */,
-				9F9F84411D9AC8BB00C8EE7E /* CoreVideo.framework */,
-				9F9F843F1D9AC8B600C8EE7E /* Foundation.framework */,
-				9F9F843D1D9AC8B000C8EE7E /* ImageIO.framework */,
-				9F9F843B1D9AC8A200C8EE7E /* libc++.tbd */,
-				9F9F84391D9AC89800C8EE7E /* libsqlite3.tbd */,
-				9F9F84371D9AC89200C8EE7E /* libstdc++.6.0.9.tbd */,
-				9F9F84351D9AC88A00C8EE7E /* libz.tbd */,
-				9F9F84331D9AC88500C8EE7E /* LocalAuthentication.framework */,
-				9F9F84311D9AC88000C8EE7E /* MediaPlayer.framework */,
-				9F9F842F1D9AC87B00C8EE7E /* MessageUI.framework */,
-				9F9F842D1D9AC81900C8EE7E /* MobileCoreServices.framework */,
-				9F9F842B1D9AC81400C8EE7E /* QuartzCore.framework */,
-				9F9F84291D9AC81000C8EE7E /* SafariServices.framework */,
-				9F9F84271D9AC80A00C8EE7E /* Security.framework */,
-				9F9F84251D9AC80400C8EE7E /* SystemConfiguration.framework */,
-				9F9F84231D9AC7FF00C8EE7E /* UIKit.framework */,
+				F73777851ED8AB4A00135466 /* AWOpenSSL.framework */,
+				F73777861ED8AB4A00135466 /* AWSDK.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -408,8 +290,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9F5B483F1E58AAF7000C95D5 /* AWKit.bundle in Resources */,
-				9F5B48401E58AAF7000C95D5 /* SDKLocalization.bundle in Resources */,
 				F763718D1EC0F2B100C379B0 /* Logging.storyboard in Resources */,
 				F763718A1EC0F2B100C379B0 /* DLP.storyboard in Resources */,
 				F763719D1EC0F38C00C379B0 /* Assets.xcassets in Resources */,
