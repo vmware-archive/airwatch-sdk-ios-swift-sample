@@ -35,14 +35,14 @@ class SDKUseCasesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
         
         /*
         ** THIS IS WHERE WE ARE SHOWING THE BLOCKER SCREEN**
          We should wait for SDK to initialize completely before attempting to utilize any SDK resource for example trying to
          attemp tunneling. This blocker screens is completely optional but is shown to demonstrate good practise.
         */
-        let sdkStatus = appDelegate.awSDKInit
+        let sdkStatus = appDelegate?.awSDKInit
                 if  (sdkStatus == false){
                     print("inside sdk usecases")
                     LoadingIndicatorView.show(self.parent!.view, loadingText: "Initializing SDK...")

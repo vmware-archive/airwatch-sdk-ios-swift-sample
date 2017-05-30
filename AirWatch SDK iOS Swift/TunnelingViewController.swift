@@ -24,7 +24,7 @@
 
 import UIKit
 
-class TunnelingViewController: UIViewController, UIWebViewDelegate,URLSessionDelegate {
+class TunnelingViewController: UIViewController, UIWebViewDelegate, URLSessionDelegate {
     
     @IBOutlet weak var urlTextField: UITextField!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
@@ -83,10 +83,10 @@ class TunnelingViewController: UIViewController, UIWebViewDelegate,URLSessionDel
             
             switch segmentedControl.selectedSegmentIndex {
             case 0:
-                makeSessionRequest(request,networkType: 0)
+                makeSessionRequest(request, networkType: 0)
                 break
             case 1:
-                makeSessionRequest(request,networkType: 1)
+                makeSessionRequest(request, networkType: 1)
                 break
             default:
                 break

@@ -63,21 +63,27 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AWControllerDelegate {
     func controllerDidFinishInitialCheck(error: NSError?) {
         NSLog("initialCheckDoneWithError called")
         
+        /*
+         * There is not a guarantee that the AWController Delegates will be called on the main thread.
+         * Since this sample is removing a UI Blocker once InitialCheck is called, we are updating that on
+         * the main thread.
+         */
         if error != nil {
-            
-            sdkUseCase.hideBlocker()
-            NSLog("initialCheckDone With  Error")
-            awSDKInit=true
-            let alertController = UIAlertController(title: "AWInit  Reporter", message:
-                "An error occured while initializing AW SDK", preferredStyle: UIAlertControllerStyle.alert)
-            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
-            
+            OperationQueue.main.addOperation {
+                self.sdkUseCase.hideBlocker()
+                NSLog("initialCheckDone With  Error")
+                self.awSDKInit=true
+                let alertController = UIAlertController(title: "AWInit  Reporter", message:
+                    "An error occured while initializing AW SDK", preferredStyle: UIAlertControllerStyle.alert)
+                alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+            }
         } else {
-            sdkUseCase.hideBlocker()
-            NSLog("initialCheckDone NO Error")
-            awSDKInit=true
+            OperationQueue.main.addOperation {
+                self.sdkUseCase.hideBlocker()
+                NSLog("initialCheckDone NO Error")
+                self.awSDKInit=true
+            }
         }
-
     }
     
     func controllerDidReceive(profiles: [Any]!) {
