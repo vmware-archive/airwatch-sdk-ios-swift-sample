@@ -90,28 +90,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9F18DCBB1DB4422900160C4B /* UI Classes */ = {
+		9F18DCBB1DB4422900160C4B /* UI Helpers */ = {
 			isa = PBXGroup;
 			children = (
 				F76371801EC0F2B100C379B0 /* LoadingIndicatorView.swift */,
 				F78126101E938E84005FB3A5 /* Walkthrough */,
 			);
-			name = "UI Classes";
-			sourceTree = "<group>";
-		};
-		9F18DCBC1DB4423C00160C4B /* SDK Implementation */ = {
-			isa = PBXGroup;
-			children = (
-				F76371831EC0F2B100C379B0 /* SDKUseCasesTableViewController.swift */,
-				F7EB82821E924B7900EB5C49 /* Authentication */,
-				F7EB826E1E92413500EB5C49 /* GeneralInformation */,
-				F7EB82741E9242E700EB5C49 /* AppTunneling */,
-				F7EB82771E92438000EB5C49 /* IntegratedAuthentication */,
-				F7EB827E1E924AD500EB5C49 /* RemoteConfiguration */,
-				F7EB827B1E92444500EB5C49 /* Instrumentation */,
-				F7EB82831E924BF000EB5C49 /* DLP */,
-			);
-			name = "SDK Implementation";
+			name = "UI Helpers";
 			sourceTree = "<group>";
 		};
 		9F9F84221D9AC7FF00C8EE7E /* Frameworks */ = {
@@ -156,8 +141,15 @@
 			children = (
 				F763719E1EC0F3A400C379B0 /* Main.storyboard */,
 				F763716A1EC0F2B100C379B0 /* AppDelegate.swift */,
-				9F18DCBC1DB4423C00160C4B /* SDK Implementation */,
-				9F18DCBB1DB4422900160C4B /* UI Classes */,
+				F76371831EC0F2B100C379B0 /* SDKUseCasesTableViewController.swift */,
+				F7EB82821E924B7900EB5C49 /* Authentication */,
+				F7EB826E1E92413500EB5C49 /* GeneralInformation */,
+				F7EB82741E9242E700EB5C49 /* AppTunneling */,
+				F7EB82771E92438000EB5C49 /* IntegratedAuthentication */,
+				F7EB827E1E924AD500EB5C49 /* RemoteConfiguration */,
+				F7EB827B1E92444500EB5C49 /* Instrumentation */,
+				F7EB82831E924BF000EB5C49 /* DLP */,
+				9F18DCBB1DB4422900160C4B /* UI Helpers */,
 				F763719C1EC0F38C00C379B0 /* Assets.xcassets */,
 				F763717E1EC0F2B100C379B0 /* Info.plist */,
 			);
