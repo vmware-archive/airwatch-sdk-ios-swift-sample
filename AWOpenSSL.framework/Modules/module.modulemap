@@ -1,6 +1,0 @@
-framework module AWOpenSSL {
-  umbrella header "AWOpenSSL.h"
-
-  export *
-  module * { export * }
-}
