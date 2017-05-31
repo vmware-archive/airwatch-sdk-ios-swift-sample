@@ -25,32 +25,27 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Heading" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EGD-SG-feQ">
-                                            <rect key="frame" x="145" y="9" width="280" height="25"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="280" id="K6x-rg-MsI"/>
-                                            </constraints>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" text="Heading" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="EGD-SG-feQ">
+                                            <rect key="frame" x="187" y="9" width="172" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Heading" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumFontSize="25" translatesAutoresizingMaskIntoConstraints="NO" id="J2P-B8-OM9">
-                                            <rect key="frame" x="7" y="9" width="130" height="26"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" constant="130" id="5LQ-wq-8lY"/>
-                                            </constraints>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalCompressionResistancePriority="746" text="Heading" textAlignment="natural" lineBreakMode="wordWrap" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="J2P-B8-OM9">
+                                            <rect key="frame" x="7" y="9" width="172" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="J2P-B8-OM9" firstAttribute="top" secondItem="cl6-ZM-aQB" secondAttribute="topMargin" constant="1" id="9Ks-ye-KAQ"/>
-                                        <constraint firstItem="J2P-B8-OM9" firstAttribute="centerY" secondItem="EGD-SG-feQ" secondAttribute="centerY" id="Fky-dw-ccJ"/>
-                                        <constraint firstItem="J2P-B8-OM9" firstAttribute="centerY" secondItem="cl6-ZM-aQB" secondAttribute="centerY" id="XDl-Wb-Uy9"/>
-                                        <constraint firstItem="EGD-SG-feQ" firstAttribute="leading" secondItem="J2P-B8-OM9" secondAttribute="trailing" constant="8" symbolic="YES" id="mQ7-kp-OK6"/>
-                                        <constraint firstItem="J2P-B8-OM9" firstAttribute="leading" secondItem="cl6-ZM-aQB" secondAttribute="leadingMargin" constant="-1" id="rLy-y9-uMn"/>
-                                        <constraint firstItem="J2P-B8-OM9" firstAttribute="top" secondItem="EGD-SG-feQ" secondAttribute="top" id="wiT-DF-z5K"/>
+                                        <constraint firstItem="EGD-SG-feQ" firstAttribute="width" secondItem="J2P-B8-OM9" secondAttribute="width" id="1qP-fq-0cb"/>
+                                        <constraint firstItem="EGD-SG-feQ" firstAttribute="leading" secondItem="J2P-B8-OM9" secondAttribute="trailing" constant="8" id="CE0-dy-ZYQ"/>
+                                        <constraint firstItem="J2P-B8-OM9" firstAttribute="top" secondItem="cl6-ZM-aQB" secondAttribute="top" constant="9" id="NXd-yp-izo"/>
+                                        <constraint firstItem="EGD-SG-feQ" firstAttribute="leading" secondItem="J2P-B8-OM9" secondAttribute="trailing" constant="8" id="cG9-zO-PMy"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="EGD-SG-feQ" secondAttribute="trailing" constant="8" id="cin-tj-GgD"/>
+                                        <constraint firstItem="EGD-SG-feQ" firstAttribute="centerY" secondItem="J2P-B8-OM9" secondAttribute="centerY" id="nTd-YK-mdA"/>
+                                        <constraint firstItem="J2P-B8-OM9" firstAttribute="leading" secondItem="cl6-ZM-aQB" secondAttribute="leading" constant="7" id="uUR-pY-J00"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
@@ -67,7 +62,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qv3-B7-kUa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-960" y="-1344"/>
+            <point key="canvasLocation" x="-960.79999999999995" y="-1344.3778110944529"/>
         </scene>
     </scenes>
 </document>
