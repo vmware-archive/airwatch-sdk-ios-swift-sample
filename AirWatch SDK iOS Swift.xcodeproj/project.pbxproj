@@ -19,7 +19,6 @@
 		F76371901EC0F2B100C379B0 /* CustomSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F763717B1EC0F2B100C379B0 /* CustomSettingsViewController.swift */; };
 		F76371911EC0F2B100C379B0 /* DataLossPreventionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F763717C1EC0F2B100C379B0 /* DataLossPreventionViewController.swift */; };
 		F76371921EC0F2B100C379B0 /* GeneralInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F763717D1EC0F2B100C379B0 /* GeneralInformationViewController.swift */; };
-		F76371931EC0F2B100C379B0 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F763717E1EC0F2B100C379B0 /* Info.plist */; };
 		F76371941EC0F2B100C379B0 /* IntegratedAuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F763717F1EC0F2B100C379B0 /* IntegratedAuthenticationViewController.swift */; };
 		F76371951EC0F2B100C379B0 /* LoadingIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76371801EC0F2B100C379B0 /* LoadingIndicatorView.swift */; };
 		F76371961EC0F2B100C379B0 /* LocalAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F76371811EC0F2B100C379B0 /* LocalAuthViewController.swift */; };
@@ -256,7 +255,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = VMware;
 				TargetAttributes = {
 					F7BC0DC01D93FFB300334C40 = {
@@ -293,7 +292,6 @@
 				F763718D1EC0F2B100C379B0 /* Logging.storyboard in Resources */,
 				F763718A1EC0F2B100C379B0 /* DLP.storyboard in Resources */,
 				F763719D1EC0F38C00C379B0 /* Assets.xcassets in Resources */,
-				F76371931EC0F2B100C379B0 /* Info.plist in Resources */,
 				F763718C1EC0F2B100C379B0 /* IntegratedAuth.storyboard in Resources */,
 				F76371A01EC0F3A400C379B0 /* Main.storyboard in Resources */,
 				F763718F1EC0F2B100C379B0 /* Walkthrough.storyboard in Resources */,
