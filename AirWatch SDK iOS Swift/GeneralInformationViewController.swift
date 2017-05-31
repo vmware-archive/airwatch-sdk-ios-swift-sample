@@ -26,7 +26,7 @@ import UIKit
 import AWSDK
 
 class GeneralInformationViewController: UITableViewController {
-
+ 
     let data = SDKData()
 
 
@@ -34,68 +34,111 @@ class GeneralInformationViewController: UITableViewController {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
         
-        /*
-         fetchUserInfoWithCompletionBlock is an asyncronous call that returns the below mentioned 
-         NSDIctionary which we later parsed to get the user and device related information
-        */
-//        AWMDMInformationController.init().fetchUserInfo(completionBlock: { (success, userinfo, error) in
-//            
-//            //This API will throw an error if the device is not enrolled.
-//            if(error == nil && success)
-//            {
-//                let mdmInfo = userinfo as AnyObject
-//                
-//                let awUserName = SDKData.EnrollmentInformation(key: "Username:",value: (mdmInfo.value(forKey: "UserName")!) as! String)
-//                let awlocationGroup = SDKData.EnrollmentInformation(key: "Location Group:",value: (mdmInfo.value(forKey: "LocationGroup")!) as! String)
-//                let awAccountType = SDKData.EnrollmentInformation(key: "Account Type:",value: (mdmInfo.value(forKey: "AccountType")!) as! String)
-//                let awIsActive = SDKData.EnrollmentInformation(key: "Is Active:",value: (mdmInfo.value(forKey: "IsActive")!) as! String)
-//                let awUserCategory = SDKData.EnrollmentInformation(key: "User Category:",value: (mdmInfo.value(forKey: "UserCategory")!) as! String)
-//                let awUserID = SDKData.EnrollmentInformation(key: "User ID:",value: (mdmInfo.value(forKey: "UserId")!) as! String)
-//                
-//                
-//                self.data.mdmInformationArray[0] = awUserName
-//                self.data.mdmInformationArray[1] = awlocationGroup
-//                self.data.mdmInformationArray[2] = awAccountType
-//                self.data.mdmInformationArray[3] = awIsActive
-//                self.data.mdmInformationArray[4] = awUserCategory
-//                self.data.mdmInformationArray[5] = awUserID
-//                
-//                
-//                self.tableView.reloadData()
-//            }
-//            else
-//            {
-//                print("Error occured while contacing AW Rest API to get the user info : \(error?.localizedDescription ?? "No error")")
-//                
-//                    OperationQueue.main.addOperation {
-//                        self.displayFetchUserInfoError()
-//                        
-//                    }
-//                
-//            }
-//         
-//
-//        })
-        // Do any additional setup after loading the view.
+        // SDK API calls separated for readability
+        fetchUserInfo()
+        fetchDeviceInfo()
+    }
+    
+    /*
+     * fetchDeviceInformation is an asyncronous call that returns the below
+     * DeviceInformation object which we later parsed to get the device related information
+     */
+    func fetchDeviceInfo() -> Void {
+        DeviceInformationController.sharedController.fetchDeviceInformation(completion: {
+            (deviceInformation, error) in
+            
+            if (error != nil) {
+                print("Error fetching information: \(error.debugDescription)")
+                OperationQueue.main.addOperation {
+                    self.displayFetchUserInfoError()
+                }
+                return
+            }
+            
+            /*
+             * Fetching properties from DeviceInformation instance
+             */
+            
+            // Enrollment Status - See below extension for possible values / enums
+            let enrolled = AWSDK.EnrollmentStatus(rawValue: (deviceInformation?.enrollmentStatus.rawValue)!)?.stringTitle()
+            self.data.deviceInformationArray[0].value = enrolled!
+            
+            // Current compliance status - See below extension for possible values / enums
+            let complaint = AWSDK.ComplianceStatus(rawValue: (deviceInformation?.complianceStatus.rawValue)!)?.stringTitle()
+            self.data.deviceInformationArray[1].value = complaint!
+            
+            // Organization group info
+            self.data.deviceInformationArray[2].value = (deviceInformation?.groupName)!
+            self.data.deviceInformationArray[3].value = (deviceInformation?.groupID)!
+            
+            // Displays Management Status - See below extension for possible values / enums
+            let mgmtType = AWSDK.DeviceManagmentType(rawValue: (deviceInformation?.managementType.rawValue)!)?.stringTitle()
+            self.data.deviceInformationArray[4].value = mgmtType!
+            
+            // Bool check for Management
+            self.data.deviceInformationArray[5].value = deviceInformation?.isManaged.description ?? "N/A"
+
+            OperationQueue.main.addOperation {
+                self.tableView.reloadData()
+            }
+        })
+
+    }
+    
+    /*
+     * retrieveUserInfo is an asyncronous call that returns the below
+     * UserInformation object which we later parsed to get the user related information
+     */
+    func fetchUserInfo() {
+        UserInformationController.sharedInstance.retrieveUserInfo { (userInformation, error) in
+            if (error != nil) {
+                print("Error fetching information: \(error.debugDescription)")
+                OperationQueue.main.addOperation {
+                    self.displayFetchUserInfoError()
+                }
+                return
+            }
+            
+            // Username
+            self.data.userInformationArray[0].value = (userInformation?.userName)!
+            
+            // Group ID
+            self.data.userInformationArray[1].value = (userInformation?.groupID)!
+            
+            // Email Address
+            self.data.userInformationArray[2].value = (userInformation?.email)!
+            
+            // Full Name
+            let firstName: String = (userInformation?.firstName)!
+            let lastName: String = (userInformation?.lastName)!
+            self.data.userInformationArray[3].value = firstName.appending(lastName)
+            
+            // Domain
+            self.data.userInformationArray[4].value = (userInformation?.domain)!
+            
+            // User ID
+            self.data.userInformationArray[5].value = (userInformation?.userIdentifier)!
+            
+            OperationQueue.main.addOperation {
+                self.tableView.reloadData()
+            }
+        }
     }
     
     func displayFetchUserInfoError() -> Void {
-//        print("Log In error")
-//        
-//        let alert = UIAlertController(title: "SDKError", message: "An Error Occured while SDK was trying to fetch user infor from AW backed. Please make sure your device is enrolled", preferredStyle: .alert)
-//        
-//        let okAction = UIAlertAction(title: "Dismiss", style: .default, handler: {
-//            action in
-//            print("Dismiss")
-//        })
-//        alert.addAction(okAction)
-//        OperationQueue.main.addOperation({
-//            // Set the labels based on the data/response values
-//            self.present(alert, animated: true, completion: nil)
-//            
-//            
-//        })
+        print("Log In error")
         
+        let alert = UIAlertController(title: "SDKError", message: "An Error Occured while SDK was trying to fetch user info from AW backed. Please make sure your device is enrolled", preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "Dismiss", style: .default, handler: {
+            action in
+            print("Dismiss")
+        })
+        alert.addAction(okAction)
+        OperationQueue.main.addOperation({
+            // Set the labels based on the data/response values
+            self.present(alert, animated: true, completion: nil)
+        })
     }
     
 
@@ -104,16 +147,78 @@ class GeneralInformationViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
-
+    //Mark : TableView
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) ->Int{
+        var count = -1
+        
+        switch section {
+        case 0:
+            return data.userInformationArray.count
+        case 1:
+            return data.deviceInformationArray.count
+        default:
+            count = 0
+        }
+        
+        return count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SDKInfoTableViewCell
+        cell.separatorInset = UIEdgeInsets.zero;
+        
+        var entry: SDKData.EnrollmentInformation?
+        
+        if indexPath.section == 0 {
+            entry = data.userInformationArray[indexPath.row]
+        } else if indexPath.section == 1 {
+            entry = data.deviceInformationArray[indexPath.row]
+        }
+        
+        cell.keyLabel.text = entry?.key
+        cell.valueLabel.text = entry?.value
+        
+        return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0 {
+            return "User Information"
+        } else if section == 1 {
+            return "Device Information"
+        }
+        
+        return ""
+    }
+    
+}
 
 //MARK : SDK SDKData
 
-
 class SDKData {
+    // Constants
+    static let LOADING = "Loading..."
+    static let ENROLLED = "Enrolled: "
+    static let COMPLIANT = "Compliant: "
+    static let ORG_GROUP = "Org Group: "
+    static let ORG_GROUP_ID = "Org Group ID: "
+    static let MGMT_TYPE = "MGMT Type: "
+    static let IS_MANAGED = "Is Managed: "
+    static let USERNAME = "Username: "
+    static let USER_OG = "User Org Group: "
+    static let EMAIL = "Email Address: "
+    static let FULL_NAME = "Full Name: "
+    static let DOMAIN = "Domain: "
+    static let USER_ID = "User ID: "
+    
+    
     class EnrollmentInformation {
         let key : String
-        let value: String
+        var value: String
         init(key : String,value: String) {
             self.key = key
             self.value = value
@@ -123,48 +228,32 @@ class SDKData {
     /*
      Creating place holder array for the data which will be returned by fetchUserInfoWithCompletionBlock
     */
-    var mdmInformationArray = [
-        EnrollmentInformation(key: "Username: ",value: "Loading..."),
-        EnrollmentInformation(key: "Location Group: ",value: "Loading..."),
-        EnrollmentInformation(key: "Account Type: ",value: "Loading..."),
-        EnrollmentInformation(key: "Is Active: ",value: "Loading..."),
-        EnrollmentInformation(key: "User Category: ",value: "Loading..."),
-        EnrollmentInformation(key: "User ID: ",value: "Loading..."),
-//        EnrollmentInformation(key: "Server Name:",value: (AWServer.sharedInstance().deviceServicesURL.deletingLastPathComponent().absoluteString)),
+    var userInformationArray = [
+        EnrollmentInformation(key: SDKData.USERNAME,value: SDKData.LOADING),
+        EnrollmentInformation(key: SDKData.USER_OG,value: SDKData.LOADING),
+        EnrollmentInformation(key: SDKData.USERNAME,value: SDKData.LOADING),
+        EnrollmentInformation(key: SDKData.FULL_NAME,value: SDKData.LOADING),
+        EnrollmentInformation(key: SDKData.DOMAIN,value: SDKData.LOADING),
+        EnrollmentInformation(key: SDKData.USER_ID,value: SDKData.LOADING),
     ]
     
-    
- 
-}
-    
-    //Mark : TableView
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
+    var deviceInformationArray = [
+        EnrollmentInformation(key: SDKData.ENROLLED, value: SDKData.LOADING),
+        EnrollmentInformation(key: SDKData.COMPLIANT, value: SDKData.LOADING),
+        EnrollmentInformation(key: SDKData.ORG_GROUP, value: SDKData.LOADING),
+        EnrollmentInformation(key: SDKData.ORG_GROUP_ID, value: SDKData.LOADING),
+        EnrollmentInformation(key: SDKData.MGMT_TYPE, value: SDKData.LOADING),
+        EnrollmentInformation(key: SDKData.IS_MANAGED, value: SDKData.LOADING)
+    ]
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) ->Int{
-        return data.mdmInformationArray.count
-    }
-    
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as! SDKInfoTableViewCell
-        cell.separatorInset = UIEdgeInsets.zero;
-        
-        let entry = data.mdmInformationArray[indexPath.row]
-        cell.keyLabel.text = entry.key
-        cell.valueLabel.text = entry.value
-        return cell
-    }
-    
-    
 }
-
 
 
 class SDKInfoTableViewCell: UITableViewCell {
     
     @IBOutlet weak var keyLabel: UILabel!
     @IBOutlet weak var valueLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
@@ -172,4 +261,87 @@ class SDKInfoTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
+}
+
+// MARK:- AWSDK Extensions
+/*
+ * Below are a few extensions to return a String from some
+ * AWSDK enums
+ */
+
+extension AWSDK.DeviceManagmentType {
+    func stringTitle() -> String {
+        
+        switch self {
+            
+        case .notManaged:
+            return "Not Managed"
+        case .managedByMDM:
+            return "Managed by MDM"
+        case .managedByMAM:
+            return "Managed by MAM"
+        case .quarantine:
+            return "Quarantine"
+        case .unknown:
+            return "Unknown"
+        }
+    }
+}
+
+extension AWSDK.ComplianceStatus {
+    func stringTitle() -> String {
+        switch self {
+        case .allowed:
+            return "Allowed"
+        case .blocked:
+            return "Blocked"
+        case .compliant:
+            return "Compliant"
+        case .nonCompliant:
+            return "Non Compliant"
+        case .notApplicable:
+            return "Not Applicable"
+        case .notAvailable:
+            return "Not Available"
+        case .pendingComplianceCheck:
+            return "Pending Compliance Check"
+        case .pendingComplianceCheckForAPolicy:
+            return "Pending Compliance Check for a policy"
+        case .quarantined:
+            return "Quarantined"
+        case .registrationActive:
+            return "Registration Active"
+        case .registrationExpired:
+            return "Registration Expired"
+        case .unknown:
+            return "Unknown"
+        }
+    }
+}
+
+extension AWSDK.EnrollmentStatus {
+    func stringTitle() -> String {
+        switch self {
+        case .enrolled:
+            return "Enrolled"
+        case .unenrolled:
+            return "Unerolled"
+        case .enrollmentInProgress:
+            return "Enrollment in Progress"
+        case .enterpriseWipePending:
+            return "Enterprise Wipe Pending"
+        case .deviceNotFound:
+            return "Device not Found"
+        case .deviceWipePending:
+            return "Device Wipe Pending"
+        case .discovered:
+            return "Discovered"
+        case .registered:
+            return "Registered"
+        case .retired:
+            return "Retired"
+        case .unknown:
+            return "Unknown"
+        }
+    }
 }

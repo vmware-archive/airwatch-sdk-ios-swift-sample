@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		F73777871ED8AB4A00135466 /* AWOpenSSL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F73777851ED8AB4A00135466 /* AWOpenSSL.framework */; };
-		F73777881ED8AB4A00135466 /* AWSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F73777861ED8AB4A00135466 /* AWSDK.framework */; };
 		F76371871EC0F2B100C379B0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F763716A1EC0F2B100C379B0 /* AppDelegate.swift */; };
 		F76371881EC0F2B100C379B0 /* AppTunneling.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F763716B1EC0F2B100C379B0 /* AppTunneling.storyboard */; };
 		F76371891EC0F2B100C379B0 /* Authentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F763716D1EC0F2B100C379B0 /* Authentication.storyboard */; };
@@ -33,6 +31,8 @@
 		F763719D1EC0F38C00C379B0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F763719C1EC0F38C00C379B0 /* Assets.xcassets */; };
 		F76371A01EC0F3A400C379B0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F763719E1EC0F3A400C379B0 /* Main.storyboard */; };
 		F7B14EB41DECB7AF00E40279 /* AWSDKDefaults.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F7B14EB31DECB7AF00E40279 /* AWSDKDefaults.bundle */; };
+		F7E024081EDDDBBE0031E33D /* AWOpenSSL.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F7E024061EDDDB650031E33D /* AWOpenSSL.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F7E024091EDDDBBE0031E33D /* AWSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F73777861ED8AB4A00135466 /* AWSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -42,6 +42,8 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				F7E024081EDDDBBE0031E33D /* AWOpenSSL.framework in Embed Frameworks */,
+				F7E024091EDDDBBE0031E33D /* AWSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -49,7 +51,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		F73777851ED8AB4A00135466 /* AWOpenSSL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWOpenSSL.framework; sourceTree = "<group>"; };
 		F73777861ED8AB4A00135466 /* AWSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSDK.framework; sourceTree = "<group>"; };
 		F763716A1EC0F2B100C379B0 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "AirWatch SDK iOS Swift/AppDelegate.swift"; sourceTree = SOURCE_ROOT; };
 		F763716C1EC0F2B100C379B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "AirWatch SDK iOS Swift/Base.lproj/AppTunneling.storyboard"; sourceTree = SOURCE_ROOT; };
@@ -76,6 +77,7 @@
 		F763719F1EC0F3A400C379B0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "AirWatch SDK iOS Swift/Base.lproj/Main.storyboard"; sourceTree = SOURCE_ROOT; };
 		F7B14EB31DECB7AF00E40279 /* AWSDKDefaults.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AWSDKDefaults.bundle; sourceTree = "<group>"; };
 		F7BC0DC11D93FFB300334C40 /* iOS Swift Sample App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Swift Sample App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7E024061EDDDB650031E33D /* AWOpenSSL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWOpenSSL.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,8 +85,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F73777871ED8AB4A00135466 /* AWOpenSSL.framework in Frameworks */,
-				F73777881ED8AB4A00135466 /* AWSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,7 +118,7 @@
 		9F9F84221D9AC7FF00C8EE7E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F73777851ED8AB4A00135466 /* AWOpenSSL.framework */,
+				F7E024061EDDDB650031E33D /* AWOpenSSL.framework */,
 				F73777861ED8AB4A00135466 /* AWSDK.framework */,
 			);
 			name = Frameworks;
@@ -515,7 +515,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.vmware.AirWatch-SDK-iOS-Swift";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.vmware.AirWatch-SDK-iOS-Swift-Sample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -536,7 +536,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = "";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.vmware.AirWatch-SDK-iOS-Swift";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.vmware.AirWatch-SDK-iOS-Swift-Sample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};

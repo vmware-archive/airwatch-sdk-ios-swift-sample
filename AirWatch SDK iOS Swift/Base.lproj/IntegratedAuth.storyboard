@@ -22,31 +22,21 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter the url with http/https" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H32-AM-6vd">
-                                <rect key="frame" x="16" y="129" width="343" height="30"/>
+                                <rect key="frame" x="16" y="75" width="343" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="URL"/>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="He2-hN-Kxo">
-                                <rect key="frame" x="16" y="167" width="343" height="21"/>
+                                <rect key="frame" x="16" y="113" width="343" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NeF-Kz-10Q">
-                                <rect key="frame" x="16" y="196" width="343" height="451"/>
+                                <rect key="frame" x="16" y="142" width="343" height="505"/>
                                 <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </webView>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="OkD-z5-UJC">
-                                <rect key="frame" x="16" y="93" width="343" height="29"/>
-                                <segments>
-                                    <segment title="URLSession"/>
-                                    <segment title="URLSession"/>
-                                </segments>
-                                <connections>
-                                    <action selector="doIntegratedAuth:" destination="Td8-KF-pjU" eventType="valueChanged" id="SxT-mS-9qm"/>
-                                </connections>
-                            </segmentedControl>
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="tSm-su-VwI">
                                 <rect key="frame" x="177.5" y="323.5" width="20" height="20"/>
                             </activityIndicatorView>
@@ -59,11 +49,8 @@
                             <constraint firstItem="NeF-Kz-10Q" firstAttribute="top" secondItem="He2-hN-Kxo" secondAttribute="bottom" constant="8" id="GpF-qo-y6L"/>
                             <constraint firstItem="NeF-Kz-10Q" firstAttribute="trailing" secondItem="Z58-q1-fUw" secondAttribute="trailingMargin" id="Hz5-IH-vJw"/>
                             <constraint firstItem="H32-AM-6vd" firstAttribute="leading" secondItem="He2-hN-Kxo" secondAttribute="leading" id="KQo-wn-gCu"/>
-                            <constraint firstItem="H32-AM-6vd" firstAttribute="top" secondItem="OkD-z5-UJC" secondAttribute="bottom" constant="8" symbolic="YES" id="MIo-xd-46k"/>
                             <constraint firstItem="tSm-su-VwI" firstAttribute="centerY" secondItem="Z58-q1-fUw" secondAttribute="centerY" id="Zko-td-qcB"/>
-                            <constraint firstItem="H32-AM-6vd" firstAttribute="leading" secondItem="OkD-z5-UJC" secondAttribute="leading" id="bZc-Ob-TrG"/>
-                            <constraint firstItem="H32-AM-6vd" firstAttribute="trailing" secondItem="OkD-z5-UJC" secondAttribute="trailing" id="d6l-Iz-34S"/>
-                            <constraint firstItem="H32-AM-6vd" firstAttribute="top" secondItem="Z58-q1-fUw" secondAttribute="top" constant="129" id="kSh-RR-Ugr"/>
+                            <constraint firstItem="H32-AM-6vd" firstAttribute="top" secondItem="Z58-q1-fUw" secondAttribute="top" constant="75" id="kSh-RR-Ugr"/>
                             <constraint firstItem="He2-hN-Kxo" firstAttribute="trailing" secondItem="Z58-q1-fUw" secondAttribute="trailingMargin" id="mAa-is-4np"/>
                             <constraint firstItem="tSm-su-VwI" firstAttribute="centerX" secondItem="He2-hN-Kxo" secondAttribute="centerX" id="tcs-2A-zeI"/>
                             <constraint firstItem="He2-hN-Kxo" firstAttribute="top" secondItem="H32-AM-6vd" secondAttribute="bottom" constant="8" symbolic="YES" id="xUc-O5-N06"/>
@@ -82,7 +69,6 @@
                     <connections>
                         <outlet property="httpStatusLabel" destination="He2-hN-Kxo" id="xxu-ZQ-Wb7"/>
                         <outlet property="loadingIndicator" destination="tSm-su-VwI" id="DDo-ZE-cJF"/>
-                        <outlet property="segmentedControl" destination="OkD-z5-UJC" id="Hi4-hL-7B1"/>
                         <outlet property="urlTextField" destination="H32-AM-6vd" id="csZ-kY-Ahy"/>
                         <outlet property="webView" destination="NeF-Kz-10Q" id="xxN-Ce-gXW"/>
                     </connections>
