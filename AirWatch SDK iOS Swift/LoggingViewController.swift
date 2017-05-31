@@ -24,34 +24,18 @@
 import UIKit
 import AWSDK
 
-class LoggingViewController: UIViewController,UIPickerViewDelegate,UIPickerViewDataSource, UITextFieldDelegate {
+class LoggingViewController: UIViewController, UITextFieldDelegate {
+    
     @IBOutlet weak var AppendToLog: UIButton!
-    
-    @IBOutlet weak var crashApp: UIButton!
-    
     @IBOutlet weak var sendAppLog: UIButton!
-    
     @IBOutlet weak var logLevelPicker: UIPickerView!
-    
     @IBOutlet weak var logInputField: UITextField!
-    
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
-    
-    
-    @IBOutlet weak var hasPreviousCrashText: UILabel!
     
     let pickerData = ["Verbose", "Info", "Warning", "Error"]
     var logLevelChoice = 0
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.logLevelPicker.isHidden = false;
-        self.sendAppLog.isHidden = false;
-        self.AppendToLog.isHidden = false;
-        self.logInputField.isHidden = false;
-        self.hasPreviousCrashText.isHidden = true;
-        self.crashApp.isHidden = true;
         
         logInputField.delegate = self
         logLevelPicker.delegate = self
@@ -59,7 +43,6 @@ class LoggingViewController: UIViewController,UIPickerViewDelegate,UIPickerViewD
         
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoggingViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
-
     }
     
     override func didReceiveMemoryWarning() {
@@ -67,92 +50,11 @@ class LoggingViewController: UIViewController,UIPickerViewDelegate,UIPickerViewD
         // Dispose of any resources that can be recreated.
     }
     
-    
-    // MARK - UISegmentedControl
-    
-    
-    @IBAction func segmentedControlChagned(_ sender: AnyObject) {
-//        AWLog.sharedInstance().log(withLogLevel: AWLogLevelVerbose, file: "LoggingViewController", methodName: "sendAppLog", line: 1234, message: "AirWatch Sample App Logging Test...")
-        switch segmentedControl.selectedSegmentIndex {
-        case 0:
-            
-            print("App Log")
-            
-            self.logLevelPicker.isHidden = false;
-            self.sendAppLog.isHidden = false;
-            self.AppendToLog.isHidden = false;
-            self.logInputField.isHidden = false;
-            self.hasPreviousCrashText.isHidden = true;
-            self.crashApp.isHidden = true;
-            
-            break
-        case 1:
-            //Send crash log if previous crash is logged. Then initialize a crash log session
-            print("Crash Log")
-            
-            self.logLevelPicker.isHidden = true;
-            self.sendAppLog.isHidden = true;
-            self.AppendToLog.isHidden = true;
-            self.logInputField.isHidden = true;
-            self.hasPreviousCrashText.isHidden = false;
-            self.crashApp.isHidden = false;
-
-
-            
-            break
-        default:
-            break
-        }
-    }
-
-    
-    
-    // MARK - picker delegate - The number of columns of data
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    // MARK - picker delegate -The number of rows of data
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return pickerData.count
-    }
-    
-    // MARK - picker delegate - The data to return for the row and component (column) that's being passed in
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return pickerData[row]
-    }
-    
-    
-    // MARK - picker delegate - Catpure the picker view selection
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        logLevelChoice = row
-    }
-    
-    
-    
-    // MARK: -crash the app
-    @IBAction func crashTheApp(_ sender: UIButton) {
-        let myCrashArray = [1, 2];
-        _ = myCrashArray[2];
-    }
-    
-    
-    // MARK: -select all when edit text is selected
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        logInputField.becomeFirstResponder()
-        logInputField.selectAll(nil)
-    }
-    
     // MARK: Append user input to current application log.
-    //This is to showcase the ability to customize applicationg logging and provide developers to log content as they desire
-    
-    
     @IBAction func appendToLog(_ sender: AnyObject) {
         guard let text = logInputField.text else {
             return
         }
-        //var logLevel = pickerData[logLevelChoice]
-        //var awLogLevel = AWLogLevelVerbose
         
         switch logLevelChoice {
         case 0:
@@ -170,45 +72,70 @@ class LoggingViewController: UIViewController,UIPickerViewDelegate,UIPickerViewD
         case 3:
             AWLogError(text)
             print("capturing error logs")
-
             break;
         default:
             break;
         }
     }
     
-    
-
-    
     // MARK: Send application log up till this point to AW console
-    
     @IBAction func sendAppLog(_ sender: AnyObject) {
         AWController().sendLogDataWithCompletion({
             (success, errorName) in
             
-            if(false == success){
+            if(!success){
                 NSLog("Error is : \(errorName?.localizedDescription ?? "No error")");
+                OperationQueue.main.addOperation {
+                    self.showAlert(withMessage: "Error sending logs")
+                }
             } else {
                 NSLog("Sucess");
+                OperationQueue.main.addOperation {
+                    self.showAlert(withMessage: "Logs sent to AW")
+                }
             }
         })
-        
-        let alertController = UIAlertController(title: "AW Log Reporter", message:
-            "Sent Log to AirWatch Console..", preferredStyle: UIAlertControllerStyle.alert)
-        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
-        
-        self.present(alertController, animated: true, completion: nil)
-        
-        
     }
     
+    // MARK:- select all when edit text is selected
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        logInputField.becomeFirstResponder()
+        logInputField.selectAll(nil)
+    }
+
     func dismissKeyboard() {
         view.endEditing(true)
     }
+    
+    func showAlert(withMessage message: String) {
+        let alertController = UIAlertController(title: "AWSDK Log Reporter",
+                                                message: message,
+                                                preferredStyle: UIAlertControllerStyle.alert)
+        
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+        
+        self.present(alertController, animated: true, completion: nil)
+    }
 }
 
+// MARK:- UIPicker Delegate and Datasource
 
+extension LoggingViewController: UIPickerViewDelegate {
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        logLevelChoice = row
+    }
+}
 
+extension LoggingViewController: UIPickerViewDataSource {
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
 
-
-
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return pickerData.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return pickerData[row]
+    }
+}
