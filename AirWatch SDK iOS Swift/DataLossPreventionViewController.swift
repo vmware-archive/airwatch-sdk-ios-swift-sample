@@ -40,23 +40,23 @@ class DataLossPreventionViewController: UIViewController, UITabBarDelegate {
     var currentSelection:Int = 0
     var pageAppDLPTitles,pageOverlayDLPTitles, pageEditingDLPTitles, pageMoreDLPTitles: NSArray!
     var pageAppDLPImages,pageOverlayDLPImages, pageEditingDLPImages, pageMoreDLPImages: NSArray!
+    var dlpEnabled = false
 
-    
- 
     override func viewDidLoad() {
         
         super.viewDidLoad()
         addSwipeRecognizer()
         tabBar.delegate = self
         tabBar.selectedItem = tabBar.items![0]
-        startRestrictionService()
         setupWalkThroughMaterial()
+        
+        dlpEnabled = checkDLPStatus()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if(currentSelection == 3){
-        setAppDLPViews()
+        if(currentSelection == 3) {
+            setAppDLPViews()
         }
         
     }
@@ -67,73 +67,43 @@ class DataLossPreventionViewController: UIViewController, UITabBarDelegate {
         
     }
     
-    
-    
-    //Starting the restriction service so it can fetch all the DLP flags from AW backend.
-    func startRestrictionService()  {
-//        do{
-//         try   AWRestrictions.startService()
-//        }
-//        catch{
-//            print("Error occured while starting restriction service \(error.localizedDescription)")
-//        }
+    func checkDLPStatus() -> Bool {
+        let restrictions = AWController.clientInstance().sdkProfile()?.restrictionsPayload
+        
+        guard let dlpSettings = restrictions?.enableDataLossPrevention else {
+            return false
+        }
+        
+        return dlpSettings
     }
-    
     
     @IBAction func didTapLearnMore(_ sender: UIButton) {
         self.performSegue(withIdentifier: "segueDLP", sender: self)
     }
     
-  
-    
     //MARK : Methods to control the Application DLP Settings
-
     @IBAction func didTapButton1(_ sender: AnyObject) {
         
-        if let restrictionPayload = AWController().sdkProfile()?.restrictionsPayload {
-        
-            let dlpSettings = restrictionPayload.enableDataLossPrevention
-            if(dlpSettings == false){
+        if(dlpEnabled){
+            let url = URL(string: "mailto:exampleuser@example.com")
+            UIApplication.shared.openURL(url!)
+        } else{
             alertUser(withMessage: alertMessageDLP)
-            }
-            else{
-                let url = URL(string: "mailto:exampleuser@example.com")
-                UIApplication.shared.openURL(url!)
-            }
-        }
-        
-        else{
-         alertUser(withMessage:alertMessageDLP)
         }
     }
-    
     
     @IBAction func didTapButton2(_ sender: AnyObject) {
         
-        
-        if let restrictionPayload = AWController().sdkProfile()?.restrictionsPayload {
-            
-            let dlpSettings = restrictionPayload.enableDataLossPrevention
-            if(dlpSettings == false){
-                alertUser(withMessage: alertMessageDLP)
-            }
-            else{
-                let url = URL(string: "https://www.vmware.com")
-                UIApplication.shared.openURL(url!)
-            }
-        }
-            
-        else{
+        if(dlpEnabled){
+            let url = URL(string: "https://www.vmware.com")
+            UIApplication.shared.openURL(url!)
+        } else {
             alertUser(withMessage: alertMessageDLP)
         }
-        
     }
-
     
     //MARK : Tab Bar Switching Contoller
-
     func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
-        
         
         switch item.tag {
         case 0:
@@ -153,7 +123,6 @@ class DataLossPreventionViewController: UIViewController, UITabBarDelegate {
         }
     }
 
-    
     func addSwipeRecognizer()  {
         
         let directions : [UISwipeGestureRecognizerDirection] = [.right,.left]
