@@ -74,6 +74,7 @@
 		F7333F811F013DDD00A36313 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "AirWatch-SDK-iOS-Swift-Sample/Base.lproj/Walkthrough.storyboard"; sourceTree = SOURCE_ROOT; };
 		F7333F8A1F013E8800A36313 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "AirWatch-SDK-iOS-Swift-Sample/AppDelegate.swift"; sourceTree = SOURCE_ROOT; };
 		F7333F8D1F013FE600A36313 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "AirWatch-SDK-iOS-Swift-Sample/Base.lproj/Main.storyboard"; sourceTree = SOURCE_ROOT; };
+		F7333F8F1F01510A00A36313 /* iOS Swift Sample App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "iOS Swift Sample App.entitlements"; sourceTree = "<group>"; };
 		F73777861ED8AB4A00135466 /* AWSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSDK.framework; sourceTree = "<group>"; };
 		F7B14EB31DECB7AF00E40279 /* AWSDKDefaults.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AWSDKDefaults.bundle; sourceTree = "<group>"; };
 		F7BC0DC11D93FFB300334C40 /* iOS Swift Sample App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Swift Sample App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -122,6 +123,7 @@
 		F7BC0DB81D93FFB300334C40 = {
 			isa = PBXGroup;
 			children = (
+				F7333F8F1F01510A00A36313 /* iOS Swift Sample App.entitlements */,
 				F7B14EB31DECB7AF00E40279 /* AWSDKDefaults.bundle */,
 				F7BC0DC31D93FFB300334C40 /* AirWatch-SDK-iOS-Swift-Sample */,
 				F7BC0DC21D93FFB300334C40 /* Products */,
@@ -257,6 +259,11 @@
 						DevelopmentTeam = 2QKP24Y3HJ;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -497,6 +504,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "iOS Swift Sample App.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 2QKP24Y3HJ;
 				ENABLE_BITCODE = NO;
@@ -518,6 +526,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "iOS Swift Sample App.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 2QKP24Y3HJ;
 				ENABLE_BITCODE = NO;
