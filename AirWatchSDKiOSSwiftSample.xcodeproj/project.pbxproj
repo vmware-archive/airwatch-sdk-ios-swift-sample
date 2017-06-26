@@ -258,7 +258,7 @@
 					};
 				};
 			};
-			buildConfigurationList = F7BC0DBC1D93FFB300334C40 /* Build configuration list for PBXProject "AirWatch SDK iOS Swift" */;
+			buildConfigurationList = F7BC0DBC1D93FFB300334C40 /* Build configuration list for PBXProject "AirWatchSDKiOSSwiftSample" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -535,7 +535,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		F7BC0DBC1D93FFB300334C40 /* Build configuration list for PBXProject "AirWatch SDK iOS Swift" */ = {
+		F7BC0DBC1D93FFB300334C40 /* Build configuration list for PBXProject "AirWatchSDKiOSSwiftSample" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				F7BC0DD11D93FFB400334C40 /* Debug */,

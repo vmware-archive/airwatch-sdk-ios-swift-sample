@@ -1,6 +1,6 @@
 //
 //  IntegratedAuthenticationViewController.swift
-//  AirWatch-SDK-iOS-Swift
+//  AirWatch-SDK-iOS-Swift-Sample
 //
 //  Copyright © 2017 VMware, Inc.  All rights reserved
 //
