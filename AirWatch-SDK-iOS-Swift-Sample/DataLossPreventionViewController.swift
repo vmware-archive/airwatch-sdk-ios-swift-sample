@@ -68,11 +68,11 @@ class DataLossPreventionViewController: UIViewController, UITabBarDelegate {
     }
     
     func checkDLPStatus() -> Bool {
-        let restrictions = AWController.clientInstance().sdkProfile()?.restrictionsPayload
-        
-        guard let dlpSettings = restrictions?.enableDataLossPrevention else {
+        guard let restrictions = AWController.clientInstance().sdkProfile()?.restrictionsPayload else {
             return false
         }
+        
+        let dlpSettings = restrictions.enableDataLossPrevention
         
         return dlpSettings
     }
@@ -82,7 +82,7 @@ class DataLossPreventionViewController: UIViewController, UITabBarDelegate {
     }
     
     //MARK : Methods to control the Application DLP Settings
-    @IBAction func didTapButton1(_ sender: AnyObject) {
+    @IBAction func didTapRedirectMailto(_ sender: AnyObject) {
         
         if(dlpEnabled){
             let url = URL(string: "mailto:exampleuser@example.com")
@@ -92,7 +92,7 @@ class DataLossPreventionViewController: UIViewController, UITabBarDelegate {
         }
     }
     
-    @IBAction func didTapButton2(_ sender: AnyObject) {
+    @IBAction func didTapRedirectHttpLink(_ sender: AnyObject) {
         
         if(dlpEnabled){
             let url = URL(string: "https://www.vmware.com")
@@ -226,8 +226,8 @@ class DataLossPreventionViewController: UIViewController, UITabBarDelegate {
         alertMessageDLP = "Please make sure to define correct bundle settings in your project and enable DLP in the SDK profile on the AW console"
         headingTextView.text = "Restrict data to be opened in AirWatch applications"
         descriptionTextView.text = "SDK Applications can be configured so that HTTP/HTTPS and MAILTO links can be automatically sent to VMware productivity apps.Click Learn more to explore!"
-        firstButton.setTitle( "Compose email in VMWare Boxer or inbox App", for: .normal)
-        secondButton.setTitle("Open URL in VMWare Browser App", for: .normal)
+//        firstButton.setTitle( "Compose email in VMWare Boxer or inbox App", for: .normal)
+//        secondButton.setTitle("Open URL in VMWare Browser App", for: .normal)
         
         self.pageAppDLPTitles = NSArray(objects: "Setup bundle in project","Install Productivity apps","Edit SDK Profile", "Enable settings in SDK Profile", "Set the DLP", "Assign the profile")
         self.pageAppDLPImages = NSArray(objects: "EditDLPBundle","InstallProductivityApps","EditSDKProfile","EditDLPInProfile","EnableDLPOptions","AssignSDKProfile")
