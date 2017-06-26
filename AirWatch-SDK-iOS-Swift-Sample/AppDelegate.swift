@@ -1,6 +1,6 @@
 //
 //  AppDelegate.swift
-//  AirWatch-SDK-iOS-Swift
+//  AirWatch-SDK-iOS-Swift-Sample
 //
 //  Copyright © 2017 VMware, Inc.  All rights reserved
 //
@@ -27,137 +27,112 @@ import AWSDK
 
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate,AWSDKDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, AWControllerDelegate {
     
     
     var window: UIWindow?
     var sdkUseCase = SDKUseCasesTableViewController()
     var awSDKInit: Bool? = false
 
-
-    // MARK: - Native iOS Callbacks
-    
+    // MARK:- UI Lifecycle
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         //Configure the controller.
-        
         let controller = AWController.clientInstance()
         
         //Define the callback. This should match with the entry in the info.plist
-        controller?.callbackScheme = "iosswiftsample"
+        controller.callbackScheme = "iosswiftsample"
         
         //Set the delegate.
-        controller?.delegate = self
+        controller.delegate = self
+        
+        // Start the SDK
+        controller.start()
     
-        
-        
         return true
     }
     
-   
-    func applicationWillResignActive(_ _application: UIApplication) {
-        
-    }
-    
-    func applicationDidEnterBackground(_ _application: UIApplication) {
-        
-    }
-    
-    func applicationWillEnterForeground(_ _application: UIApplication) {
-    }
-    
-    //Calling the SDK's start function when application becomes active
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        AWController.clientInstance().start()        
-    }
-    
-    
     func application(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
-        return AWController.clientInstance().handleOpen(url, fromApplication: sourceApplication)
+        // Defaulting to use SDK for openURL
+        return AWController.clientInstance().handleOpenURL(url, fromApplication: sourceApplication)
     }
-    
-    func applicationWillTerminate(_ _application: UIApplication) {
-    }
-    
-    
     
     // MARK: - AWSDKDelegate
     
-    func initialCheckDoneWithError(_ error: Error!) {
+    func controllerDidFinishInitialCheck(error: NSError?) {
         NSLog("initialCheckDoneWithError called")
         
+        /*
+         * There is not a guarantee that the AWController Delegates will be called on the main thread.
+         * Since this sample is removing a UI Blocker once InitialCheck is called, we are updating that on
+         * the main thread.
+         */
         if error != nil {
- 
-            sdkUseCase.hideBlocker()
-            NSLog("initialCheckDone With  Error")
-            awSDKInit=true
-            let alertController = UIAlertController(title: "AWInit  Reporter", message:
-                "An error occured while initializing AW SDK", preferredStyle: UIAlertControllerStyle.alert)
-            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
-
-        }
-        else {
-            sdkUseCase.hideBlocker()
-            NSLog("initialCheckDone NO Error")
-            awSDKInit=true
-                        
-            
+            OperationQueue.main.addOperation {
+                self.sdkUseCase.hideBlocker()
+                NSLog("initialCheckDone With  Error")
+                self.awSDKInit=true
+                let alertController = UIAlertController(title: "AWInit  Reporter", message:
+                    "An error occured while initializing AW SDK", preferredStyle: UIAlertControllerStyle.alert)
+                alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+            }
+        } else {
+            OperationQueue.main.addOperation {
+                self.sdkUseCase.hideBlocker()
+                NSLog("initialCheckDone NO Error")
+                self.awSDKInit=true
+            }
         }
     }
-       
-    func receivedProfiles(_ profiles: [Any]!) {
+    
+    func controllerDidReceive(profiles: [Any]!) {
         
         NSLog("received profiles called")
         
-        //    profiles
+        // Profiles
         if profiles != nil {
             
-            if let awProfiles = profiles as? [AWProfile] {
-                NSLog ("Now printing the profiles")
-                for profile in awProfiles {
-                    NSLog (profile.displayName);
-                 
-                    print("full profile \(profile.toDictionary())")
-                    }
-            }
-            if let awPayload = profiles as? [AWProfilePayload] {
-                NSLog("Now printing the payloads")
-                for payload in awPayload {
-                    print(payload)
-                }
-                
-            }
-        }
-        else {
+//            if let awProfiles = profiles as? [AWProfile] {
+//                NSLog ("Now printing the profiles")
+//                for profile in awProfiles {
+//                    NSLog (profile.displayName);
+//                 
+//                    print("full profile \(profile.toDictionary())")
+//                    }
+//            }
+//            
+//            if let awPayload = profiles as? [AWProfilePayload] {
+//                NSLog("Now printing the payloads")
+//                for payload in awPayload {
+//                    print(payload)
+//                }
+//            }
+        } else {
             NSLog("receivedProfiles is nil")
         }
         
     }
     
-    func wipe() {
+    func controllerDidWipeCurrentUserData() {
         NSLog("wipe")
     }
     
-    func lock() {
+    func controllerDidLockDataAccess() {
         NSLog("lock")
     }
     
-    func unlock() {        
+    func controllerDidUnlockDataAccess() {
         NSLog("unlock")
     }
     
-    func resumeNetworkActivity() {
+    func applicationCanResumeNetworkActivity() {
         NSLog("resumeNetworkActivity")
     }
     
-    func stopNetworkActivity(_ networkActivityStatus: AWNetworkActivityStatus) {
+    func applicationShouldStopNetworkActivity(reason: AWSDK.NetworkActivityStatus) {
+        NSLog("stopnetworkActivity")
     }
-    func stopNetworkActivity() {
-        
-    }
-    
-    
     
 }
 

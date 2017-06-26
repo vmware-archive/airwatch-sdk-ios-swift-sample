@@ -1,5 +1,6 @@
 //
-//  AirWatch-SDK-iOS-Swift
+//  SDKUseCasesTableViewController.swift
+//  AirWatch-SDK-iOS-Swift-Sample
 //
 //  Copyright © 2017 VMware, Inc.  All rights reserved
 //
@@ -21,33 +22,49 @@
 //  EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
-
 import UIKit
 
-class TutorialViewController: UIViewController {
-    
-    @IBOutlet weak var imageView: UIImageView!
+class SDKUseCasesTableViewController: UITableViewController {
 
-    @IBOutlet weak var topLabel: UILabel!
-    var pageIndex: Int!
-    var titleText: String!
-    var imageFile: String!
+    var loadingView  = LoadingIndicatorView();
+
+    /*
+     A static class which act as a gateway to different AW SDK Use cases
+    */
     
-    
-    //Setting the title and the image
-    override func viewDidLoad()
-    {
+    override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.tableFooterView = UIView()
+        let appDelegate = UIApplication.shared.delegate as? AppDelegate
         
-        self.imageView.image = UIImage(named: self.imageFile)
-        self.topLabel.text = self.titleText
-        
+        /*
+        ** THIS IS WHERE WE ARE SHOWING THE BLOCKER SCREEN**
+         We should wait for SDK to initialize completely before attempting to utilize any SDK resource for example trying to
+         attemp tunneling. This blocker screens is completely optional but is shown to demonstrate good practise.
+        */
+        let sdkStatus = appDelegate?.awSDKInit
+                if  (sdkStatus == false){
+                    print("inside sdk usecases")
+                    LoadingIndicatorView.show(self.parent!.view, loadingText: "Initializing SDK...")
+                }
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-  
     
+    //MARK: Blocker Screen
+    
+    func showBocker(){
+        print("Showing Blocker")
+    }
+    
+    func hideBlocker() {
+        print("hiding Blocker")
+        LoadingIndicatorView.hide()
+    }
+
+    // MARK: - Table view data source
+    // Currently empty since static table cell sources are being used
 }

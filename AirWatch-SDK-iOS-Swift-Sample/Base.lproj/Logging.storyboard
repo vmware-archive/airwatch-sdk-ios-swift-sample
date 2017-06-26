@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="EvS-R4-nqw">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Logging-->
+        <scene sceneID="9YN-Do-veM">
+            <objects>
+                <viewController title="Logging" id="EvS-R4-nqw" customClass="LoggingViewController" customModule="iOS_Swift_Sample_App" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Akv-zQ-Vmf"/>
+                        <viewControllerLayoutGuide type="bottom" id="tKs-xO-RLi"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uhg-kW-lIf">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wck-Jr-XPT">
+                                <rect key="frame" x="60" y="245" width="255" height="30"/>
+                                <state key="normal" title="Append to Log"/>
+                                <connections>
+                                    <action selector="appendToLog:" destination="EvS-R4-nqw" eventType="touchUpInside" id="Z4j-nS-hFO"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Start typing to Log" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zZQ-fH-1xe">
+                                <rect key="frame" x="97" y="207" width="184" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3eJ-C1-tcv">
+                                <rect key="frame" x="139" y="137" width="97" height="30"/>
+                                <state key="normal" title="Send App Log"/>
+                                <connections>
+                                    <action selector="sendAppLog:" destination="EvS-R4-nqw" eventType="touchUpInside" id="1di-ou-c28"/>
+                                </connections>
+                            </button>
+                            <pickerView contentMode="scaleToFill" horizontalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="3mA-8K-FbC">
+                                <rect key="frame" x="27.5" y="310" width="320" height="216"/>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="3mA-8K-FbC" firstAttribute="top" secondItem="Wck-Jr-XPT" secondAttribute="bottom" constant="35" id="2OL-rm-6gT"/>
+                            <constraint firstItem="3eJ-C1-tcv" firstAttribute="centerX" secondItem="Wck-Jr-XPT" secondAttribute="centerX" id="FoR-CK-Af0"/>
+                            <constraint firstItem="3mA-8K-FbC" firstAttribute="centerX" secondItem="uhg-kW-lIf" secondAttribute="centerX" id="Mak-03-1Yf"/>
+                            <constraint firstItem="Wck-Jr-XPT" firstAttribute="centerX" secondItem="3mA-8K-FbC" secondAttribute="centerX" id="QvV-da-CCj"/>
+                            <constraint firstItem="zZQ-fH-1xe" firstAttribute="leading" secondItem="uhg-kW-lIf" secondAttribute="leadingMargin" constant="81" id="TKL-J4-CL7"/>
+                            <constraint firstItem="Wck-Jr-XPT" firstAttribute="leading" secondItem="uhg-kW-lIf" secondAttribute="leadingMargin" constant="44" id="WHq-jH-0Bh"/>
+                            <constraint firstItem="zZQ-fH-1xe" firstAttribute="top" secondItem="3eJ-C1-tcv" secondAttribute="bottom" constant="40" id="ZVJ-dA-z7j"/>
+                            <constraint firstItem="3eJ-C1-tcv" firstAttribute="top" secondItem="Akv-zQ-Vmf" secondAttribute="bottom" constant="73" id="hSt-kq-uzf"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="zZQ-fH-1xe" secondAttribute="trailing" constant="78" id="i7D-JL-Tvk"/>
+                            <constraint firstItem="Wck-Jr-XPT" firstAttribute="top" secondItem="zZQ-fH-1xe" secondAttribute="bottom" constant="8" symbolic="YES" id="up1-JJ-p8t"/>
+                        </constraints>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="AppendToLog" destination="Wck-Jr-XPT" id="raA-y9-iDa"/>
+                        <outlet property="logInputField" destination="zZQ-fH-1xe" id="FWd-Dr-JBm"/>
+                        <outlet property="logLevelPicker" destination="3mA-8K-FbC" id="xty-w2-Ygl"/>
+                        <outlet property="sendAppLog" destination="3eJ-C1-tcv" id="j4L-Vj-m4b"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QFk-1z-ieF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-673" y="695"/>
+        </scene>
+    </scenes>
+</document>

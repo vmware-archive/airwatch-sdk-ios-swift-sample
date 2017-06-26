@@ -1,5 +1,5 @@
 //
-//  AirWatch-SDK-iOS-Swift
+//  AirWatch-SDK-iOS-Swift-Sample
 //
 //  Copyright © 2017 VMware, Inc.  All rights reserved
 //
@@ -47,40 +47,39 @@ class CustomSettingsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
- 
-
     @IBAction func printSettings(_ sender: AnyObject) {
 
-        let customPayload  = AWCommandManager().sdkProfile().customPayload
+        let customPayload: CustomPayload = (AWController.clientInstance().sdkProfile()?.customPayload)!
         
         //Checking if the Custom Settings Payload is nil or not set
-        if customPayload != nil{
-            
-            let customSettings = customPayload?.settings
-            if(customSettings == ""){
-                alertUser(withMessage: "Custom settings payload is either blank or not configured in SDK Profile")
-            }
-            else{
-                updateTextView(withString: customSettings!)
-            }
-        }
-        else{
+        guard let customSettings: String = customPayload.settings else { return }
+        
+        if(customSettings == ""){
             alertUser(withMessage: "Custom settings payload is either blank or not configured in SDK Profile")
+        } else{
+            updateTextView(withString: customSettings)
         }
+        
     }
 
     // MARK: - Alert/UI
-    
     func alertUser(withMessage customMessage:NSString){
-        let alertController = UIAlertController(title: "Custom Settings", message:
-            customMessage as String, preferredStyle: UIAlertControllerStyle.alert)
-        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
         
-        alertController.addAction(UIAlertAction(title: "Learn More", style: UIAlertActionStyle.default, handler: { (alertAction) -> Void in
+        let alertController = UIAlertController(title: "Custom Settings",
+                                                message: customMessage as String,
+                                                preferredStyle: UIAlertControllerStyle.alert)
+        
+        alertController.addAction(UIAlertAction(title: "Dismiss",
+                                                style: UIAlertActionStyle.default,
+                                                handler: nil))
+        
+        
+        alertController.addAction(UIAlertAction(title: "Learn More",
+                                                style: UIAlertActionStyle.default,
+                                                handler: { (alertAction) -> Void in
+                                                    
             self.performSegue(withIdentifier: "segueSWT", sender: self)
-
         }))
-        
         
         self.present(alertController, animated: true, completion: nil)
     }
@@ -88,9 +87,6 @@ class CustomSettingsViewController: UIViewController {
     func updateTextView(withString customSettings: String){
         customSettingsTextView.text = customSettings as String
     }
-
-    
-
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
         // Create a new variable to store the instance of WalkThthrough View Controller

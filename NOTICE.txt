@@ -1,4 +1,4 @@
-AirWatch-SDK-iOS-Swift
+AirWatch-SDK-iOS-Swift-Sample
 
 Copyright (c) 2017 VMware, Inc. All Rights Reserved. 
 
