@@ -1,0 +1,562 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F7333F591F013D8700A36313 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7333F581F013D8700A36313 /* Assets.xcassets */; };
+		F7333F661F013DA800A36313 /* CustomSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7333F5A1F013DA800A36313 /* CustomSettingsViewController.swift */; };
+		F7333F671F013DA800A36313 /* DataLossPreventionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7333F5B1F013DA800A36313 /* DataLossPreventionViewController.swift */; };
+		F7333F681F013DA800A36313 /* GeneralInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7333F5C1F013DA800A36313 /* GeneralInformationViewController.swift */; };
+		F7333F691F013DA800A36313 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F7333F5D1F013DA800A36313 /* Info.plist */; };
+		F7333F6A1F013DA800A36313 /* IntegratedAuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7333F5E1F013DA800A36313 /* IntegratedAuthenticationViewController.swift */; };
+		F7333F6B1F013DA800A36313 /* LoadingIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7333F5F1F013DA800A36313 /* LoadingIndicatorView.swift */; };
+		F7333F6C1F013DA800A36313 /* LocalAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7333F601F013DA800A36313 /* LocalAuthViewController.swift */; };
+		F7333F6D1F013DA800A36313 /* LoggingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7333F611F013DA800A36313 /* LoggingViewController.swift */; };
+		F7333F6E1F013DA800A36313 /* SDKUseCasesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7333F621F013DA800A36313 /* SDKUseCasesTableViewController.swift */; };
+		F7333F6F1F013DA800A36313 /* TunnelingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7333F631F013DA800A36313 /* TunnelingViewController.swift */; };
+		F7333F701F013DA800A36313 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7333F641F013DA800A36313 /* TutorialViewController.swift */; };
+		F7333F711F013DA800A36313 /* WalkThroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7333F651F013DA800A36313 /* WalkThroughViewController.swift */; };
+		F7333F821F013DDD00A36313 /* AppTunneling.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7333F721F013DDD00A36313 /* AppTunneling.storyboard */; };
+		F7333F831F013DDD00A36313 /* Authentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7333F741F013DDD00A36313 /* Authentication.storyboard */; };
+		F7333F841F013DDD00A36313 /* DLP.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7333F761F013DDD00A36313 /* DLP.storyboard */; };
+		F7333F851F013DDD00A36313 /* GeneralInformation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7333F781F013DDD00A36313 /* GeneralInformation.storyboard */; };
+		F7333F861F013DDD00A36313 /* IntegratedAuth.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7333F7A1F013DDD00A36313 /* IntegratedAuth.storyboard */; };
+		F7333F871F013DDD00A36313 /* Logging.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7333F7C1F013DDD00A36313 /* Logging.storyboard */; };
+		F7333F881F013DDD00A36313 /* RemoteConfiguration.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7333F7E1F013DDD00A36313 /* RemoteConfiguration.storyboard */; };
+		F7333F891F013DDD00A36313 /* Walkthrough.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7333F801F013DDD00A36313 /* Walkthrough.storyboard */; };
+		F7333F8B1F013E8800A36313 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7333F8A1F013E8800A36313 /* AppDelegate.swift */; };
+		F7333F8E1F013FE600A36313 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7333F8C1F013FE600A36313 /* Main.storyboard */; };
+		F7B14EB41DECB7AF00E40279 /* AWSDKDefaults.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F7B14EB31DECB7AF00E40279 /* AWSDKDefaults.bundle */; };
+		F7E024081EDDDBBE0031E33D /* AWOpenSSL.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F7E024061EDDDB650031E33D /* AWOpenSSL.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		F7E024091EDDDBBE0031E33D /* AWSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F73777861ED8AB4A00135466 /* AWSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		F7B14EB21DECB74500E40279 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				F7E024081EDDDBBE0031E33D /* AWOpenSSL.framework in Embed Frameworks */,
+				F7E024091EDDDBBE0031E33D /* AWSDK.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		F7333F581F013D8700A36313 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "AirWatch-SDK-iOS-Swift-Sample/Assets.xcassets"; sourceTree = SOURCE_ROOT; };
+		F7333F5A1F013DA800A36313 /* CustomSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomSettingsViewController.swift; path = "AirWatch-SDK-iOS-Swift-Sample/CustomSettingsViewController.swift"; sourceTree = SOURCE_ROOT; };
+		F7333F5B1F013DA800A36313 /* DataLossPreventionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataLossPreventionViewController.swift; path = "AirWatch-SDK-iOS-Swift-Sample/DataLossPreventionViewController.swift"; sourceTree = SOURCE_ROOT; };
+		F7333F5C1F013DA800A36313 /* GeneralInformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GeneralInformationViewController.swift; path = "AirWatch-SDK-iOS-Swift-Sample/GeneralInformationViewController.swift"; sourceTree = SOURCE_ROOT; };
+		F7333F5D1F013DA800A36313 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "AirWatch-SDK-iOS-Swift-Sample/Info.plist"; sourceTree = SOURCE_ROOT; };
+		F7333F5E1F013DA800A36313 /* IntegratedAuthenticationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IntegratedAuthenticationViewController.swift; path = "AirWatch-SDK-iOS-Swift-Sample/IntegratedAuthenticationViewController.swift"; sourceTree = SOURCE_ROOT; };
+		F7333F5F1F013DA800A36313 /* LoadingIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoadingIndicatorView.swift; path = "AirWatch-SDK-iOS-Swift-Sample/LoadingIndicatorView.swift"; sourceTree = SOURCE_ROOT; };
+		F7333F601F013DA800A36313 /* LocalAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocalAuthViewController.swift; path = "AirWatch-SDK-iOS-Swift-Sample/LocalAuthViewController.swift"; sourceTree = SOURCE_ROOT; };
+		F7333F611F013DA800A36313 /* LoggingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoggingViewController.swift; path = "AirWatch-SDK-iOS-Swift-Sample/LoggingViewController.swift"; sourceTree = SOURCE_ROOT; };
+		F7333F621F013DA800A36313 /* SDKUseCasesTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SDKUseCasesTableViewController.swift; path = "AirWatch-SDK-iOS-Swift-Sample/SDKUseCasesTableViewController.swift"; sourceTree = SOURCE_ROOT; };
+		F7333F631F013DA800A36313 /* TunnelingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TunnelingViewController.swift; path = "AirWatch-SDK-iOS-Swift-Sample/TunnelingViewController.swift"; sourceTree = SOURCE_ROOT; };
+		F7333F641F013DA800A36313 /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TutorialViewController.swift; path = "AirWatch-SDK-iOS-Swift-Sample/TutorialViewController.swift"; sourceTree = SOURCE_ROOT; };
+		F7333F651F013DA800A36313 /* WalkThroughViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = WalkThroughViewController.swift; path = "AirWatch-SDK-iOS-Swift-Sample/WalkThroughViewController.swift"; sourceTree = SOURCE_ROOT; };
+		F7333F731F013DDD00A36313 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "AirWatch-SDK-iOS-Swift-Sample/Base.lproj/AppTunneling.storyboard"; sourceTree = SOURCE_ROOT; };
+		F7333F751F013DDD00A36313 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "AirWatch-SDK-iOS-Swift-Sample/Base.lproj/Authentication.storyboard"; sourceTree = SOURCE_ROOT; };
+		F7333F771F013DDD00A36313 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "AirWatch-SDK-iOS-Swift-Sample/Base.lproj/DLP.storyboard"; sourceTree = SOURCE_ROOT; };
+		F7333F791F013DDD00A36313 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "AirWatch-SDK-iOS-Swift-Sample/Base.lproj/GeneralInformation.storyboard"; sourceTree = SOURCE_ROOT; };
+		F7333F7B1F013DDD00A36313 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "AirWatch-SDK-iOS-Swift-Sample/Base.lproj/IntegratedAuth.storyboard"; sourceTree = SOURCE_ROOT; };
+		F7333F7D1F013DDD00A36313 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "AirWatch-SDK-iOS-Swift-Sample/Base.lproj/Logging.storyboard"; sourceTree = SOURCE_ROOT; };
+		F7333F7F1F013DDD00A36313 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "AirWatch-SDK-iOS-Swift-Sample/Base.lproj/RemoteConfiguration.storyboard"; sourceTree = SOURCE_ROOT; };
+		F7333F811F013DDD00A36313 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "AirWatch-SDK-iOS-Swift-Sample/Base.lproj/Walkthrough.storyboard"; sourceTree = SOURCE_ROOT; };
+		F7333F8A1F013E8800A36313 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "AirWatch-SDK-iOS-Swift-Sample/AppDelegate.swift"; sourceTree = SOURCE_ROOT; };
+		F7333F8D1F013FE600A36313 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "AirWatch-SDK-iOS-Swift-Sample/Base.lproj/Main.storyboard"; sourceTree = SOURCE_ROOT; };
+		F73777861ED8AB4A00135466 /* AWSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSDK.framework; sourceTree = "<group>"; };
+		F7B14EB31DECB7AF00E40279 /* AWSDKDefaults.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AWSDKDefaults.bundle; sourceTree = "<group>"; };
+		F7BC0DC11D93FFB300334C40 /* iOS Swift Sample App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Swift Sample App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7E024061EDDDB650031E33D /* AWOpenSSL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWOpenSSL.framework; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F7BC0DBE1D93FFB300334C40 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9F18DCBB1DB4422900160C4B /* UI Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				F7333F5F1F013DA800A36313 /* LoadingIndicatorView.swift */,
+				F78126101E938E84005FB3A5 /* Walkthrough */,
+			);
+			name = "UI Helpers";
+			sourceTree = "<group>";
+		};
+		9F9F84221D9AC7FF00C8EE7E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F7E024061EDDDB650031E33D /* AWOpenSSL.framework */,
+				F73777861ED8AB4A00135466 /* AWSDK.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F78126101E938E84005FB3A5 /* Walkthrough */ = {
+			isa = PBXGroup;
+			children = (
+				F7333F801F013DDD00A36313 /* Walkthrough.storyboard */,
+				F7333F641F013DA800A36313 /* TutorialViewController.swift */,
+				F7333F651F013DA800A36313 /* WalkThroughViewController.swift */,
+			);
+			name = Walkthrough;
+			sourceTree = "<group>";
+		};
+		F7BC0DB81D93FFB300334C40 = {
+			isa = PBXGroup;
+			children = (
+				F7B14EB31DECB7AF00E40279 /* AWSDKDefaults.bundle */,
+				F7BC0DC31D93FFB300334C40 /* AirWatch-SDK-iOS-Swift-Sample */,
+				F7BC0DC21D93FFB300334C40 /* Products */,
+				9F9F84221D9AC7FF00C8EE7E /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		F7BC0DC21D93FFB300334C40 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F7BC0DC11D93FFB300334C40 /* iOS Swift Sample App.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F7BC0DC31D93FFB300334C40 /* AirWatch-SDK-iOS-Swift-Sample */ = {
+			isa = PBXGroup;
+			children = (
+				F7333F8C1F013FE600A36313 /* Main.storyboard */,
+				F7333F8A1F013E8800A36313 /* AppDelegate.swift */,
+				F7333F621F013DA800A36313 /* SDKUseCasesTableViewController.swift */,
+				F7EB82821E924B7900EB5C49 /* Authentication */,
+				F7EB826E1E92413500EB5C49 /* GeneralInformation */,
+				F7EB82741E9242E700EB5C49 /* AppTunneling */,
+				F7EB82771E92438000EB5C49 /* IntegratedAuthentication */,
+				F7EB827E1E924AD500EB5C49 /* RemoteConfiguration */,
+				F7EB827B1E92444500EB5C49 /* Instrumentation */,
+				F7EB82831E924BF000EB5C49 /* DLP */,
+				9F18DCBB1DB4422900160C4B /* UI Helpers */,
+				F7333F581F013D8700A36313 /* Assets.xcassets */,
+				F7333F5D1F013DA800A36313 /* Info.plist */,
+			);
+			name = "AirWatch-SDK-iOS-Swift-Sample";
+			path = "iOS Swift Sample App";
+			sourceTree = "<group>";
+		};
+		F7EB826E1E92413500EB5C49 /* GeneralInformation */ = {
+			isa = PBXGroup;
+			children = (
+				F7333F781F013DDD00A36313 /* GeneralInformation.storyboard */,
+				F7333F5C1F013DA800A36313 /* GeneralInformationViewController.swift */,
+			);
+			name = GeneralInformation;
+			sourceTree = "<group>";
+		};
+		F7EB82741E9242E700EB5C49 /* AppTunneling */ = {
+			isa = PBXGroup;
+			children = (
+				F7333F721F013DDD00A36313 /* AppTunneling.storyboard */,
+				F7333F631F013DA800A36313 /* TunnelingViewController.swift */,
+			);
+			name = AppTunneling;
+			sourceTree = "<group>";
+		};
+		F7EB82771E92438000EB5C49 /* IntegratedAuthentication */ = {
+			isa = PBXGroup;
+			children = (
+				F7333F7A1F013DDD00A36313 /* IntegratedAuth.storyboard */,
+				F7333F5E1F013DA800A36313 /* IntegratedAuthenticationViewController.swift */,
+			);
+			name = IntegratedAuthentication;
+			sourceTree = "<group>";
+		};
+		F7EB827B1E92444500EB5C49 /* Instrumentation */ = {
+			isa = PBXGroup;
+			children = (
+				F7333F7C1F013DDD00A36313 /* Logging.storyboard */,
+				F7333F611F013DA800A36313 /* LoggingViewController.swift */,
+			);
+			name = Instrumentation;
+			sourceTree = "<group>";
+		};
+		F7EB827E1E924AD500EB5C49 /* RemoteConfiguration */ = {
+			isa = PBXGroup;
+			children = (
+				F7333F7E1F013DDD00A36313 /* RemoteConfiguration.storyboard */,
+				F7333F5A1F013DA800A36313 /* CustomSettingsViewController.swift */,
+			);
+			name = RemoteConfiguration;
+			sourceTree = "<group>";
+		};
+		F7EB82821E924B7900EB5C49 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				F7333F741F013DDD00A36313 /* Authentication.storyboard */,
+				F7333F601F013DA800A36313 /* LocalAuthViewController.swift */,
+			);
+			name = Authentication;
+			sourceTree = "<group>";
+		};
+		F7EB82831E924BF000EB5C49 /* DLP */ = {
+			isa = PBXGroup;
+			children = (
+				F7333F761F013DDD00A36313 /* DLP.storyboard */,
+				F7333F5B1F013DA800A36313 /* DataLossPreventionViewController.swift */,
+			);
+			name = DLP;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F7BC0DC01D93FFB300334C40 /* iOS Swift Sample App */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F7BC0DD31D93FFB400334C40 /* Build configuration list for PBXNativeTarget "iOS Swift Sample App" */;
+			buildPhases = (
+				F7BC0DBD1D93FFB300334C40 /* Sources */,
+				F7BC0DBE1D93FFB300334C40 /* Frameworks */,
+				F7BC0DBF1D93FFB300334C40 /* Resources */,
+				F7B14EB21DECB74500E40279 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "iOS Swift Sample App";
+			productName = "iOS Swift Sample App";
+			productReference = F7BC0DC11D93FFB300334C40 /* iOS Swift Sample App.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F7BC0DB91D93FFB300334C40 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0800;
+				LastUpgradeCheck = 0830;
+				ORGANIZATIONNAME = VMware;
+				TargetAttributes = {
+					F7BC0DC01D93FFB300334C40 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = 2QKP24Y3HJ;
+						LastSwiftMigration = 0820;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = F7BC0DBC1D93FFB300334C40 /* Build configuration list for PBXProject "AirWatch-SDK-iOS-Swift-Sample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = F7BC0DB81D93FFB300334C40;
+			productRefGroup = F7BC0DC21D93FFB300334C40 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F7BC0DC01D93FFB300334C40 /* iOS Swift Sample App */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F7BC0DBF1D93FFB300334C40 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F7333F881F013DDD00A36313 /* RemoteConfiguration.storyboard in Resources */,
+				F7333F821F013DDD00A36313 /* AppTunneling.storyboard in Resources */,
+				F7333F841F013DDD00A36313 /* DLP.storyboard in Resources */,
+				F7333F8E1F013FE600A36313 /* Main.storyboard in Resources */,
+				F7333F861F013DDD00A36313 /* IntegratedAuth.storyboard in Resources */,
+				F7333F851F013DDD00A36313 /* GeneralInformation.storyboard in Resources */,
+				F7B14EB41DECB7AF00E40279 /* AWSDKDefaults.bundle in Resources */,
+				F7333F831F013DDD00A36313 /* Authentication.storyboard in Resources */,
+				F7333F691F013DA800A36313 /* Info.plist in Resources */,
+				F7333F591F013D8700A36313 /* Assets.xcassets in Resources */,
+				F7333F891F013DDD00A36313 /* Walkthrough.storyboard in Resources */,
+				F7333F871F013DDD00A36313 /* Logging.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F7BC0DBD1D93FFB300334C40 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F7333F6C1F013DA800A36313 /* LocalAuthViewController.swift in Sources */,
+				F7333F6E1F013DA800A36313 /* SDKUseCasesTableViewController.swift in Sources */,
+				F7333F681F013DA800A36313 /* GeneralInformationViewController.swift in Sources */,
+				F7333F6B1F013DA800A36313 /* LoadingIndicatorView.swift in Sources */,
+				F7333F671F013DA800A36313 /* DataLossPreventionViewController.swift in Sources */,
+				F7333F6F1F013DA800A36313 /* TunnelingViewController.swift in Sources */,
+				F7333F8B1F013E8800A36313 /* AppDelegate.swift in Sources */,
+				F7333F6D1F013DA800A36313 /* LoggingViewController.swift in Sources */,
+				F7333F711F013DA800A36313 /* WalkThroughViewController.swift in Sources */,
+				F7333F661F013DA800A36313 /* CustomSettingsViewController.swift in Sources */,
+				F7333F6A1F013DA800A36313 /* IntegratedAuthenticationViewController.swift in Sources */,
+				F7333F701F013DA800A36313 /* TutorialViewController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		F7333F721F013DDD00A36313 /* AppTunneling.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F7333F731F013DDD00A36313 /* Base */,
+			);
+			name = AppTunneling.storyboard;
+			sourceTree = "<group>";
+		};
+		F7333F741F013DDD00A36313 /* Authentication.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F7333F751F013DDD00A36313 /* Base */,
+			);
+			name = Authentication.storyboard;
+			sourceTree = "<group>";
+		};
+		F7333F761F013DDD00A36313 /* DLP.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F7333F771F013DDD00A36313 /* Base */,
+			);
+			name = DLP.storyboard;
+			sourceTree = "<group>";
+		};
+		F7333F781F013DDD00A36313 /* GeneralInformation.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F7333F791F013DDD00A36313 /* Base */,
+			);
+			name = GeneralInformation.storyboard;
+			sourceTree = "<group>";
+		};
+		F7333F7A1F013DDD00A36313 /* IntegratedAuth.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F7333F7B1F013DDD00A36313 /* Base */,
+			);
+			name = IntegratedAuth.storyboard;
+			sourceTree = "<group>";
+		};
+		F7333F7C1F013DDD00A36313 /* Logging.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F7333F7D1F013DDD00A36313 /* Base */,
+			);
+			name = Logging.storyboard;
+			sourceTree = "<group>";
+		};
+		F7333F7E1F013DDD00A36313 /* RemoteConfiguration.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F7333F7F1F013DDD00A36313 /* Base */,
+			);
+			name = RemoteConfiguration.storyboard;
+			sourceTree = "<group>";
+		};
+		F7333F801F013DDD00A36313 /* Walkthrough.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F7333F811F013DDD00A36313 /* Base */,
+			);
+			name = Walkthrough.storyboard;
+			sourceTree = "<group>";
+		};
+		F7333F8C1F013FE600A36313 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F7333F8D1F013FE600A36313 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F7BC0DD11D93FFB400334C40 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F7BC0DD21D93FFB400334C40 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F7BC0DD41D93FFB400334C40 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 2QKP24Y3HJ;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/AirWatch-SDK-iOS-Swift-Sample/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.vmware.AirWatch-SDK-iOS-Swift-Sample";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		F7BC0DD51D93FFB400334C40 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 2QKP24Y3HJ;
+				ENABLE_BITCODE = NO;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/AirWatch-SDK-iOS-Swift-Sample/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = "";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.vmware.AirWatch-SDK-iOS-Swift-Sample";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F7BC0DBC1D93FFB300334C40 /* Build configuration list for PBXProject "AirWatch-SDK-iOS-Swift-Sample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F7BC0DD11D93FFB400334C40 /* Debug */,
+				F7BC0DD21D93FFB400334C40 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F7BC0DD31D93FFB400334C40 /* Build configuration list for PBXNativeTarget "iOS Swift Sample App" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F7BC0DD41D93FFB400334C40 /* Debug */,
+				F7BC0DD51D93FFB400334C40 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F7BC0DB91D93FFB300334C40 /* Project object */;
+}
