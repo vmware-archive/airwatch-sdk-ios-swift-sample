@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1421" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="S2b-sm-rCI">
-    <device id="retina4_7" orientation="portrait">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="S2b-sm-rCI">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -17,11 +17,11 @@
                         <viewControllerLayoutGuide type="bottom" id="Ee2-QG-poj"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="SXu-Ui-38B">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tabBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="byD-N3-Gnm">
-                                <rect key="frame" x="0.0" y="618" width="375" height="49"/>
+                                <rect key="frame" x="0.0" y="519" width="320" height="49"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <items>
                                     <tabBarItem title="Apps" image="app" selectedImage="app" id="4EM-2b-of1" userLabel="Apps"/>
@@ -31,7 +31,7 @@
                                 </items>
                             </tabBar>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Restrict data to be opened in AirWatch applications" textAlignment="center" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iuj-GR-XcX">
-                                <rect key="frame" x="0.0" y="64" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="50"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="f0L-ty-931"/>
@@ -40,14 +40,14 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="01c-Nv-jPm">
-                                <rect key="frame" x="161.5" y="537" width="52" height="30"/>
-                                <state key="normal" title="Button1"/>
+                                <rect key="frame" x="51" y="438" width="218" height="30"/>
+                                <state key="normal" title="Redirect email to Boxer or Inbox"/>
                                 <connections>
-                                    <action selector="didTapButton1:" destination="S2b-sm-rCI" eventType="touchUpInside" id="0c7-kW-cmB"/>
+                                    <action selector="didTapRedirectMailto:" destination="S2b-sm-rCI" eventType="touchUpInside" id="6rA-3Q-jPj"/>
                                 </connections>
                             </button>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="ONL-x9-mIU">
-                                <rect key="frame" x="0.0" y="90" width="375" height="107"/>
+                                <rect key="frame" x="0.0" y="90" width="320" height="107"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="107" id="IRG-cc-rFk"/>
@@ -56,14 +56,14 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mAq-4j-SjJ">
-                                <rect key="frame" x="160" y="561" width="55" height="30"/>
-                                <state key="normal" title="Button2"/>
+                                <rect key="frame" x="86" y="462" width="148" height="30"/>
+                                <state key="normal" title="Open links in Browser"/>
                                 <connections>
-                                    <action selector="didTapButton2:" destination="S2b-sm-rCI" eventType="touchUpInside" id="INi-Vu-ACm"/>
+                                    <action selector="didTapRedirectHttpLink:" destination="S2b-sm-rCI" eventType="touchUpInside" id="fL7-kX-vWJ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wHX-r6-nF1">
-                                <rect key="frame" x="148.5" y="584" width="78" height="30"/>
+                                <rect key="frame" x="121" y="485" width="78" height="30"/>
                                 <state key="normal" title="Learn More"/>
                                 <connections>
                                     <action selector="didTapLearnMore:" destination="S2b-sm-rCI" eventType="touchUpInside" id="F81-5i-gS0"/>

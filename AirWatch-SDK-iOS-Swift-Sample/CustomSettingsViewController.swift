@@ -37,6 +37,7 @@ class CustomSettingsViewController: UIViewController {
         self.pageTitles = NSArray(objects: "Step-1", "Step-2","Step-3")
         self.pageImages = NSArray(objects: "EditSDKProfile", "EditCustomSettings","AssignSDKProfile")
         
+        // Setting a border color to show the user where the text will go once updated.
         let borderColor = UIColor.black.cgColor
         customSettingsTextView.layer.borderColor = borderColor
         customSettingsTextView.layer.borderWidth = 2.0
@@ -49,21 +50,26 @@ class CustomSettingsViewController: UIViewController {
     
     @IBAction func printSettings(_ sender: AnyObject) {
 
-        let customPayload: CustomPayload = (AWController.clientInstance().sdkProfile()?.customPayload)!
+        guard let payload = AWController.clientInstance().sdkProfile()?.customPayload else {
+            print("Unable to fetch payload")
+            return
+        }
         
         //Checking if the Custom Settings Payload is nil or not set
-        guard let customSettings: String = customPayload.settings else { return }
-        
-        if(customSettings == ""){
-            alertUser(withMessage: "Custom settings payload is either blank or not configured in SDK Profile")
-        } else{
-            updateTextView(withString: customSettings)
+        if let customSettings: String = payload.settings {
+            
+            if(customSettings == ""){
+                alertUser(withMessage: "Custom settings payload is either blank or not configured in SDK Profile")
+            } else{
+                updateTextView(withString: customSettings)
+            }
         }
         
     }
 
     // MARK: - Alert/UI
-    func alertUser(withMessage customMessage:NSString){
+    
+    func alertUser(withMessage customMessage: NSString) {
         
         let alertController = UIAlertController(title: "Custom Settings",
                                                 message: customMessage as String,
@@ -76,7 +82,7 @@ class CustomSettingsViewController: UIViewController {
         
         alertController.addAction(UIAlertAction(title: "Learn More",
                                                 style: UIAlertActionStyle.default,
-                                                handler: { (alertAction) -> Void in
+                                                handler: { (_) -> Void in
                                                     
             self.performSegue(withIdentifier: "segueSWT", sender: self)
         }))
@@ -84,9 +90,11 @@ class CustomSettingsViewController: UIViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
-    func updateTextView(withString customSettings: String){
+    func updateTextView(withString customSettings: String) {
         customSettingsTextView.text = customSettings as String
     }
+    
+    // MARK:- Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
         // Create a new variable to store the instance of WalkThthrough View Controller

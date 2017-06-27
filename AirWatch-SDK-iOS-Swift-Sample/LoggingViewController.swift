@@ -24,10 +24,8 @@
 import UIKit
 import AWSDK
 
-class LoggingViewController: UIViewController, UITextFieldDelegate {
+class LoggingViewController: UIViewController {
     
-    @IBOutlet weak var AppendToLog: UIButton!
-    @IBOutlet weak var sendAppLog: UIButton!
     @IBOutlet weak var logLevelPicker: UIPickerView!
     @IBOutlet weak var logInputField: UITextField!
     
@@ -51,11 +49,13 @@ class LoggingViewController: UIViewController, UITextFieldDelegate {
     }
     
     // MARK: Append user input to current application log.
-    @IBAction func appendToLog(_ sender: AnyObject) {
+    @IBAction func didTapAppendToLog(_ sender: AnyObject) {
         guard let text = logInputField.text else {
             return
         }
         
+        // The picker is being used to highlight the different log levels based on user interaction.
+        // In a general implementation, these statements would be added to the codebase where appropriate.
         switch logLevelChoice {
         case 0:
             AWLogVerbose(text)
@@ -79,7 +79,7 @@ class LoggingViewController: UIViewController, UITextFieldDelegate {
     }
     
     // MARK: Send application log up till this point to AW console
-    @IBAction func sendAppLog(_ sender: AnyObject) {
+    @IBAction func didTapSendLog(_ sender: AnyObject) {
         AWController().sendLogDataWithCompletion({
             (success, errorName) in
             
@@ -97,12 +97,6 @@ class LoggingViewController: UIViewController, UITextFieldDelegate {
         })
     }
     
-    // MARK:- select all when edit text is selected
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-        logInputField.becomeFirstResponder()
-        logInputField.selectAll(nil)
-    }
-
     func dismissKeyboard() {
         view.endEditing(true)
     }
@@ -115,6 +109,15 @@ class LoggingViewController: UIViewController, UITextFieldDelegate {
         alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
         
         self.present(alertController, animated: true, completion: nil)
+    }
+}
+
+// MARK:- UITextFieldDelegate
+
+extension LoggingViewController: UITextFieldDelegate {
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        logInputField.becomeFirstResponder()
+        logInputField.selectAll(nil)
     }
 }
 

@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Td8-KF-pjU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Td8-KF-pjU">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -59,16 +60,24 @@
                     </view>
                     <navigationItem key="navigationItem" title="Integrated Auth" id="2tv-Fa-w7n">
                         <barButtonItem key="backBarButtonItem" title="Back" id="hYR-WF-1Mb"/>
-                        <barButtonItem key="rightBarButtonItem" title="Go" id="ddL-qu-SgG">
-                            <connections>
-                                <action selector="didTapGoButton:" destination="Td8-KF-pjU" id="UM6-NR-Tua"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Go" id="ddL-qu-SgG">
+                                <connections>
+                                    <action selector="didTapGoButton:" destination="Td8-KF-pjU" id="UM6-NR-Tua"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Update" id="0KA-qw-hJw">
+                                <connections>
+                                    <action selector="didTapUpdateCredentials:" destination="Td8-KF-pjU" id="pi7-Zk-JIL"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="httpStatusLabel" destination="He2-hN-Kxo" id="xxu-ZQ-Wb7"/>
                         <outlet property="loadingIndicator" destination="tSm-su-VwI" id="DDo-ZE-cJF"/>
+                        <outlet property="updateCredentialsButton" destination="0KA-qw-hJw" id="ro7-wJ-h6I"/>
                         <outlet property="urlTextField" destination="H32-AM-6vd" id="csZ-kY-Ahy"/>
                         <outlet property="webView" destination="NeF-Kz-10Q" id="xxN-Ce-gXW"/>
                     </connections>

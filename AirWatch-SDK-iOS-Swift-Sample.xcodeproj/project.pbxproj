@@ -11,7 +11,6 @@
 		F7333F661F013DA800A36313 /* CustomSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7333F5A1F013DA800A36313 /* CustomSettingsViewController.swift */; };
 		F7333F671F013DA800A36313 /* DataLossPreventionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7333F5B1F013DA800A36313 /* DataLossPreventionViewController.swift */; };
 		F7333F681F013DA800A36313 /* GeneralInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7333F5C1F013DA800A36313 /* GeneralInformationViewController.swift */; };
-		F7333F691F013DA800A36313 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F7333F5D1F013DA800A36313 /* Info.plist */; };
 		F7333F6A1F013DA800A36313 /* IntegratedAuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7333F5E1F013DA800A36313 /* IntegratedAuthenticationViewController.swift */; };
 		F7333F6B1F013DA800A36313 /* LoadingIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7333F5F1F013DA800A36313 /* LoadingIndicatorView.swift */; };
 		F7333F6C1F013DA800A36313 /* LocalAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7333F601F013DA800A36313 /* LocalAuthViewController.swift */; };
@@ -74,6 +73,7 @@
 		F7333F811F013DDD00A36313 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "AirWatch-SDK-iOS-Swift-Sample/Base.lproj/Walkthrough.storyboard"; sourceTree = SOURCE_ROOT; };
 		F7333F8A1F013E8800A36313 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "AirWatch-SDK-iOS-Swift-Sample/AppDelegate.swift"; sourceTree = SOURCE_ROOT; };
 		F7333F8D1F013FE600A36313 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "AirWatch-SDK-iOS-Swift-Sample/Base.lproj/Main.storyboard"; sourceTree = SOURCE_ROOT; };
+		F7333F8F1F01510A00A36313 /* iOS Swift Sample App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "iOS Swift Sample App.entitlements"; sourceTree = "<group>"; };
 		F73777861ED8AB4A00135466 /* AWSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSDK.framework; sourceTree = "<group>"; };
 		F7B14EB31DECB7AF00E40279 /* AWSDKDefaults.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AWSDKDefaults.bundle; sourceTree = "<group>"; };
 		F7BC0DC11D93FFB300334C40 /* iOS Swift Sample App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Swift Sample App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -122,6 +122,7 @@
 		F7BC0DB81D93FFB300334C40 = {
 			isa = PBXGroup;
 			children = (
+				F7333F8F1F01510A00A36313 /* iOS Swift Sample App.entitlements */,
 				F7B14EB31DECB7AF00E40279 /* AWSDKDefaults.bundle */,
 				F7BC0DC31D93FFB300334C40 /* AirWatch-SDK-iOS-Swift-Sample */,
 				F7BC0DC21D93FFB300334C40 /* Products */,
@@ -257,6 +258,11 @@
 						DevelopmentTeam = 2QKP24Y3HJ;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Keychain = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -291,7 +297,6 @@
 				F7333F851F013DDD00A36313 /* GeneralInformation.storyboard in Resources */,
 				F7B14EB41DECB7AF00E40279 /* AWSDKDefaults.bundle in Resources */,
 				F7333F831F013DDD00A36313 /* Authentication.storyboard in Resources */,
-				F7333F691F013DA800A36313 /* Info.plist in Resources */,
 				F7333F591F013D8700A36313 /* Assets.xcassets in Resources */,
 				F7333F891F013DDD00A36313 /* Walkthrough.storyboard in Resources */,
 				F7333F871F013DDD00A36313 /* Logging.storyboard in Resources */,
@@ -496,7 +501,7 @@
 		F7BC0DD41D93FFB400334C40 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "iOS Swift Sample App.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 2QKP24Y3HJ;
 				ENABLE_BITCODE = NO;
@@ -517,7 +522,7 @@
 		F7BC0DD51D93FFB400334C40 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "iOS Swift Sample App.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = 2QKP24Y3HJ;
 				ENABLE_BITCODE = NO;

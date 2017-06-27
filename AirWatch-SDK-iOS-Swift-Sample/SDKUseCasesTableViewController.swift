@@ -29,24 +29,25 @@ class SDKUseCasesTableViewController: UITableViewController {
     var loadingView  = LoadingIndicatorView();
 
     /*
-     A static class which act as a gateway to different AW SDK Use cases
-    */
+     * A static tableview class which act as a gateway to different AW SDK Use cases
+     */
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.tableFooterView = UIView()
-        let appDelegate = UIApplication.shared.delegate as? AppDelegate
         
+        tableView.tableFooterView = UIView()
+        
+        addNotificationObservers()
+
         /*
-        ** THIS IS WHERE WE ARE SHOWING THE BLOCKER SCREEN**
-         We should wait for SDK to initialize completely before attempting to utilize any SDK resource for example trying to
-         attemp tunneling. This blocker screens is completely optional but is shown to demonstrate good practise.
+        * **THIS IS WHERE WE ARE SHOWING THE BLOCKER SCREEN**
+        * We should wait for SDK to initialize completely before attempting to utilize any SDK resource for example trying to
+        * attemp tunneling. This blocker screens is completely optional but is shown to demonstrate good practise.
         */
-        let sdkStatus = appDelegate?.awSDKInit
-                if  (sdkStatus == false){
-                    print("inside sdk usecases")
-                    LoadingIndicatorView.show(self.parent!.view, loadingText: "Initializing SDK...")
-                }
+        print("Displaying Blocking view while AW SDK intializes")
+        // Add transparent blocker
+        LoadingIndicatorView.show(self.parent!.view, loadingText: "Initializing SDK...")
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -54,17 +55,29 @@ class SDKUseCasesTableViewController: UITableViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    //MARK: Blocker Screen
-    
-    func showBocker(){
-        print("Showing Blocker")
+    func addNotificationObservers() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(dismissBlockingView(_:)),
+                                               name: NSNotification.Name(rawValue: "AW SDK INIT"),
+                                               object: nil)
     }
     
-    func hideBlocker() {
-        print("hiding Blocker")
+    //MARK: Blocker View Screen
+    func dismissBlockingView(_ notification: NSNotification) {
+        print("received init notification")
+        
+        if let error = notification.object {
+            print(error)
+            let alertController = UIAlertController(title: "AWInit  Reporter",
+                                                    message: "An error occured while initializing AW SDK",
+                                                    preferredStyle: UIAlertControllerStyle.alert)
+            
+            alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+
+        }
+        
+        print("Removing Blocker view since \"controllerDidFinishInitialCheck\" was called...")
         LoadingIndicatorView.hide()
     }
 
-    // MARK: - Table view data source
-    // Currently empty since static table cell sources are being used
 }

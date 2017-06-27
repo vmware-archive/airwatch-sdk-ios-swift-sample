@@ -31,8 +31,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AWControllerDelegate {
     
     
     var window: UIWindow?
-    var sdkUseCase = SDKUseCasesTableViewController()
-    var awSDKInit: Bool? = false
 
     // MARK:- UI Lifecycle
     
@@ -70,48 +68,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AWControllerDelegate {
          */
         if error != nil {
             OperationQueue.main.addOperation {
-                self.sdkUseCase.hideBlocker()
-                NSLog("initialCheckDone With  Error")
-                self.awSDKInit=true
-                let alertController = UIAlertController(title: "AWInit  Reporter", message:
-                    "An error occured while initializing AW SDK", preferredStyle: UIAlertControllerStyle.alert)
-                alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+                NSLog("initialCheckDone With Error")
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "AW SDK INIT"), object: error)
             }
         } else {
             OperationQueue.main.addOperation {
-                self.sdkUseCase.hideBlocker()
-                NSLog("initialCheckDone NO Error")
-                self.awSDKInit=true
+                NSLog("initialCheckDone With NO Error")
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "AW SDK INIT"), object: nil)
             }
         }
     }
     
-    func controllerDidReceive(profiles: [Any]!) {
+    func controllerDidReceive(profiles: [Profile]) {
         
         NSLog("received profiles called")
         
-        // Profiles
-        if profiles != nil {
+        for profile in profiles {
+            NSLog("Profile: %@" , profile.displayName ?? "No display name")
             
-//            if let awProfiles = profiles as? [AWProfile] {
-//                NSLog ("Now printing the profiles")
-//                for profile in awProfiles {
-//                    NSLog (profile.displayName);
-//                 
-//                    print("full profile \(profile.toDictionary())")
-//                    }
-//            }
-//            
-//            if let awPayload = profiles as? [AWProfilePayload] {
-//                NSLog("Now printing the payloads")
-//                for payload in awPayload {
-//                    print(payload)
-//                }
-//            }
-        } else {
-            NSLog("receivedProfiles is nil")
+            // The content of the payload is sent as a dictionary
+            let payload = profile.toDictionary()
+            
+            // Unwrapping the array of the Profile payload content
+            if let content = payload["PayloadContent"] {
+                print("SDK Profile Content \(content)")
+            }
         }
-        
     }
     
     func controllerDidWipeCurrentUserData() {
