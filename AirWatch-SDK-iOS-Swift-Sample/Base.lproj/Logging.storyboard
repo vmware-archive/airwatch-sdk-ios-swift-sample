@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="EvS-R4-nqw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="EvS-R4-nqw">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12089"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -25,7 +25,7 @@
                                 <rect key="frame" x="60" y="245" width="255" height="30"/>
                                 <state key="normal" title="Append to Log"/>
                                 <connections>
-                                    <action selector="appendToLog:" destination="EvS-R4-nqw" eventType="touchUpInside" id="Z4j-nS-hFO"/>
+                                    <action selector="didTapAppendToLog:" destination="EvS-R4-nqw" eventType="touchUpInside" id="IZd-jf-dFh"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Start typing to Log" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zZQ-fH-1xe">
@@ -38,7 +38,7 @@
                                 <rect key="frame" x="139" y="137" width="97" height="30"/>
                                 <state key="normal" title="Send App Log"/>
                                 <connections>
-                                    <action selector="sendAppLog:" destination="EvS-R4-nqw" eventType="touchUpInside" id="1di-ou-c28"/>
+                                    <action selector="didTapSendLog:" destination="EvS-R4-nqw" eventType="touchUpInside" id="DKb-Xg-pNE"/>
                                 </connections>
                             </button>
                             <pickerView contentMode="scaleToFill" horizontalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="3mA-8K-FbC">
@@ -61,10 +61,8 @@
                     </view>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <outlet property="AppendToLog" destination="Wck-Jr-XPT" id="raA-y9-iDa"/>
                         <outlet property="logInputField" destination="zZQ-fH-1xe" id="FWd-Dr-JBm"/>
                         <outlet property="logLevelPicker" destination="3mA-8K-FbC" id="xty-w2-Ygl"/>
-                        <outlet property="sendAppLog" destination="3eJ-C1-tcv" id="j4L-Vj-m4b"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QFk-1z-ieF" userLabel="First Responder" sceneMemberID="firstResponder"/>
