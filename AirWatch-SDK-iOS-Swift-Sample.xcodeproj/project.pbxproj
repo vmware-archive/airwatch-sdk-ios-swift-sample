@@ -11,7 +11,6 @@
 		F7333F661F013DA800A36313 /* CustomSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7333F5A1F013DA800A36313 /* CustomSettingsViewController.swift */; };
 		F7333F671F013DA800A36313 /* DataLossPreventionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7333F5B1F013DA800A36313 /* DataLossPreventionViewController.swift */; };
 		F7333F681F013DA800A36313 /* GeneralInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7333F5C1F013DA800A36313 /* GeneralInformationViewController.swift */; };
-		F7333F691F013DA800A36313 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = F7333F5D1F013DA800A36313 /* Info.plist */; };
 		F7333F6A1F013DA800A36313 /* IntegratedAuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7333F5E1F013DA800A36313 /* IntegratedAuthenticationViewController.swift */; };
 		F7333F6B1F013DA800A36313 /* LoadingIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7333F5F1F013DA800A36313 /* LoadingIndicatorView.swift */; };
 		F7333F6C1F013DA800A36313 /* LocalAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7333F601F013DA800A36313 /* LocalAuthViewController.swift */; };
@@ -298,7 +297,6 @@
 				F7333F851F013DDD00A36313 /* GeneralInformation.storyboard in Resources */,
 				F7B14EB41DECB7AF00E40279 /* AWSDKDefaults.bundle in Resources */,
 				F7333F831F013DDD00A36313 /* Authentication.storyboard in Resources */,
-				F7333F691F013DA800A36313 /* Info.plist in Resources */,
 				F7333F591F013D8700A36313 /* Assets.xcassets in Resources */,
 				F7333F891F013DDD00A36313 /* Walkthrough.storyboard in Resources */,
 				F7333F871F013DDD00A36313 /* Logging.storyboard in Resources */,
