@@ -25,58 +25,31 @@
 import UIKit
 
 class LocalAuthViewController: UIViewController {
-
-    var pageTitles:NSArray!
-    var pageImages:NSArray!
-    var detail1:NSString!
-    var detail2:NSString!
-    var detail3:NSString!
-
-
+    
+    let pageTitles = ["An app passcode can ensure the app is only accessible to the entitled user and that the user identity is maintained over time. A biometric, such as TouchID, can typically be implemented as a layer above the PIN code to optimize the user experience.",
+        "Organisation can opt to choose Username and Password instead of a PIN to allow secure access to the AW SDK application. These credentials are the same as the enrollment credentials",
+        "SSO stands for single sign on.It basically allows a user to access multiple SDK applications by only entering a single password/passcode once as opposed to multiple times for each application that the user needs.Please make sure to align the SSO settings under custom SDK profile and Default SDK profile as shown in the screenshot"
+    ]
+    
+    let pageImages = ["Passcode", "UsernamePassword","SSO"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Populating the Data to be loading in the WalkThthrough
-        // for local authentication
-        detail1 = "An app passcode can ensure the app is only accessible to the entitled user and that the user identity is maintained over time. A biometric, such as TouchID, can typically be implemented as a layer above the PIN code to optimize the user experience."
-        
-        
-        
-        detail2 = "Organisation can opt to choose Username and Password instead of a PIN to allow secure access to the AW SDK application. These credentials are the same as the enrollment credentials"
-        
-        
-        detail3 = "SSO stands for single sign on.It basically allows a user to access multiple SDK applications by only entering a single password/passcode once as opposed to multiple times for each application that the user needs.Please make sure to align the SSO settings under custom SDK profile and Default SDK profile as shown in the screenshot"
-        
-        
-        // Disposing of any resources that can be recreated.
-        self.pageTitles = NSArray(objects: detail1, detail2,detail3)
-        self.pageImages = NSArray(objects: "Passcode", "UsernamePassword","SSO")
     }
     
-    
-
-    @IBAction func loadWalkThrough(_ sender: UIButton) {
-        self.performSegue(withIdentifier: "authToWT", sender: self)
-    }
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        
-   
+    }
+
+    @IBAction func didTapLearnMore(_ sender: UIButton) {
+        self.performSegue(withIdentifier: "authToWT", sender: self)
     }
     
-
-
     // MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
-        
-        // Create a new variable to store the instance of WalkThthrough View Controller
         let destinationVC = segue.destination as! WalkThroughViewController
-        destinationVC.pageDescription = self.pageTitles
-        destinationVC.pageMedia = self.pageImages
-        
-        
+        destinationVC.pageDescription = self.pageTitles as NSArray
+        destinationVC.pageMedia = self.pageImages as NSArray
     }
 
 }
