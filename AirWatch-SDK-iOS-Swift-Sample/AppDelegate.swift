@@ -31,8 +31,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AWControllerDelegate {
     
     
     var window: UIWindow?
-    var sdkUseCase = SDKUseCasesTableViewController()
-    var awSDKInit: Bool? = false
 
     // MARK:- UI Lifecycle
     
@@ -70,18 +68,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AWControllerDelegate {
          */
         if error != nil {
             OperationQueue.main.addOperation {
-                self.sdkUseCase.hideBlocker()
-                NSLog("initialCheckDone With  Error")
-                self.awSDKInit=true
-                let alertController = UIAlertController(title: "AWInit  Reporter", message:
-                    "An error occured while initializing AW SDK", preferredStyle: UIAlertControllerStyle.alert)
-                alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
+                NSLog("initialCheckDone With Error")
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "AW SDK INIT"), object: error)
             }
         } else {
             OperationQueue.main.addOperation {
-                self.sdkUseCase.hideBlocker()
-                NSLog("initialCheckDone NO Error")
-                self.awSDKInit=true
+                NSLog("initialCheckDone With NO Error")
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "AW SDK INIT"), object: nil)
             }
         }
     }
