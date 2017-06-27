@@ -68,6 +68,7 @@ class CustomSettingsViewController: UIViewController {
     }
 
     // MARK: - Alert/UI
+    
     func alertUser(withMessage customMessage: NSString) {
         
         let alertController = UIAlertController(title: "Custom Settings",
@@ -81,7 +82,7 @@ class CustomSettingsViewController: UIViewController {
         
         alertController.addAction(UIAlertAction(title: "Learn More",
                                                 style: UIAlertActionStyle.default,
-                                                handler: { (alertAction) -> Void in
+                                                handler: { (_) -> Void in
                                                     
             self.performSegue(withIdentifier: "segueSWT", sender: self)
         }))
@@ -92,6 +93,8 @@ class CustomSettingsViewController: UIViewController {
     func updateTextView(withString customSettings: String) {
         customSettingsTextView.text = customSettings as String
     }
+    
+    // MARK:- Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any!) {
         // Create a new variable to store the instance of WalkThthrough View Controller
