@@ -30,32 +30,15 @@ class IntegratedAuthenticationViewController: UIViewController, URLSessionDelega
     @IBOutlet weak var urlTextField: UITextField!
     @IBOutlet weak var httpStatusLabel: UILabel!
     @IBOutlet weak var webView: UIWebView!
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var updateCredentialsButton: UIBarButtonItem?
     
-    var credentials: URLCredential?
-    var connectionResponse : URLResponse?
-    var connectionData : NSMutableData?
-    
-    // Set this value to false if Integrated Auth will not be leveraged by the app
-    var integratedAuthEnabled = true
-    
-    
-    @IBAction func doIntegratedAuth(_ sender: AnyObject) {
-        print("NSURLSession")
-        
-        webView.loadRequest(URLRequest.init(url:URL.init(string: "about:blank")! ))
-        
-        httpStatusLabel.text=""
-    }
     
     override func viewDidLoad() {
         
         /*
-         * Calling a fallback method to update account object in case it's nil or corrupted
-         * Manually feteching the user's credentials and adding them to an NSURLCredential Object
+         * Checking the SDK Account object
          */
-        print("view loaded again")
         accountObjectCheck()
         loadingIndicator.hidesWhenStopped = true
         
@@ -66,23 +49,25 @@ class IntegratedAuthenticationViewController: UIViewController, URLSessionDelega
         let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(IntegratedAuthenticationViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
         
+        hideUpdateButton()
     }
     
     //MARK:- UI Actions
     @IBAction func didTapGoButton(_ sender: AnyObject) {
+        // Reset status label
+        httpStatusLabel.text = ""
         
+        // Grab URL and make request
         let urlString = getURLStringFromTextField()
         if let url = URL(string: urlString){
-                print("NSURLSession")
-                sessionGetRequest(url)
+            sessionGetRequest(url)
         } else {
             displayInvalidURL()
         }
-        
     }
     
-    func loadWebViewWithString(_ stringData: String) {
-        webView.loadHTMLString(stringData, baseURL: URL(string: "https://www.vmware.com"))
+    @IBAction func didTapUpdateCredentials(_ sender: Any) {
+        updateUserCreds()
     }
     
     func setHTTPStatusLabel(_ status: String) {
@@ -112,6 +97,8 @@ class IntegratedAuthenticationViewController: UIViewController, URLSessionDelega
             if let data = taskData, let response: HTTPURLResponse = taskResponse! as? HTTPURLResponse{
                 
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                
+                self.httpStatusLabel.text = "HTTP Code: \(response.statusCode)"
 
                 if(response.mimeType != nil && response.textEncodingName != nil && response.url != nil){
                     
@@ -221,7 +208,7 @@ class IntegratedAuthenticationViewController: UIViewController, URLSessionDelega
     func URLSession(_ session: Foundation.URLSession, dataTask: URLSessionDataTask,
                     didReceiveData data: Data) {
         
-        print("data came \(data)")
+        print("Data received: \(data)")
     }
     
     // MARK:- AirWatch SDK
@@ -249,6 +236,7 @@ class IntegratedAuthenticationViewController: UIViewController, URLSessionDelega
                 print("updated credentials and trying to log in with updated credentials")
                 OperationQueue.main.addOperation({
                     self.tryAgain()
+                    self.hideUpdateButton()
                 })
             } else{
                 print("error occured \(error ?? "error" as! Error)")
@@ -280,8 +268,8 @@ class IntegratedAuthenticationViewController: UIViewController, URLSessionDelega
              user flow, Account object might fail to update it's data accordingly. We use AWMDMInformationController to
              get the username and compare it with the username retured by Account object
              */
-            DeviceInformationController.sharedController.fetchDeviceInformation(completion: {
-                (deviceInformation, error) in
+            UserInformationController.sharedInstance.retrieveUserInfo(completionHandler: {
+                userInformation, error in
                 
                 if error != nil {
                     print("Error retrieving device information from AirWatch with: \(error.debugDescription)")
@@ -299,17 +287,15 @@ class IntegratedAuthenticationViewController: UIViewController, URLSessionDelega
                  */
                 
                 // Fetch Server user
-                let serverUser = self.stripDomain(fromUsername: "domain\\user")
+                let serverUser = self.stripDomain(fromUsername: (userInformation?.userName)!)
                 
                 // Fetch local user
-                let sdkUser = self.stripDomain(fromUsername: AWController().account.username)
+                let sdkUser = self.stripDomain(fromUsername: AWController.clientInstance().account.username)
                 
                 // Compare both users
                 if(sdkUser.lowercased() != serverUser.lowercased()) {
                     self.displayAWAccountError(withMessage: "Current SDK User does not match Server User")
                 }
-                
-                print(deviceInformation as Any)
             })
         }
     }
@@ -369,6 +355,18 @@ class IntegratedAuthenticationViewController: UIViewController, URLSessionDelega
         return usernameParts[0]
     }
     
+    func showUpdateButton() {
+        self.httpStatusLabel.text = "Account Object needs to be updated. Please click update"
+        self.updateCredentialsButton?.isEnabled = true
+        self.updateCredentialsButton?.tintColor = UIColor.init(colorLiteralRed: 14.0/255, green: 122.0/255, blue: 254.0/255, alpha: 1.0)
+    }
+    
+    func hideUpdateButton() {
+        httpStatusLabel.text = ""
+        updateCredentialsButton?.isEnabled = false
+        updateCredentialsButton?.tintColor = UIColor.clear
+    }
+    
     // MARK:- Messages / Dialogs
     
     func displayAWAccountError(withMessage message: String) -> Void {
@@ -376,111 +374,73 @@ class IntegratedAuthenticationViewController: UIViewController, URLSessionDelega
         
         let alert = UIAlertController(title: "AirWatch SDK Account", message: message, preferredStyle: .alert)
         
-        let okAction = UIAlertAction(title: "OK", style: .default, handler: {
+        let okAction = UIAlertAction(title: "Update", style: .default, handler: {
             _ in
+            print("Ok clicked")
             self.updateUserCreds()
         })
         
+        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: {
+            _ in
+            self.showUpdateButton()
+        })
+        
         alert.addAction(okAction)
+        alert.addAction(cancel)
         
         OperationQueue.main.addOperation {
             self.present(alert, animated: true, completion: nil)
+            
         }
+
     }
     
     func displayLoginError() -> Void {
-        print("Log In error")
+        print("Log In error with Int Auth")
         
-        let alert = UIAlertController(title: "SDKError", message: "An Error Occured while SDK was trying to perform Integrated Auth. Please make sure your enrollment credentials have access to this endpoint", preferredStyle: .alert)
-        
-        let okAction = UIAlertAction(title: "Dismiss", style: .default, handler: {
-            _ in
-            print("Dismiss")
-        })
-        
-        
-        alert.addAction(okAction)
-        
-        OperationQueue.main.addOperation({
-            // Set the labels based on the data/response values
-            self.present(alert, animated: true, completion: nil)
-            
-            
-        })
-        
+        displayAlert(withTitle: "SDK Error", withMessage: "An Error Occured while SDK was trying to perform Integrated Auth. Please make sure your enrollment credentials have access to this endpoint")
     }
     
     func tryAgain() -> Void {
-        print("Log In error")
+        print("Credentials Updated...try again")
         
-        let alert = UIAlertController(title: "Credentials Updated", message: "Credentials Updated successfully, Please try again!", preferredStyle: .alert)
-        
-        let okAction = UIAlertAction(title: "Dismiss", style: .default, handler: {
-            _ in
-            print("Dismiss")
-        })
-        
-        alert.addAction(okAction)
-        
-        OperationQueue.main.addOperation({
-            // Set the labels based on the data/response values
-            self.present(alert, animated: true, completion: nil)
-        })
-        
+        displayAlert(withTitle: "Credentials Updated", withMessage: "Credentials Updated successfully, Please try again!")
     }
     
     func displayFetchUserInfoError() -> Void {
+        print("Log In error :: unable to fetch server information")
+        
+        displayAlert(withTitle: "SDK Error", withMessage: "An Error Occured while SDK was trying to fetch user infor from AW backed. Please make sure your device is enrolled")
+    }
+    
+    func displayInvalidURL() -> Void{
+        print("Log in Error :: invalid URL")
+        
+        displayAlert(withTitle: "Invalid URL", withMessage: "Please confirm the formatting of the URL")
+    }
+    
+    func displayNotSupportedAlert() -> Void{
+        print("Log In error :: Not supported")
+        
+        displayAlert(withTitle: "Authentication Required", withMessage: "This type of Authentication challenge is not supported by the SDK")
+    }
+    
+    func displayAlert(withTitle title: String, withMessage message: String) {
         print("Log In error")
         
-        let alert = UIAlertController(title: "SDKError", message: "An Error Occured while SDK was trying to fetch user infor from AW backed. Please make sure your device is enrolled", preferredStyle: .alert)
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         
         let okAction = UIAlertAction(title: "Dismiss", style: .default, handler: {
             _ in
             print("Dismiss")
         })
-        
-        alert.addAction(okAction)
-        
-        OperationQueue.main.addOperation({
-            // Set the labels based on the data/response values
-            self.present(alert, animated: true, completion: nil)
-        })
-        
-    }
-    
-    func displayInvalidURL() -> Void{
-        print("Log In error")
-        
-        let alert = UIAlertController(title: "Invalid URL", message: "Please confrim the formatting of the URL", preferredStyle: .alert)
-        
-        let okAction = UIAlertAction(title: "Dismiss", style: .default, handler: {
-            action in
-            print("Dismiss")
-        })
         alert.addAction(okAction)
         
         OperationQueue.main.addOperation {
             self.present(alert, animated: true, completion: nil)
             
         }
-    }
-    
-    
-    func displayNotSupportedAlert() -> Void{
-        print("Log In error")
-        
-        let alert = UIAlertController(title: "Authentication Required", message: "This type of Authentication challenge is not supported by the SDK", preferredStyle: .alert)
-        
-        let okAction = UIAlertAction(title: "Dismis", style: .default, handler: {
-            action in
-            print("Dismiss")
-        })
-        alert.addAction(okAction)
-        
-        OperationQueue.main.addOperation {
-            self.present(alert, animated: true, completion: nil)
-            
-        }
+
     }
 
 }
