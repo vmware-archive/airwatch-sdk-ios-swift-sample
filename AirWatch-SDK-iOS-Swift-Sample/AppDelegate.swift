@@ -86,32 +86,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate, AWControllerDelegate {
         }
     }
     
-    func controllerDidReceive(profiles: [Any]!) {
+    func controllerDidReceive(profiles: [Profile]) {
         
         NSLog("received profiles called")
         
-        // Profiles
-        if profiles != nil {
+        for profile in profiles {
+            NSLog("Profile: %@" , profile.displayName ?? "No display name")
             
-//            if let awProfiles = profiles as? [AWProfile] {
-//                NSLog ("Now printing the profiles")
-//                for profile in awProfiles {
-//                    NSLog (profile.displayName);
-//                 
-//                    print("full profile \(profile.toDictionary())")
-//                    }
-//            }
-//            
-//            if let awPayload = profiles as? [AWProfilePayload] {
-//                NSLog("Now printing the payloads")
-//                for payload in awPayload {
-//                    print(payload)
-//                }
-//            }
-        } else {
-            NSLog("receivedProfiles is nil")
+            // The content of the payload is sent as a dictionary
+            let payload = profile.toDictionary()
+            
+            // Unwrapping the array of the Profile payload content
+            if let content = payload["PayloadContent"] {
+                print("SDK Profile Content \(content)")
+            }
         }
-        
     }
     
     func controllerDidWipeCurrentUserData() {
