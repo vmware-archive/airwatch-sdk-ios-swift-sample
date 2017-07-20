@@ -7,11 +7,51 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9FE347781F1F03C8008348E7 /* AlamofireNetworkingHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE347761F1F03C8008348E7 /* AlamofireNetworkingHandler.swift */; };
+		9FE347791F1F03C8008348E7 /* URLSessionNetworkingHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE347771F1F03C8008348E7 /* URLSessionNetworkingHandler.swift */; };
+		9FE3477B1F1F0421008348E7 /* IntegratedAuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE3477A1F1F0421008348E7 /* IntegratedAuthenticationViewController.swift */; };
+		9FE3477D1F1F04B3008348E7 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FE3477C1F1F04B3008348E7 /* Accelerate.framework */; };
+		9FE3477F1F1F04B8008348E7 /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FE3477E1F1F04B8008348E7 /* AssetsLibrary.framework */; };
+		9FE347811F1F04BE008348E7 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FE347801F1F04BE008348E7 /* AudioToolbox.framework */; };
+		9FE347831F1F04C5008348E7 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FE347821F1F04C5008348E7 /* AVFoundation.framework */; };
+		9FE347851F1F04CD008348E7 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FE347841F1F04CD008348E7 /* CFNetwork.framework */; };
+		9FE347871F1F04D4008348E7 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FE347861F1F04D4008348E7 /* CoreData.framework */; };
+		9FE347891F1F04DB008348E7 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FE347881F1F04DB008348E7 /* CoreFoundation.framework */; };
+		9FE3478B1F1F04E3008348E7 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FE3478A1F1F04E3008348E7 /* CoreGraphics.framework */; };
+		9FE3478D1F1F04EA008348E7 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FE3478C1F1F04EA008348E7 /* CoreLocation.framework */; };
+		9FE3478F1F1F0511008348E7 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FE3478E1F1F0511008348E7 /* CoreMedia.framework */; };
+		9FE347911F1F051A008348E7 /* CoreMotion.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FE347901F1F051A008348E7 /* CoreMotion.framework */; };
+		9FE347931F1F0521008348E7 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FE347921F1F0521008348E7 /* CoreTelephony.framework */; };
+		9FE347951F1F0528008348E7 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FE347941F1F0528008348E7 /* CoreText.framework */; };
+		9FE347971F1F053C008348E7 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FE347961F1F053C008348E7 /* CoreVideo.framework */; };
+		9FE347991F1F0540008348E7 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FE347981F1F0540008348E7 /* Foundation.framework */; };
+		9FE3479B1F1F0547008348E7 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FE3479A1F1F0547008348E7 /* ImageIO.framework */; };
+		9FE3479D1F1F054A008348E7 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FE3479C1F1F054A008348E7 /* libc++.tbd */; };
+		9FE3479F1F1F0552008348E7 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FE3479E1F1F0552008348E7 /* libsqlite3.tbd */; };
+		9FE347A11F1F055B008348E7 /* libstdc++.6.0.9.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FE347A01F1F055B008348E7 /* libstdc++.6.0.9.tbd */; };
+		9FE347A31F1F0562008348E7 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FE347A21F1F0562008348E7 /* libz.tbd */; };
+		9FE347A51F1F0566008348E7 /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FE347A41F1F0566008348E7 /* LocalAuthentication.framework */; };
+		9FE347A71F1F056D008348E7 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FE347A61F1F056D008348E7 /* MediaPlayer.framework */; };
+		9FE347A91F1F0576008348E7 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FE347A81F1F0576008348E7 /* MessageUI.framework */; };
+		9FE347AB1F1F057D008348E7 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FE347AA1F1F057D008348E7 /* MobileCoreServices.framework */; };
+		9FE347AD1F1F0585008348E7 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FE347AC1F1F0585008348E7 /* QuartzCore.framework */; };
+		9FE347AF1F1F058B008348E7 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FE347AE1F1F058B008348E7 /* SafariServices.framework */; };
+		9FE347B11F1F0592008348E7 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FE347B01F1F0592008348E7 /* Security.framework */; };
+		9FE347B51F1F05A8008348E7 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FE347B41F1F05A8008348E7 /* SystemConfiguration.framework */; };
+		9FE347B71F1F05AE008348E7 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FE347B61F1F05AE008348E7 /* UIKit.framework */; };
+		9FE347BA1F1F05D7008348E7 /* AWOpenSSL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FE347B81F1F05D7008348E7 /* AWOpenSSL.framework */; };
+		9FE347BB1F1F05D7008348E7 /* AWSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FE347B91F1F05D7008348E7 /* AWSDK.framework */; };
+		9FE347BD1F1F05EF008348E7 /* Alamofire.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9FE347BC1F1F05EF008348E7 /* Alamofire.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9FE347C01F1FDF78008348E7 /* AWSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FE347BE1F1FDF78008348E7 /* AWSDK.framework */; };
+		9FE347C11F1FDF78008348E7 /* AWSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9FE347BE1F1FDF78008348E7 /* AWSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9FE347C21F1FDF78008348E7 /* AWOpenSSL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FE347BF1F1FDF78008348E7 /* AWOpenSSL.framework */; };
+		9FE347C31F1FDF78008348E7 /* AWOpenSSL.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9FE347BF1F1FDF78008348E7 /* AWOpenSSL.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9FE347C51F1FF514008348E7 /* AlertHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE347C41F1FF514008348E7 /* AlertHandler.swift */; };
+		9FE347C71F200811008348E7 /* GeneralUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE347C61F200811008348E7 /* GeneralUtils.swift */; };
 		F7333F591F013D8700A36313 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7333F581F013D8700A36313 /* Assets.xcassets */; };
 		F7333F661F013DA800A36313 /* CustomSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7333F5A1F013DA800A36313 /* CustomSettingsViewController.swift */; };
 		F7333F671F013DA800A36313 /* DataLossPreventionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7333F5B1F013DA800A36313 /* DataLossPreventionViewController.swift */; };
 		F7333F681F013DA800A36313 /* GeneralInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7333F5C1F013DA800A36313 /* GeneralInformationViewController.swift */; };
-		F7333F6A1F013DA800A36313 /* IntegratedAuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7333F5E1F013DA800A36313 /* IntegratedAuthenticationViewController.swift */; };
 		F7333F6B1F013DA800A36313 /* LoadingIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7333F5F1F013DA800A36313 /* LoadingIndicatorView.swift */; };
 		F7333F6C1F013DA800A36313 /* LocalAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7333F601F013DA800A36313 /* LocalAuthViewController.swift */; };
 		F7333F6D1F013DA800A36313 /* LoggingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7333F611F013DA800A36313 /* LoggingViewController.swift */; };
@@ -30,8 +70,6 @@
 		F7333F8B1F013E8800A36313 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7333F8A1F013E8800A36313 /* AppDelegate.swift */; };
 		F7333F8E1F013FE600A36313 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7333F8C1F013FE600A36313 /* Main.storyboard */; };
 		F7B14EB41DECB7AF00E40279 /* AWSDKDefaults.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F7B14EB31DECB7AF00E40279 /* AWSDKDefaults.bundle */; };
-		F7E024081EDDDBBE0031E33D /* AWOpenSSL.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F7E024061EDDDB650031E33D /* AWOpenSSL.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		F7E024091EDDDBBE0031E33D /* AWSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = F73777861ED8AB4A00135466 /* AWSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -41,8 +79,9 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				F7E024081EDDDBBE0031E33D /* AWOpenSSL.framework in Embed Frameworks */,
-				F7E024091EDDDBBE0031E33D /* AWSDK.framework in Embed Frameworks */,
+				9FE347BD1F1F05EF008348E7 /* Alamofire.framework in Embed Frameworks */,
+				9FE347C31F1FDF78008348E7 /* AWOpenSSL.framework in Embed Frameworks */,
+				9FE347C11F1FDF78008348E7 /* AWSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -50,12 +89,51 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9FE347761F1F03C8008348E7 /* AlamofireNetworkingHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlamofireNetworkingHandler.swift; path = "AirWatch-SDK-iOS-Swift-Sample/AlamofireNetworkingHandler.swift"; sourceTree = SOURCE_ROOT; };
+		9FE347771F1F03C8008348E7 /* URLSessionNetworkingHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = URLSessionNetworkingHandler.swift; path = "AirWatch-SDK-iOS-Swift-Sample/URLSessionNetworkingHandler.swift"; sourceTree = SOURCE_ROOT; };
+		9FE3477A1F1F0421008348E7 /* IntegratedAuthenticationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IntegratedAuthenticationViewController.swift; path = "AirWatch-SDK-iOS-Swift-Sample/IntegratedAuthenticationViewController.swift"; sourceTree = SOURCE_ROOT; };
+		9FE3477C1F1F04B3008348E7 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		9FE3477E1F1F04B8008348E7 /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
+		9FE347801F1F04BE008348E7 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		9FE347821F1F04C5008348E7 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		9FE347841F1F04CD008348E7 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		9FE347861F1F04D4008348E7 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		9FE347881F1F04DB008348E7 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		9FE3478A1F1F04E3008348E7 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		9FE3478C1F1F04EA008348E7 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		9FE3478E1F1F0511008348E7 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		9FE347901F1F051A008348E7 /* CoreMotion.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMotion.framework; path = System/Library/Frameworks/CoreMotion.framework; sourceTree = SDKROOT; };
+		9FE347921F1F0521008348E7 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		9FE347941F1F0528008348E7 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
+		9FE347961F1F053C008348E7 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		9FE347981F1F0540008348E7 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		9FE3479A1F1F0547008348E7 /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		9FE3479C1F1F054A008348E7 /* libc++.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
+		9FE3479E1F1F0552008348E7 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
+		9FE347A01F1F055B008348E7 /* libstdc++.6.0.9.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libstdc++.6.0.9.tbd"; path = "usr/lib/libstdc++.6.0.9.tbd"; sourceTree = SDKROOT; };
+		9FE347A21F1F0562008348E7 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		9FE347A41F1F0566008348E7 /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
+		9FE347A61F1F056D008348E7 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		9FE347A81F1F0576008348E7 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		9FE347AA1F1F057D008348E7 /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
+		9FE347AC1F1F0585008348E7 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		9FE347AE1F1F058B008348E7 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
+		9FE347B01F1F0592008348E7 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		9FE347B21F1F059F008348E7 /* libsystemstats.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsystemstats.tbd; path = usr/lib/libsystemstats.tbd; sourceTree = SDKROOT; };
+		9FE347B41F1F05A8008348E7 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		9FE347B61F1F05AE008348E7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		9FE347B81F1F05D7008348E7 /* AWOpenSSL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWOpenSSL.framework; sourceTree = "<group>"; };
+		9FE347B91F1F05D7008348E7 /* AWSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSDK.framework; sourceTree = "<group>"; };
+		9FE347BC1F1F05EF008348E7 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = "<group>"; };
+		9FE347BE1F1FDF78008348E7 /* AWSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSDK.framework; sourceTree = "<group>"; };
+		9FE347BF1F1FDF78008348E7 /* AWOpenSSL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWOpenSSL.framework; sourceTree = "<group>"; };
+		9FE347C41F1FF514008348E7 /* AlertHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertHandler.swift; sourceTree = SOURCE_ROOT; };
+		9FE347C61F200811008348E7 /* GeneralUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralUtils.swift; sourceTree = SOURCE_ROOT; };
 		F7333F581F013D8700A36313 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "AirWatch-SDK-iOS-Swift-Sample/Assets.xcassets"; sourceTree = SOURCE_ROOT; };
 		F7333F5A1F013DA800A36313 /* CustomSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomSettingsViewController.swift; path = "AirWatch-SDK-iOS-Swift-Sample/CustomSettingsViewController.swift"; sourceTree = SOURCE_ROOT; };
 		F7333F5B1F013DA800A36313 /* DataLossPreventionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataLossPreventionViewController.swift; path = "AirWatch-SDK-iOS-Swift-Sample/DataLossPreventionViewController.swift"; sourceTree = SOURCE_ROOT; };
 		F7333F5C1F013DA800A36313 /* GeneralInformationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GeneralInformationViewController.swift; path = "AirWatch-SDK-iOS-Swift-Sample/GeneralInformationViewController.swift"; sourceTree = SOURCE_ROOT; };
 		F7333F5D1F013DA800A36313 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "AirWatch-SDK-iOS-Swift-Sample/Info.plist"; sourceTree = SOURCE_ROOT; };
-		F7333F5E1F013DA800A36313 /* IntegratedAuthenticationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = IntegratedAuthenticationViewController.swift; path = "AirWatch-SDK-iOS-Swift-Sample/IntegratedAuthenticationViewController.swift"; sourceTree = SOURCE_ROOT; };
 		F7333F5F1F013DA800A36313 /* LoadingIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoadingIndicatorView.swift; path = "AirWatch-SDK-iOS-Swift-Sample/LoadingIndicatorView.swift"; sourceTree = SOURCE_ROOT; };
 		F7333F601F013DA800A36313 /* LocalAuthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LocalAuthViewController.swift; path = "AirWatch-SDK-iOS-Swift-Sample/LocalAuthViewController.swift"; sourceTree = SOURCE_ROOT; };
 		F7333F611F013DA800A36313 /* LoggingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoggingViewController.swift; path = "AirWatch-SDK-iOS-Swift-Sample/LoggingViewController.swift"; sourceTree = SOURCE_ROOT; };
@@ -74,10 +152,8 @@
 		F7333F8A1F013E8800A36313 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = "AirWatch-SDK-iOS-Swift-Sample/AppDelegate.swift"; sourceTree = SOURCE_ROOT; };
 		F7333F8D1F013FE600A36313 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = "AirWatch-SDK-iOS-Swift-Sample/Base.lproj/Main.storyboard"; sourceTree = SOURCE_ROOT; };
 		F7333F8F1F01510A00A36313 /* iOS Swift Sample App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "iOS Swift Sample App.entitlements"; sourceTree = "<group>"; };
-		F73777861ED8AB4A00135466 /* AWSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSDK.framework; sourceTree = "<group>"; };
 		F7B14EB31DECB7AF00E40279 /* AWSDKDefaults.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AWSDKDefaults.bundle; sourceTree = "<group>"; };
 		F7BC0DC11D93FFB300334C40 /* iOS Swift Sample App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Swift Sample App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F7E024061EDDDB650031E33D /* AWOpenSSL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWOpenSSL.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,26 +161,91 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FE347BB1F1F05D7008348E7 /* AWSDK.framework in Frameworks */,
+				9FE347B71F1F05AE008348E7 /* UIKit.framework in Frameworks */,
+				9FE347B51F1F05A8008348E7 /* SystemConfiguration.framework in Frameworks */,
+				9FE347B11F1F0592008348E7 /* Security.framework in Frameworks */,
+				9FE347AF1F1F058B008348E7 /* SafariServices.framework in Frameworks */,
+				9FE347C01F1FDF78008348E7 /* AWSDK.framework in Frameworks */,
+				9FE347AD1F1F0585008348E7 /* QuartzCore.framework in Frameworks */,
+				9FE347AB1F1F057D008348E7 /* MobileCoreServices.framework in Frameworks */,
+				9FE347A91F1F0576008348E7 /* MessageUI.framework in Frameworks */,
+				9FE347A71F1F056D008348E7 /* MediaPlayer.framework in Frameworks */,
+				9FE347A51F1F0566008348E7 /* LocalAuthentication.framework in Frameworks */,
+				9FE347A31F1F0562008348E7 /* libz.tbd in Frameworks */,
+				9FE347A11F1F055B008348E7 /* libstdc++.6.0.9.tbd in Frameworks */,
+				9FE347C21F1FDF78008348E7 /* AWOpenSSL.framework in Frameworks */,
+				9FE3479F1F1F0552008348E7 /* libsqlite3.tbd in Frameworks */,
+				9FE3479D1F1F054A008348E7 /* libc++.tbd in Frameworks */,
+				9FE3479B1F1F0547008348E7 /* ImageIO.framework in Frameworks */,
+				9FE347991F1F0540008348E7 /* Foundation.framework in Frameworks */,
+				9FE347971F1F053C008348E7 /* CoreVideo.framework in Frameworks */,
+				9FE347951F1F0528008348E7 /* CoreText.framework in Frameworks */,
+				9FE347931F1F0521008348E7 /* CoreTelephony.framework in Frameworks */,
+				9FE347911F1F051A008348E7 /* CoreMotion.framework in Frameworks */,
+				9FE347BA1F1F05D7008348E7 /* AWOpenSSL.framework in Frameworks */,
+				9FE3478F1F1F0511008348E7 /* CoreMedia.framework in Frameworks */,
+				9FE3478D1F1F04EA008348E7 /* CoreLocation.framework in Frameworks */,
+				9FE3478B1F1F04E3008348E7 /* CoreGraphics.framework in Frameworks */,
+				9FE347891F1F04DB008348E7 /* CoreFoundation.framework in Frameworks */,
+				9FE347871F1F04D4008348E7 /* CoreData.framework in Frameworks */,
+				9FE347851F1F04CD008348E7 /* CFNetwork.framework in Frameworks */,
+				9FE347831F1F04C5008348E7 /* AVFoundation.framework in Frameworks */,
+				9FE347811F1F04BE008348E7 /* AudioToolbox.framework in Frameworks */,
+				9FE3477F1F1F04B8008348E7 /* AssetsLibrary.framework in Frameworks */,
+				9FE3477D1F1F04B3008348E7 /* Accelerate.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9F18DCBB1DB4422900160C4B /* UI Helpers */ = {
+		9F18DCBB1DB4422900160C4B /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				F7333F5F1F013DA800A36313 /* LoadingIndicatorView.swift */,
 				F78126101E938E84005FB3A5 /* Walkthrough */,
+				F7333F5F1F013DA800A36313 /* LoadingIndicatorView.swift */,
+				9FE347C41F1FF514008348E7 /* AlertHandler.swift */,
+				9FE347C61F200811008348E7 /* GeneralUtils.swift */,
 			);
-			name = "UI Helpers";
+			name = Helpers;
 			sourceTree = "<group>";
 		};
 		9F9F84221D9AC7FF00C8EE7E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F7E024061EDDDB650031E33D /* AWOpenSSL.framework */,
-				F73777861ED8AB4A00135466 /* AWSDK.framework */,
+				9FE347B81F1F05D7008348E7 /* AWOpenSSL.framework */,
+				9FE347B91F1F05D7008348E7 /* AWSDK.framework */,
+				9FE347B61F1F05AE008348E7 /* UIKit.framework */,
+				9FE347B41F1F05A8008348E7 /* SystemConfiguration.framework */,
+				9FE347B21F1F059F008348E7 /* libsystemstats.tbd */,
+				9FE347B01F1F0592008348E7 /* Security.framework */,
+				9FE347AE1F1F058B008348E7 /* SafariServices.framework */,
+				9FE347AC1F1F0585008348E7 /* QuartzCore.framework */,
+				9FE347AA1F1F057D008348E7 /* MobileCoreServices.framework */,
+				9FE347A81F1F0576008348E7 /* MessageUI.framework */,
+				9FE347A61F1F056D008348E7 /* MediaPlayer.framework */,
+				9FE347A41F1F0566008348E7 /* LocalAuthentication.framework */,
+				9FE347A21F1F0562008348E7 /* libz.tbd */,
+				9FE347A01F1F055B008348E7 /* libstdc++.6.0.9.tbd */,
+				9FE3479E1F1F0552008348E7 /* libsqlite3.tbd */,
+				9FE3479C1F1F054A008348E7 /* libc++.tbd */,
+				9FE3479A1F1F0547008348E7 /* ImageIO.framework */,
+				9FE347981F1F0540008348E7 /* Foundation.framework */,
+				9FE347961F1F053C008348E7 /* CoreVideo.framework */,
+				9FE347941F1F0528008348E7 /* CoreText.framework */,
+				9FE347921F1F0521008348E7 /* CoreTelephony.framework */,
+				9FE347901F1F051A008348E7 /* CoreMotion.framework */,
+				9FE3478E1F1F0511008348E7 /* CoreMedia.framework */,
+				9FE3478C1F1F04EA008348E7 /* CoreLocation.framework */,
+				9FE3478A1F1F04E3008348E7 /* CoreGraphics.framework */,
+				9FE347881F1F04DB008348E7 /* CoreFoundation.framework */,
+				9FE347861F1F04D4008348E7 /* CoreData.framework */,
+				9FE347841F1F04CD008348E7 /* CFNetwork.framework */,
+				9FE347821F1F04C5008348E7 /* AVFoundation.framework */,
+				9FE347801F1F04BE008348E7 /* AudioToolbox.framework */,
+				9FE3477E1F1F04B8008348E7 /* AssetsLibrary.framework */,
+				9FE3477C1F1F04B3008348E7 /* Accelerate.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -122,6 +263,9 @@
 		F7BC0DB81D93FFB300334C40 = {
 			isa = PBXGroup;
 			children = (
+				9FE347BE1F1FDF78008348E7 /* AWSDK.framework */,
+				9FE347BF1F1FDF78008348E7 /* AWOpenSSL.framework */,
+				9FE347BC1F1F05EF008348E7 /* Alamofire.framework */,
 				F7333F8F1F01510A00A36313 /* iOS Swift Sample App.entitlements */,
 				F7B14EB31DECB7AF00E40279 /* AWSDKDefaults.bundle */,
 				F7BC0DC31D93FFB300334C40 /* AirWatch-SDK-iOS-Swift-Sample */,
@@ -151,7 +295,7 @@
 				F7EB827E1E924AD500EB5C49 /* RemoteConfiguration */,
 				F7EB827B1E92444500EB5C49 /* Instrumentation */,
 				F7EB82831E924BF000EB5C49 /* DLP */,
-				9F18DCBB1DB4422900160C4B /* UI Helpers */,
+				9F18DCBB1DB4422900160C4B /* Helpers */,
 				F7333F581F013D8700A36313 /* Assets.xcassets */,
 				F7333F5D1F013DA800A36313 /* Info.plist */,
 			);
@@ -181,9 +325,12 @@
 			isa = PBXGroup;
 			children = (
 				F7333F7A1F013DDD00A36313 /* IntegratedAuth.storyboard */,
-				F7333F5E1F013DA800A36313 /* IntegratedAuthenticationViewController.swift */,
+				9FE3477A1F1F0421008348E7 /* IntegratedAuthenticationViewController.swift */,
+				9FE347771F1F03C8008348E7 /* URLSessionNetworkingHandler.swift */,
+				9FE347761F1F03C8008348E7 /* AlamofireNetworkingHandler.swift */,
 			);
 			name = IntegratedAuthentication;
+			path = "AirWatch-SDK-iOS-Swift-Sample";
 			sourceTree = "<group>";
 		};
 		F7EB827B1E92444500EB5C49 /* Instrumentation */ = {
@@ -255,7 +402,7 @@
 				TargetAttributes = {
 					F7BC0DC01D93FFB300334C40 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 2QKP24Y3HJ;
+						DevelopmentTeam = 9R9TQ8V583;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -310,9 +457,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9FE347791F1F03C8008348E7 /* URLSessionNetworkingHandler.swift in Sources */,
+				9FE3477B1F1F0421008348E7 /* IntegratedAuthenticationViewController.swift in Sources */,
 				F7333F6C1F013DA800A36313 /* LocalAuthViewController.swift in Sources */,
 				F7333F6E1F013DA800A36313 /* SDKUseCasesTableViewController.swift in Sources */,
+				9FE347781F1F03C8008348E7 /* AlamofireNetworkingHandler.swift in Sources */,
 				F7333F681F013DA800A36313 /* GeneralInformationViewController.swift in Sources */,
+				9FE347C51F1FF514008348E7 /* AlertHandler.swift in Sources */,
+				9FE347C71F200811008348E7 /* GeneralUtils.swift in Sources */,
 				F7333F6B1F013DA800A36313 /* LoadingIndicatorView.swift in Sources */,
 				F7333F671F013DA800A36313 /* DataLossPreventionViewController.swift in Sources */,
 				F7333F6F1F013DA800A36313 /* TunnelingViewController.swift in Sources */,
@@ -320,7 +472,6 @@
 				F7333F6D1F013DA800A36313 /* LoggingViewController.swift in Sources */,
 				F7333F711F013DA800A36313 /* WalkThroughViewController.swift in Sources */,
 				F7333F661F013DA800A36313 /* CustomSettingsViewController.swift in Sources */,
-				F7333F6A1F013DA800A36313 /* IntegratedAuthenticationViewController.swift in Sources */,
 				F7333F701F013DA800A36313 /* TutorialViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -503,7 +654,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "iOS Swift Sample App.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 2QKP24Y3HJ;
+				DEVELOPMENT_TEAM = 9R9TQ8V583;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -515,6 +666,7 @@
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.vmware.AirWatch-SDK-iOS-Swift-Sample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -524,7 +676,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "iOS Swift Sample App.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 2QKP24Y3HJ;
+				DEVELOPMENT_TEAM = 9R9TQ8V583;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -536,6 +688,7 @@
 				OTHER_LDFLAGS = "";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.vmware.AirWatch-SDK-iOS-Swift-Sample";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

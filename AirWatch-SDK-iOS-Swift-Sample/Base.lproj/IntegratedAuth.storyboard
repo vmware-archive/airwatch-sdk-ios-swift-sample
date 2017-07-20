@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12121" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Td8-KF-pjU">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -19,43 +19,56 @@
                         <viewControllerLayoutGuide type="bottom" id="JBy-vR-PVL"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Z58-q1-fUw">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter the url with http/https" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="H32-AM-6vd">
-                                <rect key="frame" x="16" y="75" width="343" height="30"/>
+                                <rect key="frame" x="20" y="75" width="374" height="30"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="URL"/>
                             </textField>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NeF-Kz-10Q">
+                                <rect key="frame" x="20" y="182" width="374" height="534"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </webView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="tSm-su-VwI">
+                                <rect key="frame" x="197.66666666666666" y="358" width="20" height="20"/>
+                            </activityIndicatorView>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="gq5-l2-XjZ">
+                                <rect key="frame" x="24" y="113" width="370" height="29"/>
+                                <segments>
+                                    <segment title="URLSession"/>
+                                    <segment title="Alamofire"/>
+                                </segments>
+                                <connections>
+                                    <action selector="segmentControlDidChange:" destination="Td8-KF-pjU" eventType="valueChanged" id="K67-Q3-btu"/>
+                                </connections>
+                            </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Status" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="He2-hN-Kxo">
-                                <rect key="frame" x="16" y="113" width="343" height="21"/>
+                                <rect key="frame" x="20" y="153" width="374" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NeF-Kz-10Q">
-                                <rect key="frame" x="16" y="142" width="343" height="505"/>
-                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </webView>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="tSm-su-VwI">
-                                <rect key="frame" x="177.5" y="323.5" width="20" height="20"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="He2-hN-Kxo" firstAttribute="leading" secondItem="Z58-q1-fUw" secondAttribute="leadingMargin" id="5gQ-Xh-S7w"/>
-                            <constraint firstItem="JBy-vR-PVL" firstAttribute="top" secondItem="NeF-Kz-10Q" secondAttribute="bottom" constant="20" id="5v9-Yh-dGW"/>
-                            <constraint firstItem="H32-AM-6vd" firstAttribute="trailing" secondItem="He2-hN-Kxo" secondAttribute="trailing" id="DpK-2p-Gfq"/>
-                            <constraint firstItem="NeF-Kz-10Q" firstAttribute="top" secondItem="He2-hN-Kxo" secondAttribute="bottom" constant="8" id="GpF-qo-y6L"/>
-                            <constraint firstItem="NeF-Kz-10Q" firstAttribute="trailing" secondItem="Z58-q1-fUw" secondAttribute="trailingMargin" id="Hz5-IH-vJw"/>
-                            <constraint firstItem="H32-AM-6vd" firstAttribute="leading" secondItem="He2-hN-Kxo" secondAttribute="leading" id="KQo-wn-gCu"/>
-                            <constraint firstItem="tSm-su-VwI" firstAttribute="centerY" secondItem="Z58-q1-fUw" secondAttribute="centerY" id="Zko-td-qcB"/>
-                            <constraint firstItem="H32-AM-6vd" firstAttribute="top" secondItem="Z58-q1-fUw" secondAttribute="top" constant="75" id="kSh-RR-Ugr"/>
-                            <constraint firstItem="He2-hN-Kxo" firstAttribute="trailing" secondItem="Z58-q1-fUw" secondAttribute="trailingMargin" id="mAa-is-4np"/>
-                            <constraint firstItem="tSm-su-VwI" firstAttribute="centerX" secondItem="He2-hN-Kxo" secondAttribute="centerX" id="tcs-2A-zeI"/>
-                            <constraint firstItem="He2-hN-Kxo" firstAttribute="top" secondItem="H32-AM-6vd" secondAttribute="bottom" constant="8" symbolic="YES" id="xUc-O5-N06"/>
-                            <constraint firstItem="NeF-Kz-10Q" firstAttribute="leading" secondItem="Z58-q1-fUw" secondAttribute="leadingMargin" id="yIf-kh-FBE"/>
+                            <constraint firstItem="He2-hN-Kxo" firstAttribute="trailing" secondItem="NeF-Kz-10Q" secondAttribute="trailing" id="44m-BY-6xR"/>
+                            <constraint firstItem="gq5-l2-XjZ" firstAttribute="trailing" secondItem="He2-hN-Kxo" secondAttribute="trailing" id="4JB-Yq-Iz1"/>
+                            <constraint firstItem="H32-AM-6vd" firstAttribute="leading" secondItem="Z58-q1-fUw" secondAttribute="leadingMargin" id="CDf-NY-40j"/>
+                            <constraint firstAttribute="bottom" secondItem="NeF-Kz-10Q" secondAttribute="bottom" constant="20" symbolic="YES" id="E84-qk-ZSX"/>
+                            <constraint firstItem="gq5-l2-XjZ" firstAttribute="top" secondItem="H32-AM-6vd" secondAttribute="bottom" constant="8" symbolic="YES" id="JMW-dt-sBf"/>
+                            <constraint firstItem="gq5-l2-XjZ" firstAttribute="leading" secondItem="Z58-q1-fUw" secondAttribute="leadingMargin" constant="4" id="RAa-Fy-o2P"/>
+                            <constraint firstItem="H32-AM-6vd" firstAttribute="trailing" secondItem="gq5-l2-XjZ" secondAttribute="trailing" id="Vdy-N4-eve"/>
+                            <constraint firstItem="NeF-Kz-10Q" firstAttribute="top" secondItem="He2-hN-Kxo" secondAttribute="bottom" constant="8" symbolic="YES" id="cQX-is-apw"/>
+                            <constraint firstItem="He2-hN-Kxo" firstAttribute="leading" secondItem="NeF-Kz-10Q" secondAttribute="leading" id="cvK-5B-oHF"/>
+                            <constraint firstItem="He2-hN-Kxo" firstAttribute="centerX" secondItem="tSm-su-VwI" secondAttribute="centerX" id="hH6-PR-cD7"/>
+                            <constraint firstItem="H32-AM-6vd" firstAttribute="top" secondItem="Ydp-YH-Rlr" secondAttribute="bottom" constant="11" id="jzF-eT-2vP"/>
+                            <constraint firstItem="H32-AM-6vd" firstAttribute="trailing" secondItem="Z58-q1-fUw" secondAttribute="trailingMargin" id="m5Z-7p-D8e"/>
+                            <constraint firstItem="He2-hN-Kxo" firstAttribute="top" secondItem="gq5-l2-XjZ" secondAttribute="bottom" constant="12" id="nPC-4d-wEv"/>
+                            <constraint firstItem="H32-AM-6vd" firstAttribute="leading" secondItem="He2-hN-Kxo" secondAttribute="leading" id="pkn-xH-NlK"/>
+                            <constraint firstItem="tSm-su-VwI" firstAttribute="centerY" secondItem="Z58-q1-fUw" secondAttribute="centerY" id="uAE-bw-bu0"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Integrated Auth" id="2tv-Fa-w7n">
@@ -77,6 +90,7 @@
                     <connections>
                         <outlet property="httpStatusLabel" destination="He2-hN-Kxo" id="xxu-ZQ-Wb7"/>
                         <outlet property="loadingIndicator" destination="tSm-su-VwI" id="DDo-ZE-cJF"/>
+                        <outlet property="segmentedControl" destination="gq5-l2-XjZ" id="DjG-1f-dHP"/>
                         <outlet property="updateCredentialsButton" destination="0KA-qw-hJw" id="ro7-wJ-h6I"/>
                         <outlet property="urlTextField" destination="H32-AM-6vd" id="csZ-kY-Ahy"/>
                         <outlet property="webView" destination="NeF-Kz-10Q" id="xxN-Ce-gXW"/>
@@ -84,7 +98,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="08c-MY-0fw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1613" y="-925"/>
+            <point key="canvasLocation" x="1612" y="-926.08695652173924"/>
         </scene>
     </scenes>
 </document>

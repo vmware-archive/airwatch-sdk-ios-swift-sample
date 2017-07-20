@@ -24,22 +24,37 @@
 
 import UIKit
 import AWSDK
+import Alamofire
 
-class IntegratedAuthenticationViewController: UIViewController, URLSessionDelegate, URLSessionTaskDelegate, NSURLConnectionDelegate {
+class IntegratedAuthenticationViewController: UIViewController, AlamofireHandlerDelegate, URLSessionHandlerDelegate {
+  
+ 
     
     @IBOutlet weak var urlTextField: UITextField!
     @IBOutlet weak var httpStatusLabel: UILabel!
     @IBOutlet weak var webView: UIWebView!
     @IBOutlet weak var loadingIndicator: UIActivityIndicatorView!
     @IBOutlet weak var updateCredentialsButton: UIBarButtonItem?
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    
+
+    var updateUserCredsStatus : Bool = false
     
     
     override func viewDidLoad() {
         
-        /*
-         * Checking the SDK Account object
+        /** 
+         Checking the SDK Account object. This is done to ensure SDK's integrated auth logic
+         doesn't use stale credentials to handle network challenge. It is optional but a recommended check 
+         before using SDK's integrated auth APIs.
          */
-        accountObjectCheck()
+        GeneralUtils.accountObjectCheck(requestingViewController: self, completionHandler: { errorMessage in
+            self.displayAWAccountError(message: errorMessage)
+        })
+        
+        /**
+         Setting UI component on this View.
+         */
         loadingIndicator.hidesWhenStopped = true
         
         let borderColor = UIColor.black.cgColor
@@ -50,25 +65,144 @@ class IntegratedAuthenticationViewController: UIViewController, URLSessionDelega
         view.addGestureRecognizer(tap)
         
         hideUpdateButton()
+        
     }
     
-    //MARK:- UI Actions
+    
+    
+    
+    @IBAction func segmentControlDidChange(_ sender: UISegmentedControl) {
+        switch segmentedControl.selectedSegmentIndex {
+        case 0:
+            print("URLSession tab selected")
+            webView.loadRequest(URLRequest.init(url:URL.init(string: "about:blank")! ))
+            break
+        case 1:
+            print("Alamofire tab selected")
+            webView.loadRequest(URLRequest.init(url:URL.init(string: "about:blank")! ))
+            break
+        default:
+            break
+        }
+    }
+    
+    
     @IBAction func didTapGoButton(_ sender: AnyObject) {
         // Reset status label
         httpStatusLabel.text = ""
         
         // Grab URL and make request
-        let urlString = getURLStringFromTextField()
-        if let url = URL(string: urlString){
-            sessionGetRequest(url)
-        } else {
-            displayInvalidURL()
+        let urlString = GeneralUtils.getURLStringFromTextField(urlText: self.urlTextField.text)
+        
+        switch segmentedControl.selectedSegmentIndex {
+            
+        // Performing URLSession based Networking
+        case 0:
+            if let url = URL(string: urlString){
+               GeneralUtils.showLoadingIndicator()
+               let sessionHandler = URLSessionHandler(requestURL: url)
+               sessionHandler.delegate = self
+               sessionHandler.initiateRequest()
+            } else {
+                AlertHandler.displayInvalidURL(requestingViewController: self)
+            }
+            break
+        
+        // Performing Alamofire based Networking
+        case 1:
+            if let url = URL(string: urlString){
+                GeneralUtils.showLoadingIndicator()
+                let alamoHandler = AlamofireHandler(requestURL : url)
+                alamoHandler.delegate = self
+                alamoHandler.initiateRequest()
+            } else {
+                AlertHandler.displayInvalidURL(requestingViewController: self)
+            }
+            break
+        default:
+            break
         }
     }
     
+    
     @IBAction func didTapUpdateCredentials(_ sender: Any) {
-        updateUserCreds()
+        self.updateUserCreds()
     }
+    
+    
+    
+    //MARK:- URLSession delegate callbacks implementation to update UI
+    
+    func urlSessionDidRecieveChallenge(challenge: URLAuthenticationChallenge?,sdkSupported : Bool) {
+        self.updateViewWithChallengeResult(challenge: challenge, sdkSupported: sdkSupported)
+        
+    }
+    
+    func urlSessionRequestDidComplete(response: HTTPURLResponse?, data: Data?, error : Error?) {
+        
+        if let currentError = error{
+            print("Error occured during URLSession \(currentError)")
+            GeneralUtils.hideLoadingIndicator()
+        }else{
+            if let currentResponse = response, let currentData = data{
+                OperationQueue.main.addOperation({
+                    self.httpStatusLabel.text = "HTTP Code: \(currentResponse.statusCode)"
+                })
+                GeneralUtils.hideLoadingIndicator()
+                self.updateWebViewWithData(response: currentResponse, withData: currentData)
+            }
+        }
+        
+    }
+    
+    func awSDKDidCompleteSessionChallenge(result: Bool?) {
+        if let currentResult = result{
+            if(!currentResult){
+                AlertHandler.displayLoginError(requestingViewController: self)
+            }
+        }
+    }
+    
+    
+    
+    
+    //MARK:- Alamofire delegate callbacks implementation to update UI
+    
+    func alamofireDidRecieveChallenge(challenge: URLAuthenticationChallenge?,sdkSupported : Bool) {
+        self.updateViewWithChallengeResult(challenge: challenge, sdkSupported: sdkSupported)
+    }
+    
+    
+    func alamofireRequestDidReceiveData(response: HTTPURLResponse, data: Data) {
+        OperationQueue.main.addOperation({
+            self.httpStatusLabel.text = "HTTP Code: \(response.statusCode)"
+        })
+        GeneralUtils.hideLoadingIndicator()
+        self.updateWebViewWithData(response: response, withData: data)
+    }
+    
+    
+    func alamofireRequestDidComplete(task: URLSessionTask?, error: Error?) {
+        if let currentError = error{
+            print("Error occured during Alamofire session \(currentError)")
+            GeneralUtils.hideLoadingIndicator()
+        }
+    }
+    
+    
+    func awSDKDidCompleteAlamoChallenge(result: Bool?) {
+        if let currentResult = result{
+            if(!currentResult){
+                AlertHandler.displayLoginError(requestingViewController: self)
+            }
+        }
+    }
+    
+    
+    
+ 
+
+    //MARK:- UI Actions
     
     func setHTTPStatusLabel(_ status: String) {
         httpStatusLabel.text = status
@@ -81,279 +215,57 @@ class IntegratedAuthenticationViewController: UIViewController, URLSessionDelega
         })
     }
     
-    //MARK:- URLSession
-    func sessionGetRequest(_ url: URL) {
-        
-        //Creating request and starting the session
-        let request = URLRequest(url: url)
-        print(request.url!)
-        let configuration = Foundation.URLSession.shared.configuration
-        let session = Foundation.URLSession(configuration: configuration, delegate: self, delegateQueue: nil)
-
-        
-        //Handling the data and response returned by session task
-        let task = session.dataTask(with: request, completionHandler: {
-            taskData, taskResponse, error in
-            if let data = taskData, let response: HTTPURLResponse = taskResponse! as? HTTPURLResponse{
+    func updateViewWithChallengeResult(challenge: URLAuthenticationChallenge?,sdkSupported : Bool){
+        if let currentChallenge = challenge{
+            if(sdkSupported){
+                updateLabel("challenge type is : \(currentChallenge.protectionSpace.authenticationMethod)")
                 
-                UIApplication.shared.isNetworkActivityIndicatorVisible = false
-                
-                self.httpStatusLabel.text = "HTTP Code: \(response.statusCode)"
-
-                if(response.mimeType != nil && response.textEncodingName != nil && response.url != nil){
-                    
-                    // Updating the UI on the Main thread.
-                    OperationQueue.main.addOperation({
-                        
-                        self.webView.load(data, mimeType: response.mimeType!, textEncodingName: response.textEncodingName!, baseURL: response.url!)
-                    })
-                } else {
-                    let dataString = String(data: data, encoding:String.Encoding(rawValue: self.getCorrectEncoding(response)) )
-                    // Updating the UI on the Main thread.
-                    OperationQueue.main.addOperation({
-                        
-                        self.webView.loadHTMLString(dataString!, baseURL:response.url!)
-                    })
+                /**
+                 Checking updateUserCredsStatus to see if the local credentials have been already updated by
+                 calling updateUserCreds method. If yes, then enrolled active user doesn't seem to have access
+                 to web service endpoint.
+                 */
+                if(currentChallenge.previousFailureCount == 1 && self.updateUserCredsStatus){
+                    AlertHandler.displayLoginError(requestingViewController: self)
                 }
                 
-                print("Clearing out the session for security purposes")
-                session.invalidateAndCancel()
-                session.finishTasksAndInvalidate()
-            }
-        })
-        
-        UIApplication.shared.isNetworkActivityIndicatorVisible = true
-        task.resume()
-    }
-    
-    
-    
-    func urlSession(_ session: URLSession, task: URLSessionTask, didReceive challenge: URLAuthenticationChallenge, completionHandler: @escaping (URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
-      
-        
-        if challenge.previousFailureCount == 2 {
-            /* Handling the case where password might have changed in the AD.
-             Updating the credentials in the SDK keychain an promting user to try again.
-             */
-            self.updateUserCreds()
-        } else if challenge.previousFailureCount > 2 {
-            // Display an alert to the user indicating the failure
-            displayLoginError()
-            // Cancel the request/challenge if more than 1 attempt has failed.
-            completionHandler(.cancelAuthenticationChallenge, nil)
-            
-        } else {
-            /*
-             * For debugging purposes, we're printing the Authentication Method of the endpoint.
-             * This was helpful in determining if the endpoint the api was hitting, was actually able
-             * to use Integrated Authentication.
-             */
-            print(challenge.protectionSpace.authenticationMethod)
-            
-            switch challenge.protectionSpace.authenticationMethod {
-                /*
-                 * Integrated Authentication does not handle Server Trust, if an endpoint is presenting this
-                 * as the authentication method, then the developer needs to handle that prior to Integrated
-                 * Authentication handling authentication. Below we're checking to see if the method is explicitly
-                 * server trust. We're using an if/else statement to handle server trust if need and perform integrated
-                 * authentication otherwise.
+                /**
+                 Handling the case where password might have changed in the AD.
+                 Updating the credentials in the SDK keychain once and promting user to try again.
                  */
-            case NSURLAuthenticationMethodServerTrust:
-                /*
-                 * The completion handler is handling server trust below. We're telling it to handle it and not
-                 * passing it any credentials
-                 */
-                updateLabel("challenge type is ServerTrust")
-                completionHandler(.performDefaultHandling,nil)
-                break
-                /*
-                 * Below are the three types of authentication type that is supporedted by SDK.
-                 * Checking if one of the suppored authentication is received and
-                 * calling SDK's handle challenge method to handle the corresponding challenge
-                 */
-            case NSURLAuthenticationMethodHTTPBasic:
-                updateLabel("challenge type is Basic")
-                handleAirWatchIntegratedAuthenticationforSession(challenge,completionHandler: completionHandler)
-                break
-            case NSURLAuthenticationMethodNTLM:
-                updateLabel("challenge type is NTLM")
-                handleAirWatchIntegratedAuthenticationforSession(challenge,completionHandler: completionHandler)
-                break
-            case NSURLAuthenticationMethodClientCertificate:
-                updateLabel("challenge type is Cert Based")
-                handleAirWatchIntegratedAuthenticationforSession(challenge,completionHandler: completionHandler)
-                break
-                /*
-                 * If the auth challenge type is any other then basic, NTLM or cert auth
-                 * then it's not supported by SDK and developer has to handle it manually
-                 */
-            default:
-                print("Authentication challenge is not one supported by the SDK...cancelling challenge")
-                completionHandler(.cancelAuthenticationChallenge, nil)
-                displayNotSupportedAlert()
+                if(currentChallenge.previousFailureCount == 1 && !self.updateUserCredsStatus){
+                    self.updateUserCredsStatus = true
+                    self.updateUserCreds()
+                }
+                
+            }else{
+                GeneralUtils.hideLoadingIndicator()
+                AlertHandler.displayNotSupportedAlert(requestingViewController: self)
             }
         }
     }
     
-    func urlSession(_ session: URLSession, task: URLSessionTask, didCompleteWithError error: Error?) {
-        if(error != nil){
-            print("Error occured during session \(error!)")
-        }
-    }
-    
-    /*
-     * This delegate method is called when response data is recieved in chunks or
-     * in one shot.
-     */
-    func URLSession(_ session: Foundation.URLSession, dataTask: URLSessionDataTask,
-                    didReceiveData data: Data) {
-        
-        print("Data received: \(data)")
-    }
-    
-    // MARK:- AirWatch SDK
-    
-    /*
-     * In order to leverage Integrated Authentication two steps need to be performed.
-     * First a check that the protection space is one that the SDK can handle and second,
-     * that it has the credentials needed in order to move forward. If both of these checks
-     * are ok then call "handleChallenge" in order for the SDK to take care of the challenge.
-     */
-    func handleAirWatchIntegratedAuthenticationforSession(_ challenge: URLAuthenticationChallenge,completionHandler: @escaping (Foundation.URLSession.AuthChallengeDisposition, URLCredential?) -> Void) {
-        do {
-            try AWController.clientInstance().canHandle(protectionSpace: challenge.protectionSpace)
-            _ = AWController.clientInstance().handleChallengeForURLSession(challenge: challenge, completionHandler: { (disposition, credential) in
-                completionHandler(disposition, credential)
+    func updateWebViewWithData(response: HTTPURLResponse,withData data: Data){
+        if(response.mimeType != nil && response.textEncodingName != nil && response.url != nil){
+            // Updating the UI on the Main thread.
+            OperationQueue.main.addOperation({
+                self.webView.load(data, mimeType: response.mimeType!, textEncodingName: response.textEncodingName!, baseURL: response.url!)
             })
-        } catch {
-            print(error)
-        }
-    }
-    
-    func updateUserCreds() -> Void {
-        AWController.clientInstance().updateUserCredentials(with: { (success, error) in
-            if(success){
-                print("updated credentials and trying to log in with updated credentials")
-                OperationQueue.main.addOperation({
-                    self.tryAgain()
-                    self.hideUpdateButton()
-                })
-            } else{
-                print("error occured \(error ?? "error" as! Error)")
-            }
-        })
-    }
-    
-    /*
-     On some rare events AWEnrollmentAccount class shared Instance might become nil. This obect is used by the
-     SDK challenge handler classes to seamlesasly pass the credentials in response to the basic and NTLM type
-     authentication challenge. We check if the shared instance is nil or corrupted below
-     */
-    func accountObjectCheck(){
-        
-        /*
-         If the account object is nil we are calling updateUserCredentialsWithCompletion block
-         that shoudl repopulate the credentils in the instance
-         */
-        let username = AWController.clientInstance().account.username
-        
-        if(username == "") {
-            print("account username is empty")
-            
-            displayAWAccountError(withMessage: "SDK Account object is nil")
-            
         } else {
-            /*
-             Sometimes when a device is device is re-enrolled with a different user or is checked out in the staging
-             user flow, Account object might fail to update it's data accordingly. We use AWMDMInformationController to
-             get the username and compare it with the username retured by Account object
-             */
-            UserInformationController.sharedInstance.retrieveUserInfo(completionHandler: {
-                userInformation, error in
-                
-                if error != nil {
-                    print("Error retrieving device information from AirWatch with: \(error.debugDescription)")
-                    
-                    // Show a dialog indicating FetchInfo Failure
-                    OperationQueue.main.addOperation {
-                        self.displayFetchUserInfoError()
-                    }
-                }
-                
-                /*
-                 * In the event that the account object is not nil but fails to update the username correctly, e.g.
-                 * after a Check In / Check Out we call updateUserCredentialsWithCompletion that should correctly
-                 * populate the data inside account object which is used by SDK challenge handler classes.
-                 */
-                
-                // Fetch Server user
-                let serverUser = self.stripDomain(fromUsername: (userInformation?.userName)!)
-                
-                // Fetch local user
-                let sdkUser = self.stripDomain(fromUsername: AWController.clientInstance().account.username)
-                
-                // Compare both users
-                if(sdkUser.lowercased() != serverUser.lowercased()) {
-                    self.displayAWAccountError(withMessage: "Current SDK User does not match Server User")
-                }
+            let dataString = String(data: data, encoding:String.Encoding(rawValue: GeneralUtils.getCorrectEncoding(response)) )
+            // Updating the UI on the Main thread.
+            OperationQueue.main.addOperation({
+                self.webView.loadHTMLString(dataString!, baseURL:response.url!)
             })
         }
     }
     
-    //MARK:- Helper methods
     
-    /*
-     * Different websites return different kind of encoding
-     * getting the correct encoding from the response which we used later
-     * to populated and render the data returned by webiste inside the webivew.
-     */
-    func getCorrectEncoding(_ response : URLResponse) -> UInt{
-        var usedEncoding = String.Encoding.utf8
-        if let encodingName = response.textEncodingName {
-            let encoding = CFStringConvertEncodingToNSStringEncoding(CFStringConvertIANACharSetNameToEncoding(encodingName as CFString!))
-            if encoding != UInt(kCFStringEncodingInvalidId) {
-                usedEncoding = String.Encoding(rawValue: encoding)
-            }
-            return usedEncoding.rawValue
-        }
-        else{
-            return usedEncoding.rawValue
-        }
-    }
-    
-    // Check for the formatting of the entered URL
-    func getURLStringFromTextField() -> String {
-        guard var urlString = urlTextField.text else {
-            return ""
-        }
-        
-        if(urlString.isEmpty){
-            urlString = "https://www.vmware.com"
-            
-        } else if (!(urlString.hasPrefix("http://")) && !(urlString.hasPrefix("https://"))){
-            urlString = "https://" + urlString
-        }
-        
-        urlString = urlString.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
-        
-        print("Final URL is \(urlString)")
-        
-        return urlString
-    }
     
     func dismissKeyboard() {
         view.endEditing(true)
     }
     
-    func stripDomain(fromUsername username: String) -> String {
-        let usernameParts = username.components(separatedBy: "\\")
-        
-        if usernameParts.count > 1 {
-            return usernameParts[1]
-        }
-        
-        return usernameParts[0]
-    }
     
     func showUpdateButton() {
         self.httpStatusLabel.text = "Account Object needs to be updated. Please click update"
@@ -367,80 +279,45 @@ class IntegratedAuthenticationViewController: UIViewController, URLSessionDelega
         updateCredentialsButton?.tintColor = UIColor.clear
     }
     
-    // MARK:- Messages / Dialogs
-    
-    func displayAWAccountError(withMessage message: String) -> Void {
-        print("AW SDK Account Issue")
-        
-        let alert = UIAlertController(title: "AirWatch SDK Account", message: message, preferredStyle: .alert)
-        
-        let okAction = UIAlertAction(title: "Update", style: .default, handler: {
-            _ in
-            print("Ok clicked")
-            self.updateUserCreds()
-        })
-        
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: {
-            _ in
-            self.showUpdateButton()
-        })
-        
-        alert.addAction(okAction)
-        alert.addAction(cancel)
-        
-        OperationQueue.main.addOperation {
-            self.present(alert, animated: true, completion: nil)
-            
-        }
 
-    }
     
-    func displayLoginError() -> Void {
-        print("Log In error with Int Auth")
-        
-        displayAlert(withTitle: "SDK Error", withMessage: "An Error Occured while SDK was trying to perform Integrated Auth. Please make sure your enrollment credentials have access to this endpoint")
-    }
     
-    func tryAgain() -> Void {
-        print("Credentials Updated...try again")
-        
-        displayAlert(withTitle: "Credentials Updated", withMessage: "Credentials Updated successfully, Please try again!")
-    }
+   
+    /**
+     Displaying the prompt to request user for updating the account object.
+     If user clicks "Ok", this will show an authentication screen.
+     */
     
-    func displayFetchUserInfoError() -> Void {
-        print("Log In error :: unable to fetch server information")
+    func displayAWAccountError(message: String)  {
         
-        displayAlert(withTitle: "SDK Error", withMessage: "An Error Occured while SDK was trying to fetch user infor from AW backed. Please make sure your device is enrolled")
-    }
-    
-    func displayInvalidURL() -> Void{
-        print("Log in Error :: invalid URL")
-        
-        displayAlert(withTitle: "Invalid URL", withMessage: "Please confirm the formatting of the URL")
-    }
-    
-    func displayNotSupportedAlert() -> Void{
-        print("Log In error :: Not supported")
-        
-        displayAlert(withTitle: "Authentication Required", withMessage: "This type of Authentication challenge is not supported by the SDK")
-    }
-    
-    func displayAlert(withTitle title: String, withMessage message: String) {
-        print("Log In error")
-        
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        
-        let okAction = UIAlertAction(title: "Dismiss", style: .default, handler: {
-            _ in
-            print("Dismiss")
-        })
-        alert.addAction(okAction)
-        
-        OperationQueue.main.addOperation {
-            self.present(alert, animated: true, completion: nil)
+        AlertHandler.displayAlertWithCompletionHandler(
+            requestingViewController: self,
+            withTitle: "AirWatch SDK Account",
+            withMessage: message,
             
-        }
-
+            okHandler: {
+                _ in
+                self.updateUserCreds()
+               },
+            
+            cancelHandler: {
+                _ in
+                self.showUpdateButton()
+        })
     }
+    
+    
+    /**
+     Redirecting to the updateUserCreds implementation present in GeneralUtil class.
+     */
+    func updateUserCreds()  {
+        GeneralUtils.updateUserCreds(requestingViewController: self, completionHandler: {
+            AlertHandler.tryAgain(requestingViewController: self)
+            self.hideUpdateButton()
+        })
+    }
+
+    
+  
 
 }
