@@ -157,7 +157,7 @@ class IntegratedAuthenticationViewController: UIViewController, AlamofireHandler
     
     func awSDKDidCompleteSessionChallenge(result: Bool?) {
         if let currentResult = result{
-            if(!currentResult){
+            if(!currentResult && self.updateUserCredsStatus){
                 AlertHandler.displayLoginError(requestingViewController: self)
             }
         }
@@ -192,7 +192,7 @@ class IntegratedAuthenticationViewController: UIViewController, AlamofireHandler
     
     func awSDKDidCompleteAlamoChallenge(result: Bool?) {
         if let currentResult = result{
-            if(!currentResult){
+            if(!currentResult && self.updateUserCredsStatus){
                 AlertHandler.displayLoginError(requestingViewController: self)
             }
         }
@@ -234,7 +234,6 @@ class IntegratedAuthenticationViewController: UIViewController, AlamofireHandler
                  Updating the credentials in the SDK keychain once and promting user to try again.
                  */
                 if(currentChallenge.previousFailureCount == 1 && !self.updateUserCredsStatus){
-                    self.updateUserCredsStatus = true
                     self.updateUserCreds()
                 }
                 
@@ -311,9 +310,15 @@ class IntegratedAuthenticationViewController: UIViewController, AlamofireHandler
      Redirecting to the updateUserCreds implementation present in GeneralUtil class.
      */
     func updateUserCreds()  {
-        GeneralUtils.updateUserCreds(requestingViewController: self, completionHandler: {
-            AlertHandler.tryAgain(requestingViewController: self)
-            self.hideUpdateButton()
+        GeneralUtils.updateUserCreds(requestingViewController: self, completionHandler: { success in
+            
+            //Credentials were updated successfully. Requsting User to try again.
+            if(success){
+                AlertHandler.tryAgain(requestingViewController: self)
+                self.hideUpdateButton()
+                self.updateUserCredsStatus = true
+            }
+           
         })
     }
 

@@ -40,7 +40,7 @@ class AlertHandler{
     public static func displayLoginError(requestingViewController : UIViewController) -> Void {
         print("Log In error with Int Auth")
         GeneralUtils.hideLoadingIndicator()
-        displayAlert(requestingViewController: requestingViewController,withTitle: "SDK Error", withMessage: "An Error Occured while SDK was trying to perform Integrated Auth. Please make sure your enrollment credentials have access to this endpoint")
+        displayAlert(requestingViewController: requestingViewController,withTitle: "Autentication Failed", withMessage: "Please make sure your enrollment credentials have access to this endpoint")
     }
     
     public static func tryAgain(requestingViewController : UIViewController) -> Void {
@@ -71,30 +71,31 @@ class AlertHandler{
 
     
     public static func displayAlert(requestingViewController : UIViewController,withTitle title: String, withMessage message: String) {
-        print("Log In error")
-        
+        print("Log In error :: Not supported")
+        GeneralUtils.hideLoadingIndicator()
+
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        
         let okAction = UIAlertAction(title: "Dismiss", style: .default, handler: {
             _ in
             print("Dismiss")
         })
-        alert.addAction(okAction)
         
+        alert.addAction(okAction)
         OperationQueue.main.addOperation {
             requestingViewController.present(alert, animated: true, completion: nil)
         }
     }
     
     
+    
+    
     public static func displayAlertWithCompletionHandler(requestingViewController: UIViewController,withTitle title : String, withMessage message: String, okHandler : okButtonCompletionHandler, cancelHandler : cancelButtonCompletionHandler) -> Void {
-        print("AW SDK Account Issue")
         GeneralUtils.hideLoadingIndicator()
         let alert = UIAlertController(title: "AirWatch SDK Account", message: message, preferredStyle: .alert)
         
 
         let okAction = UIAlertAction(title: "Update", style: .default, handler: okHandler)
-        let cancel = UIAlertAction(title: "Update", style: .default, handler: cancelHandler)
+        let cancel = UIAlertAction(title: "Cancel", style: .default, handler: cancelHandler)
 
         
         alert.addAction(okAction)

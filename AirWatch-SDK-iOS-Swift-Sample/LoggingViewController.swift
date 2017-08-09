@@ -86,12 +86,12 @@ class LoggingViewController: UIViewController {
             if(!success){
                 NSLog("Error is : \(errorName?.localizedDescription ?? "No error")");
                 OperationQueue.main.addOperation {
-                    self.showAlert(withMessage: "Error sending logs")
+                    AlertHandler.displayAlert(requestingViewController: self, withTitle: "AWSDK Log Reporter", withMessage: "Error sending logs")
                 }
             } else {
                 NSLog("Sucess");
                 OperationQueue.main.addOperation {
-                    self.showAlert(withMessage: "Logs sent to AW")
+                    AlertHandler.displayAlert(requestingViewController: self, withTitle: "AWSDK Log Reporter", withMessage: "Logs sent to AW")
                 }
             }
         })
@@ -101,15 +101,7 @@ class LoggingViewController: UIViewController {
         view.endEditing(true)
     }
     
-    func showAlert(withMessage message: String) {
-        let alertController = UIAlertController(title: "AWSDK Log Reporter",
-                                                message: message,
-                                                preferredStyle: UIAlertControllerStyle.alert)
-        
-        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default,handler: nil))
-        
-        self.present(alertController, animated: true, completion: nil)
-    }
+    
 }
 
 // MARK:- UITextFieldDelegate
