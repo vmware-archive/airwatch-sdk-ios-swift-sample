@@ -402,7 +402,7 @@
 				TargetAttributes = {
 					F7BC0DC01D93FFB300334C40 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = 9R9TQ8V583;
+						DevelopmentTeam = P82TXC8L3J;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -654,7 +654,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "iOS Swift Sample App.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 9R9TQ8V583;
+				DEVELOPMENT_TEAM = P82TXC8L3J;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -676,7 +676,7 @@
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = "iOS Swift Sample App.entitlements";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 9R9TQ8V583;
+				DEVELOPMENT_TEAM = P82TXC8L3J;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

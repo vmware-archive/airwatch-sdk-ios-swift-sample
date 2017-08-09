@@ -28,7 +28,7 @@ import UIKit
 public class GeneralUtils {
 
     public typealias validationCompletionHandler = ((String) ->(Swift.Void))?
-    public typealias updateUserCompletionHandler = (() ->(Swift.Void))?
+    public typealias updateUserCompletionHandler = ((Bool) ->(Swift.Void))?
 
     
     //MARK:- Helper methods
@@ -112,7 +112,10 @@ public class GeneralUtils {
          that shoudl repopulate the credentils in the instance
          */
         let username = AWController.clientInstance().account.username
+        let password = AWController.clientInstance().account.password
+
         
+        print("username is \(username) and password is \(password)")
         if(username == "") {
             print("account username is empty")
             if let currentCompletionHandler = completionHandler{
@@ -149,6 +152,7 @@ public class GeneralUtils {
                 // Fetch local user
                 let sdkUser = GeneralUtils.stripDomain(fromUsername: AWController.clientInstance().account.username)
                 
+                
                 // Compare both users
                 if(sdkUser.lowercased() != serverUser.lowercased()) {
                     if let currentCompletionHandler = completionHandler{
@@ -168,11 +172,14 @@ public class GeneralUtils {
                 OperationQueue.main.addOperation({
                     AlertHandler.tryAgain(requestingViewController: requestingViewController)
                     if let currentCompletionHandler = completionHandler{
-                        currentCompletionHandler()
+                        currentCompletionHandler(true)
                     }
                 })
             } else{
                 print("error occured \(error ?? "error" as! Error)")
+                if let currentCompletionHandler = completionHandler{
+                    currentCompletionHandler(false)
+                }
             }
         })
     }

@@ -43,8 +43,8 @@ public class URLSessionHandler : NSObject, URLSessionTaskDelegate, URLSessionDel
   
     /**
      delegate : variable holding the instance of the class confirming to AlamofireHandlerDelegate protocol.
-     url : URL passed by the caller class to initiate Alamofire request.
-     sessionManager : Global varialbe to hold Alamofire session manager instance.
+     url : URL passed by the caller class to initiate URLSession request.
+     sessionManager : Global varialbe to hold URLSession instance.
      */
     var delegate : URLSessionHandlerDelegate?
     var url : URL?
