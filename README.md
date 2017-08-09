@@ -34,7 +34,7 @@ When running the app from Xcode, make sure the app is also whitelisted on the Ai
 
 ## Resources
 
-* [Developer Center](https://developer.air-watch.com)
+* [Developer Center](https://code.vmware.com/web/workspace-one)
 * [Community Forums](https://support.air-watch.com/search/results?requiredfields=forumName:Mobile%20App%20Development.contentType:Forum%20Posts&sort=meta:updatedOn:D&partialfields=languageId:en&version=9.1)
 * [Knowledge Base](https://support.air-watch.com/search/results?requiredfields=forumName:Developer%20Support.contentType:KB%20Articles&sort=meta:updatedOn:D&partialfields=languageId:en&version=9.1)
 
