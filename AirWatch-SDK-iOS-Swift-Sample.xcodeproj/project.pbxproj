@@ -46,8 +46,6 @@
 		9FE347C11F1FDF78008348E7 /* AWSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9FE347BE1F1FDF78008348E7 /* AWSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9FE347C21F1FDF78008348E7 /* AWOpenSSL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9FE347BF1F1FDF78008348E7 /* AWOpenSSL.framework */; };
 		9FE347C31F1FDF78008348E7 /* AWOpenSSL.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9FE347BF1F1FDF78008348E7 /* AWOpenSSL.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		9FE347C51F1FF514008348E7 /* AlertHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE347C41F1FF514008348E7 /* AlertHandler.swift */; };
-		9FE347C71F200811008348E7 /* GeneralUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9FE347C61F200811008348E7 /* GeneralUtils.swift */; };
 		F7333F591F013D8700A36313 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F7333F581F013D8700A36313 /* Assets.xcassets */; };
 		F7333F661F013DA800A36313 /* CustomSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7333F5A1F013DA800A36313 /* CustomSettingsViewController.swift */; };
 		F7333F671F013DA800A36313 /* DataLossPreventionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7333F5B1F013DA800A36313 /* DataLossPreventionViewController.swift */; };
@@ -70,6 +68,8 @@
 		F7333F8B1F013E8800A36313 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7333F8A1F013E8800A36313 /* AppDelegate.swift */; };
 		F7333F8E1F013FE600A36313 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F7333F8C1F013FE600A36313 /* Main.storyboard */; };
 		F7B14EB41DECB7AF00E40279 /* AWSDKDefaults.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F7B14EB31DECB7AF00E40279 /* AWSDKDefaults.bundle */; };
+		F7C26D051F3BA11400F6CAE2 /* AlertHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C26D031F3BA11400F6CAE2 /* AlertHandler.swift */; };
+		F7C26D061F3BA11400F6CAE2 /* GeneralUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = F7C26D041F3BA11400F6CAE2 /* GeneralUtils.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -127,8 +127,6 @@
 		9FE347BC1F1F05EF008348E7 /* Alamofire.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Alamofire.framework; sourceTree = "<group>"; };
 		9FE347BE1F1FDF78008348E7 /* AWSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSDK.framework; sourceTree = "<group>"; };
 		9FE347BF1F1FDF78008348E7 /* AWOpenSSL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWOpenSSL.framework; sourceTree = "<group>"; };
-		9FE347C41F1FF514008348E7 /* AlertHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertHandler.swift; sourceTree = SOURCE_ROOT; };
-		9FE347C61F200811008348E7 /* GeneralUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeneralUtils.swift; sourceTree = SOURCE_ROOT; };
 		F7333F581F013D8700A36313 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = "AirWatch-SDK-iOS-Swift-Sample/Assets.xcassets"; sourceTree = SOURCE_ROOT; };
 		F7333F5A1F013DA800A36313 /* CustomSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CustomSettingsViewController.swift; path = "AirWatch-SDK-iOS-Swift-Sample/CustomSettingsViewController.swift"; sourceTree = SOURCE_ROOT; };
 		F7333F5B1F013DA800A36313 /* DataLossPreventionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = DataLossPreventionViewController.swift; path = "AirWatch-SDK-iOS-Swift-Sample/DataLossPreventionViewController.swift"; sourceTree = SOURCE_ROOT; };
@@ -154,6 +152,8 @@
 		F7333F8F1F01510A00A36313 /* iOS Swift Sample App.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "iOS Swift Sample App.entitlements"; sourceTree = "<group>"; };
 		F7B14EB31DECB7AF00E40279 /* AWSDKDefaults.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = AWSDKDefaults.bundle; sourceTree = "<group>"; };
 		F7BC0DC11D93FFB300334C40 /* iOS Swift Sample App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "iOS Swift Sample App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F7C26D031F3BA11400F6CAE2 /* AlertHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AlertHandler.swift; path = "AirWatch-SDK-iOS-Swift-Sample/Helpers/AlertHandler.swift"; sourceTree = SOURCE_ROOT; };
+		F7C26D041F3BA11400F6CAE2 /* GeneralUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GeneralUtils.swift; path = "AirWatch-SDK-iOS-Swift-Sample/Helpers/GeneralUtils.swift"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,10 +203,10 @@
 		9F18DCBB1DB4422900160C4B /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				F7C26D031F3BA11400F6CAE2 /* AlertHandler.swift */,
+				F7C26D041F3BA11400F6CAE2 /* GeneralUtils.swift */,
 				F78126101E938E84005FB3A5 /* Walkthrough */,
 				F7333F5F1F013DA800A36313 /* LoadingIndicatorView.swift */,
-				9FE347C41F1FF514008348E7 /* AlertHandler.swift */,
-				9FE347C61F200811008348E7 /* GeneralUtils.swift */,
 			);
 			name = Helpers;
 			sourceTree = "<group>";
@@ -463,13 +463,13 @@
 				F7333F6E1F013DA800A36313 /* SDKUseCasesTableViewController.swift in Sources */,
 				9FE347781F1F03C8008348E7 /* AlamofireNetworkingHandler.swift in Sources */,
 				F7333F681F013DA800A36313 /* GeneralInformationViewController.swift in Sources */,
-				9FE347C51F1FF514008348E7 /* AlertHandler.swift in Sources */,
-				9FE347C71F200811008348E7 /* GeneralUtils.swift in Sources */,
+				F7C26D051F3BA11400F6CAE2 /* AlertHandler.swift in Sources */,
 				F7333F6B1F013DA800A36313 /* LoadingIndicatorView.swift in Sources */,
 				F7333F671F013DA800A36313 /* DataLossPreventionViewController.swift in Sources */,
 				F7333F6F1F013DA800A36313 /* TunnelingViewController.swift in Sources */,
 				F7333F8B1F013E8800A36313 /* AppDelegate.swift in Sources */,
 				F7333F6D1F013DA800A36313 /* LoggingViewController.swift in Sources */,
+				F7C26D061F3BA11400F6CAE2 /* GeneralUtils.swift in Sources */,
 				F7333F711F013DA800A36313 /* WalkThroughViewController.swift in Sources */,
 				F7333F661F013DA800A36313 /* CustomSettingsViewController.swift in Sources */,
 				F7333F701F013DA800A36313 /* TutorialViewController.swift in Sources */,
