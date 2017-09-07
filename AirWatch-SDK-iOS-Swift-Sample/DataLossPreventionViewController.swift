@@ -196,7 +196,7 @@ class DataLossPreventionViewController: UIViewController, UITabBarDelegate {
         firstButton.isHidden = true
         secondButton.isHidden = true
         headingTextView.text = "Restrict Cut/Copy/Paste operation"
-        descriptionTextView.text = "User shoudln't be able to copy or edit this text if this feature is enabled. SDK can prevent the cut/copy/paste capabilities automatically inside your app. Click Learn more to Explore!"
+        descriptionTextView.text = "User shouldn't be able to copy or edit this text if this feature is enabled. SDK can prevent the cut/copy/paste capabilities automatically inside your app. Click Learn more to Explore!"
     }
     
     func setMoreDLPViews()  {
