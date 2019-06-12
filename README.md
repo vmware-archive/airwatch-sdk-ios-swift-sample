@@ -1,3 +1,5 @@
+VMware has ended active development of this project, this repository will no longer be updated.
+
 ## Overview
 This sample app provides an overview of the common use-cases of the AirWatch SDK. Where appropriate, comments are added to the code. The current code base is using the 17.5 Beta version of the new [Swift SDK](https://support.air-watch.com/articles/115008882887).
 
